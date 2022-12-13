@@ -4,6 +4,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
+		"rollup-build": "rollup -c",
 		"preview": "vite preview",
 		"check": "svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./jsconfig.json --watch",
@@ -43,6 +44,7 @@
 		"heroicons-svelte": "^0.0.1",
 		"node-html-parser": "^5.2.0",
 		"reading-time": "^1.5.0",
-		"reading-time-estimator": "^1.4.33"
+		"reading-time-estimator": "^1.4.33",
+		"sass": "^1.56.2"
 	}
 }
