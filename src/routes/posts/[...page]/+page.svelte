@@ -1,6 +1,6 @@
 <script>
   import { name } from '$lib/info.js'
-  import ArrowLeftIcon from '$lib/components/ArrowLeftIcon.svelte'
+  import ArrowLeftIcon from '$components/Icons/ArrowLeftIcon.svelte'
   import ArrowRightIcon from '$components/Icons/ArrowRightIcon.svelte'
   import PostsList from '$components/Post/PostsList.svelte'
 

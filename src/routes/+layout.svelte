@@ -21,11 +21,10 @@
 
       <SetColorTheme />
     </header> -->
-    <main
-      class="flex flex-col flex-grow w-full mx-auto"
-      class:max-w-2xl={!$page.data.layout?.fullWidth}
-    >
-      <slot />
+    <main class="flex flex-col flex-grow w-full mx-auto">
+      <div class="sm:px-8 mt-9">
+        <slot />
+      </div>
     </main>
   </div>
 </div>

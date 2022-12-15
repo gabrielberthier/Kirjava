@@ -2,7 +2,7 @@
   import { format, parseISO } from 'date-fns'
   import { website, name, bio, avatar } from '$lib/info.js'
   import ToC from '$components/ToC/ToC.svelte'
-  import ArrowLeftIcon from '$lib/components/ArrowLeftIcon.svelte'
+  import ArrowLeftIcon from '$components/Icons/ArrowLeftIcon.svelte'
   import SocialLinks from '$components/Social/SocialLinks.svelte'
   import { afterNavigate } from '$app/navigation'
 
