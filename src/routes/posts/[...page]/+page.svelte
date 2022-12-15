@@ -1,8 +1,8 @@
 <script>
   import { name } from '$lib/info.js'
   import ArrowLeftIcon from '$lib/components/ArrowLeftIcon.svelte'
-  import ArrowRightIcon from '$lib/components/ArrowRightIcon.svelte'
-  import PostsList from '$lib/components/PostsList.svelte'
+  import ArrowRightIcon from '$components/Icons/ArrowRightIcon.svelte'
+  import PostsList from '$components/Post/PostsList.svelte'
 
   /** @type {import('./$types').PageData} */
   export let data

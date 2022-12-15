@@ -1,6 +1,6 @@
 <script>
-  import PostPreview from '$lib/components/PostPreview.svelte'
-  import PostDate from '$lib/components/PostDate.svelte'
+  import PostPreview from '$components/Post/PostPreview.svelte'
+  import PostDate from '$components/Post/PostDate.svelte'
 
   export let posts
 </script>

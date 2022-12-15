@@ -1,7 +1,7 @@
 <script>
-  import ArrowRightIcon from '$lib/components/ArrowRightIcon.svelte'
-  import PostsList from '$lib/components/PostsList.svelte'
-  import SocialLinks from '$lib/components/SocialLinks.svelte'
+  import ArrowRightIcon from '$components/Icons/ArrowRightIcon.svelte'
+  import PostsList from '$components/Post/PostsList.svelte'
+  import SocialLinks from '$components/Social/SocialLinks.svelte'
   import { avatar, bio, name } from '$lib/info.js'
 
   /** @type {import('./$types').PageData} */

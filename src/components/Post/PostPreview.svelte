@@ -1,6 +1,6 @@
 <script>
-  import Card from './Card.svelte'
-  import ArrowRightIcon from './ArrowRightIcon.svelte'
+  import Card from '$components/Cards/Card.svelte'
+  import ArrowRightIcon from '$components/Icons/ArrowRightIcon.svelte'
 
   export let post
 </script>

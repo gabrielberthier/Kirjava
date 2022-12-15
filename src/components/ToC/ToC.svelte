@@ -1,7 +1,7 @@
 <script>
   import { browser } from '$app/environment'
   import { onMount } from 'svelte'
-  import Card from './Card.svelte'
+  import Card from '$components/Cards/Card.svelte'
 
   export let post
 
