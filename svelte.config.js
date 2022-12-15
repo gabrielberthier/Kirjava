@@ -18,8 +18,8 @@ const config = {
   kit: {
     adapter: adapter(),
     alias: {
-      $components: 'src/components',
       $lib: 'src/lib',
+      $components: 'src/lib/components',
       $models: 'src/models',
     },
     // remove this if you don't want prerendering
