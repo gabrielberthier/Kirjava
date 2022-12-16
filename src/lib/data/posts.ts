@@ -2,6 +2,8 @@ import { browser } from '$app/environment'
 import { format } from 'date-fns'
 import { parse } from 'node-html-parser'
 import type { SvelteComponent } from 'svelte'
+import readingTime from 'reading-time'
+
 
 // we require some server-side APIs to parse all metadata
 if (browser) {
@@ -76,7 +78,7 @@ export const posts: IPostResponse[] = Object.entries(import.meta.glob<postFile>(
       },
 
       // get estimated reading time for the post
-      // readingTime: readingTime(html.structuredText).text
+      readingTime: readingTime(html.structuredText).text
     }
   })
   // sort by date

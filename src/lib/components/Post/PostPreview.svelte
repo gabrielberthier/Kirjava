@@ -14,7 +14,7 @@
   <div slot="actions">
     <div class="flex items-center text-sky-500">
       <span class="text-sm font-medium">Read</span>
-      <ArrowRightIcon class="w-4 h-4 ml-1" />
+      <ArrowRightIcon _class="w-4 h-4 ml-1" />
     </div>
   </div>
 </Card>
