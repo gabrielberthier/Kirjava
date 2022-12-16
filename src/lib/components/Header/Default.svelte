@@ -19,7 +19,7 @@
           <div class="mx-auto max-w-2xl lg:max-w-5xl">
             <div class="relative flex gap-4">
               <div class="flex flex-1">
-               <Avatar src="/imgs/avatar.gif"></Avatar>
+               <Avatar src="https://coffective.com/wp-content/uploads/2018/06/icon-house-blue.png"></Avatar>
               </div>
               <div class="flex flex-1 justify-end md:justify-center">
                 <MdLessNavContainer></MdLessNavContainer>

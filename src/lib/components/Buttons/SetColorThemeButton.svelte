@@ -32,6 +32,6 @@
     }
   }}
 >
-  <MoonIcon class="hidden text-zinc-500 dark:block" />
-  <SunIcon class="block text-zinc-400 dark:hidden" />
+  <MoonIcon class="hidden text-blue-500 dark:block" />
+  <SunIcon class="block text-amber-400 dark:hidden" />
 </button>
