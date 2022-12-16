@@ -1,15 +1,48 @@
 import { browser } from '$app/environment'
 import { format } from 'date-fns'
 import { parse } from 'node-html-parser'
-import readingTime from 'reading-time/lib/reading-time.js'
+import type { SvelteComponent } from 'svelte'
 
 // we require some server-side APIs to parse all metadata
 if (browser) {
   throw new Error(`posts can only be imported server-side`)
 }
 
+interface postFile {
+  default: SvelteComponent;
+  metadata: Record<string, any>
+} 
+
+export interface IPostResponse{
+  next: {
+      slug: string | undefined;
+      isIndexFile: boolean;
+      date: string | undefined;
+      preview: {
+          html: string | undefined;
+          text: string | undefined;
+      };
+  } | undefined;
+  previous: {
+      slug: string | undefined;
+      isIndexFile: boolean;
+      date: string | undefined;
+      preview: {
+          html: string | undefined;
+          text: string | undefined;
+      };
+  } | undefined;
+  slug: string | undefined;
+  isIndexFile: boolean;
+  date: string | undefined;
+  preview: {
+      html: string | undefined;
+      text: string | undefined;
+  };
+}
+
 // Get all posts and add metadata
-export const posts = Object.entries(import.meta.glob('/posts/**/*.md', { eager: true }))
+export const posts: IPostResponse[] = Object.entries(import.meta.glob<postFile>('/posts/**/*.md', { eager: true }))
   .map(([filepath, post]) => {
     const html = parse(post.default.render().html)
     const preview = post.metadata.preview ? parse(post.metadata.preview) : html.querySelector('p')
@@ -37,17 +70,17 @@ export const posts = Object.entries(import.meta.glob('/posts/**/*.md', { eager: 
         : undefined,
 
       preview: {
-        html: preview.toString(),
+        html: preview?.toString(),
         // text-only preview (i.e no html elements), used for SEO
-        text: preview.structuredText ?? preview.toString()
+        text: preview?.structuredText ?? preview?.toString()
       },
 
       // get estimated reading time for the post
-      readingTime: readingTime(html.structuredText).text
+      // readingTime: readingTime(html.structuredText).text
     }
   })
   // sort by date
-  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .sort((a, b) => new Date(b.date || new Date()).getTime() - new Date(a.date || new Date()).getTime())
   // add references to the next/previous post
   .map((post, index, allPosts) => ({
     ...post,
@@ -55,7 +88,7 @@ export const posts = Object.entries(import.meta.glob('/posts/**/*.md', { eager: 
     previous: allPosts[index + 1]
   }))
 
-function addTimezoneOffset(date) {
+function addTimezoneOffset(date: string|Date) {
   const offsetInMilliseconds = new Date().getTimezoneOffset() * 60 * 1000
   return new Date(new Date(date).getTime() + offsetInMilliseconds)
 }

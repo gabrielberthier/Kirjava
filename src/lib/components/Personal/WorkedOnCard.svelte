@@ -1,3 +1,7 @@
+<script lang="ts"> 
+const src = "https://cdn-icons-png.flaticon.com/512/25/25231.png"
+</script>
+
 <div class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
   <h2 class="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
     <svg
@@ -24,7 +28,7 @@
       >
         <img
           alt=""
-          src="/_next/static/media/planetaria.ecd81ade.svg"
+          {src}
           width="32"
           height="32"
           decoding="async"
@@ -57,7 +61,7 @@
       >
         <img
           alt=""
-          src="/_next/static/media/airbnb.b4000690.svg"
+          {src}
           width="28"
           height="28"
           decoding="async"
@@ -87,7 +91,7 @@
       >
         <img
           alt=""
-          src="/_next/static/media/facebook.dd9e7d48.svg"
+          {src}
           width="28"
           height="28"
           decoding="async"
@@ -117,7 +121,7 @@
       >
         <img
           alt=""
-          src="/_next/static/media/starbucks.4a5bd050.svg"
+          {src}
           width="28"
           height="28"
           decoding="async"

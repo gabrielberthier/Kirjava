@@ -1,9 +1,17 @@
 import { redirect } from '@sveltejs/kit'
+import type { ServerLoadEvent } from '@sveltejs/kit'
 import { posts } from '$lib/data/posts'
+import type { IPostResponse  } from '$lib/data/posts'
 import { paginate } from '$lib/util'
 
-/** @type {import('./$types').PageServerLoad} */
-export async function load({ params }) {
+export interface LoadedPostResponse{
+  posts: IPostResponse[],
+  page: number,
+  limit: number
+}
+
+export async function load(event: ServerLoadEvent): Promise<LoadedPostResponse> {
+  const { params } = event
   let page = 1
   let limit = 10
 
