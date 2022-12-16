@@ -5,6 +5,7 @@
   // import SetColorTheme from '$components/Buttons/SetColorThemeButton.svelte'
   import { default as Header } from '$components/Header/Default.svelte'
   import Cover from '$components/Cover/Cover.svelte'
+  import Footer from '$components/Footer/Default.svelte'
 </script>
 
 <div class="flex flex-col min-h-screen ">
@@ -27,4 +28,5 @@
       </div>
     </main>
   </div>
+  <Footer></Footer>
 </div>
