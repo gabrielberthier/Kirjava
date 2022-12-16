@@ -19,7 +19,7 @@
     <!-- bio -->
     <div class="grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
       <About />
-      <div class="space-y-10 lg:pl-16 xl:pl-24 flex items-center">
+      <div class="space-y-10 lg:pl-16 xl:pl-24 md:flex items-center max-w-3xl">
         <WorkedOnCard />
       </div>
     </div>

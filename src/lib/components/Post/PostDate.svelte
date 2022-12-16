@@ -1,7 +1,7 @@
 <script>
   import { format, parseISO } from 'date-fns'
 
-  export let decorate
+  export let decorate = 'sm'
   export let post
   export let collapsed = false
 
