@@ -1,6 +1,8 @@
 <script>
     import HiddenMenu from "./HiddenMenu.svelte"
 
+    let toggleHiddenNav = false
+
 </script>
 <div class="pointer-events-auto md:hidden" data-headlessui-state="">
   <button
@@ -9,6 +11,7 @@
     type="button"
     aria-expanded="false"
     data-headlessui-state=""
+    on:click={() => toggleHiddenNav = true}
   >
     Menu
     <svg
@@ -25,5 +28,8 @@
       />
     </svg>
   </button>
+  {#if toggleHiddenNav}
+    <HiddenMenu on:close-modal={() => toggleHiddenNav = false}/>
+  {/if}
   <!-- <HiddenMenu></HiddenMenu> -->
 </div>

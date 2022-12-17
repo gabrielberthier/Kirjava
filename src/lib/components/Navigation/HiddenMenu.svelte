@@ -1,3 +1,13 @@
+<script lang="ts">
+	import { createEventDispatcher } from 'svelte';
+  const dispatch = createEventDispatcher();
+
+  function closeModalMenu() {
+		dispatch('close-modal');
+	}
+
+</script>
+
 <div>
   <div
     class="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-sm dark:bg-black/80 opacity-100"
@@ -18,6 +28,7 @@
         type="button"
         data-headlessui-state="open"
         tabindex="0"
+        on:click={closeModalMenu}
         ><svg
           viewBox="0 0 24 24"
           aria-hidden="true"
@@ -30,8 +41,8 @@
             stroke-linecap="round"
             stroke-linejoin="round"
           /></svg
-        ></button
-      >
+        >
+        </button>
       <h2 class="text-sm font-medium text-zinc-600 dark:text-zinc-400">Navigation</h2>
     </div>
     <nav class="mt-6">
