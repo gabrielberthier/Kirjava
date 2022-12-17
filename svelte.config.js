@@ -21,6 +21,7 @@ const config = {
       $lib: 'src/lib',
       $components: 'src/lib/components',
       $models: 'src/models',
+      $actions: 'src/lib/actions'
     },
     // remove this if you don't want prerendering
     prerender: {

@@ -19,11 +19,15 @@
             Gabriel Berthier
           </h1>
           <p
-            class="text-base text-zinc-600 dark:text-zinc-400 max-md:text-justify text-base text-zinc-600 dark:text-zinc-400 relative sm:py-6"
+            class="text-base 
+            text-zinc-600 dark:text-zinc-400 
+            max-md:text-justify text-base text-zinc-600 
+            dark:text-zinc-400 relative 
+            sm:py-6 max-md:my-4"
           >
             {bio}
           </p>
-          <div class="flex gap-6 mt-2 max-md:flex-center max-md:justify-center">
+          <div class="flex gap-6 mt-8 max-md:py-4 lg:mt-16 max-md:flex-center max-md:justify-center">
             <SocialLinks />
           </div>
         </div>

@@ -1,24 +1,25 @@
 export function headerToggle(node: HTMLElement) {
-  const body = document.body
   const scrollUp = 'scroll-up'
   const scrollDown = 'scroll-down'
+  const upTokens = [scrollUp]
+  const downTokens = [scrollDown]
   let lastScroll = 0
 
   const handleToggle = () => {
     const currentScroll = window.pageYOffset
     if (currentScroll <= 0) {
-      body.classList.remove(scrollUp)
+      node.classList.remove(scrollUp)
       return
     }
 
-    if (currentScroll > lastScroll && !body.classList.contains(scrollDown)) {
+    if (currentScroll > lastScroll && !node.classList.contains(scrollDown)) {
       // down
-      body.classList.remove(scrollUp)
-      body.classList.add(scrollDown)
-    } else if (currentScroll < lastScroll && body.classList.contains(scrollDown)) {
+      node.classList.remove(...upTokens)
+      node.classList.add(...downTokens)
+    } else if (currentScroll < lastScroll && node.classList.contains(scrollDown)) {
       // up
-      body.classList.remove(scrollDown)
-      body.classList.add(scrollUp)
+      node.classList.remove(...downTokens)
+      node.classList.add(...upTokens)
     }
     lastScroll = currentScroll
   }
@@ -27,7 +28,7 @@ export function headerToggle(node: HTMLElement) {
 
   return {
     destroy() {
-      window.removeEventListener('click', handleToggle, true)
+      window.removeEventListener('scroll', handleToggle, true)
     }
   }
 }

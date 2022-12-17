@@ -1,11 +1,13 @@
 <script>
   import SetColorThemeButton from '$components/Buttons/SetColorThemeButton.svelte'
-    import MdLessNavContainer from '$components/Navigation/MDLessNavContainer.svelte'
+  import MdLessNavContainer from '$components/Navigation/MDLessNavContainer.svelte'
   import MdPlusNav from '$components/Navigation/MDPlusNav.svelte'
-    import Avatar from './Img/Avatar.svelte'
+  import Avatar from './Img/Avatar.svelte'
+  import { headerToggle } from '$actions/header-toggle'
 </script>
 
 <header
+  use:headerToggle
   class="pointer-events-none relative z-50 flex flex-col sticky top-0 z-50"
   style="height:var(--header-height);margin-bottom:var(--header-mb)"
 >
@@ -15,14 +17,16 @@
       style="position:var(--header-inner-position)"
     >
       <div class="mx-auto max-w-7xl lg:px-8">
-        <div class="relative px-4 sm:px-8 lg:px-12">
+        <div class="relative px-4 sm:px-8 lg:px-12 container-header">
           <div class="mx-auto max-w-2xl lg:max-w-5xl">
             <div class="relative flex gap-4">
-              <div class="flex flex-1">
-               <Avatar src="https://coffective.com/wp-content/uploads/2018/06/icon-house-blue.png"></Avatar>
+              <div class="flex flex-1 hidden md:block">
+                <Avatar
+                  src="https://coffective.com/wp-content/uploads/2018/06/icon-house-blue.png"
+                />
               </div>
               <div class="flex flex-1 justify-end md:justify-center">
-                <MdLessNavContainer></MdLessNavContainer>
+                <MdLessNavContainer />
                 <MdPlusNav />
               </div>
               <div class="flex justify-end md:flex-1">
@@ -37,3 +41,7 @@
     </div>
   </div>
 </header>
+
+<style>
+  
+</style>
