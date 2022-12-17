@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 import { parse } from 'node-html-parser'
 import type { SvelteComponent } from 'svelte'
 import readingTime from 'reading-time'
-
+import { IPostResponse } from "$models/posts";
 
 // we require some server-side APIs to parse all metadata
 if (browser) {
@@ -15,33 +15,7 @@ interface postFile {
   metadata: Record<string, any>
 } 
 
-export interface IPostResponse{
-  next: {
-      slug: string | undefined;
-      isIndexFile: boolean;
-      date: string | undefined;
-      preview: {
-          html: string | undefined;
-          text: string | undefined;
-      };
-  } | undefined;
-  previous: {
-      slug: string | undefined;
-      isIndexFile: boolean;
-      date: string | undefined;
-      preview: {
-          html: string | undefined;
-          text: string | undefined;
-      };
-  } | undefined;
-  slug: string | undefined;
-  isIndexFile: boolean;
-  date: string | undefined;
-  preview: {
-      html: string | undefined;
-      text: string | undefined;
-  };
-}
+// Use a loader factory here to cases 1 - From local .md files and Ghost CMS
 
 // Get all posts and add metadata
 export const posts: IPostResponse[] = Object.entries(import.meta.glob<postFile>('/posts/**/*.md', { eager: true }))
