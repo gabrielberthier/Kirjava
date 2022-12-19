@@ -20,7 +20,8 @@ const config = {
     alias: {
       $lib: 'src/lib',
       $components: 'src/lib/components',
-      $models: 'src/models',
+      $domain: 'src/domain',
+      $models: 'src/domain/models',
       $actions: 'src/lib/actions'
     },
     // remove this if you don't want prerendering

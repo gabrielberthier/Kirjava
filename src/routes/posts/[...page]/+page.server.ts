@@ -1,12 +1,12 @@
 import { redirect } from '@sveltejs/kit'
 import type { ServerLoadEvent } from '@sveltejs/kit'
 import { posts } from '$lib/data/posts'
-import type { IPostResponse  } from '$lib/data/posts'
 import { paginate } from '$lib/util'
+import type { IPostResponse } from '../../../domain/models/post'
 
-export interface LoadedPostResponse{
-  posts: IPostResponse[],
-  page: number,
+export interface LoadedPostResponse {
+  posts: IPostResponse[]
+  page: number
   limit: number
 }
 

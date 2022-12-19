@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 import { parse } from 'node-html-parser'
 import type { SvelteComponent } from 'svelte'
 import readingTime from 'reading-time'
-import { IPostResponse } from "$models/posts";
+import { IPostResponse } from '$models/posts'
 
 // we require some server-side APIs to parse all metadata
 if (browser) {
@@ -11,14 +11,16 @@ if (browser) {
 }
 
 interface postFile {
-  default: SvelteComponent;
+  default: SvelteComponent
   metadata: Record<string, any>
-} 
+}
 
 // Use a loader factory here to cases 1 - From local .md files and Ghost CMS
 
 // Get all posts and add metadata
-export const posts: IPostResponse[] = Object.entries(import.meta.glob<postFile>('/posts/**/*.md', { eager: true }))
+export const posts: IPostResponse[] = Object.entries(
+  import.meta.glob<postFile>('/posts/**/*.md', { eager: true })
+)
   .map(([filepath, post]) => {
     const html = parse(post.default.render().html)
     const preview = post.metadata.preview ? parse(post.metadata.preview) : html.querySelector('p')
@@ -56,7 +58,9 @@ export const posts: IPostResponse[] = Object.entries(import.meta.glob<postFile>(
     }
   })
   // sort by date
-  .sort((a, b) => new Date(b.date || new Date()).getTime() - new Date(a.date || new Date()).getTime())
+  .sort(
+    (a, b) => new Date(b.date || new Date()).getTime() - new Date(a.date || new Date()).getTime()
+  )
   // add references to the next/previous post
   .map((post, index, allPosts) => ({
     ...post,
@@ -64,7 +68,7 @@ export const posts: IPostResponse[] = Object.entries(import.meta.glob<postFile>(
     previous: allPosts[index + 1]
   }))
 
-function addTimezoneOffset(date: string|Date) {
+function addTimezoneOffset(date: string | Date) {
   const offsetInMilliseconds = new Date().getTimezoneOffset() * 60 * 1000
   return new Date(new Date(date).getTime() + offsetInMilliseconds)
 }
