@@ -1,10 +1,5 @@
-import { BaseApiService } from '../http'
-import type { EndpointOutput } from '../http/types'
+import { PostsEntryAdapter } from 'src/domain/adapters'
+import type { Entry } from 'src/domain/adapters'
+import { readerServiceFactory } from '../http/factory/make-service'
 
-export async function get<T>(): Promise<EndpointOutput<T>> {
-  const res = await fetch('http://localhost:1337/api/posts?populate=*')
-  const data = await res.json()
-  return { body: data }
-}
-
-export class PostService extends BaseApiService<>
+export const postsApi = readerServiceFactory<Entry>('posts', new PostsEntryAdapter())

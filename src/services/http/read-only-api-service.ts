@@ -1,4 +1,4 @@
-import { BaseApiService } from './base-api-service'
+import { BaseApiService } from './reader-api-service'
 
 export default class ReadOnlyApiService extends BaseApiService {
   async fetch(page = 1, limit = 10, extraParams = {}) {

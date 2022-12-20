@@ -9,8 +9,12 @@ export interface Entry {
 export abstract class Convert<T> {
   constructor(protected entity: string) {}
 
-  public parseEntity(json: string): T {
+  public parseEntityFromJson(json: string): T {
     return cast(JSON.parse(json), r(this.entity))
+  }
+
+  public parseEntity(json: object): T {
+    return cast(json, r(this.entity))
   }
 
   public entryToJson(value: T): string {
