@@ -1,16 +1,20 @@
 import { cast, uncast } from './casting'
-import { arrayItem, m, o, r, union } from './type-maps/functions'
+import { r } from './type-maps/functions'
 import type { Post } from '../models/types'
 
 export interface Entry {
-  posts?: Post[]
+  posts: Post[]
 }
 
 export abstract class Convert<T> {
   constructor(protected entity: string) {}
 
   public parseEntityFromJson(json: string): T {
-    return cast(JSON.parse(json), r(this.entity))
+    const jsonObject = JSON.parse(json)
+
+    console.log(jsonObject);
+    
+    return cast(jsonObject, r(this.entity))
   }
 
   public parseEntity(json: object): T {

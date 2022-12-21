@@ -5,12 +5,13 @@ import type { RequestConfigBuilder, RequestConfig } from '../protocols/request'
 export class AxiosClient implements HttpClientReader {
   private requestConfigBuilder: RequestConfigBuilder
   private axios: Axios
+  private baseApiPath: string
 
-  constructor(url: string, requestConfigBuilder: RequestConfigBuilder) {
+  constructor(requestConfigBuilder: RequestConfigBuilder, baseApiPath?: string) {
     this.requestConfigBuilder = requestConfigBuilder
-    const baseURL = url
+    this.baseApiPath = baseApiPath ?? ''
+
     this.axios = new Axios({
-      baseURL,
       timeout: 10000,
       headers: {
         'Content-Type': 'application/json;charset=UTF-8'
@@ -24,11 +25,14 @@ export class AxiosClient implements HttpClientReader {
 
   public async get(path: string, params: any) {
     // build a request config to use kintone REST API
-    const requestConfig = await this.requestConfigBuilder.build('get', path, params)
+    const requestConfig = await this.requestConfigBuilder.build('get', this.baseApiPath+path, params)
     return this.sendRequest(requestConfig)
   }
 
   private async sendRequest(requestConfig: RequestConfig): Promise<RawApiResponse> {
+    console.log('Request config')
+    console.log(requestConfig)
+
     try {
       const response = await this.axios.request({
         ...requestConfig,

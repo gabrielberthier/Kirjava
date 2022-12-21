@@ -2,14 +2,15 @@ import type { Tag } from './tag'
 import type { Author } from './author'
 
 export interface IPostResponse {
+  id?: string
   next?: IPostResponse
   previous?: IPostResponse
   slug?: string
-  id?: string
   uuid?: string
+  title?: string
   commentId?: string
   isIndexFile: boolean
-  date?: string
+  createdAt?: string
   preview: {
     html?: string
     text?: string
@@ -45,8 +46,8 @@ export interface Post {
   canonicalURL?: string | null
   authors?: Author[]
   tags?: Tag[]
-  primaryAuthor?: Author
-  primaryTag?: Tag
+  primaryAuthor?: Author|null
+  primaryTag?: Tag|null
   url?: string
   excerpt?: string
 }

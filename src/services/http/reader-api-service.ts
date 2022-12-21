@@ -1,36 +1,37 @@
 import type { HttpClientReader, RawApiResponse } from './protocols/client'
 import type { ApiResponse, ResponseHandler } from './protocols/response'
 
-type CallableFetch = () => Promise<RawApiResponse>
-
 export class ReaderApiService<T> {
-  readonly basePath: string
-
   constructor(
-    private readonly url: string,
     private readonly resource: string,
     private client: HttpClientReader,
     private responseHandler: ResponseHandler<T>
   ) {
-    this.basePath = '/api'
   }
 
   getUrl(id: string | number = '') {
-    return `${this.url}/${this.basePath}/${this.resource}/${id}`
+    return `${this.resource}/${id}`
   }
 
-  async exec(call: CallableFetch): Promise<ApiResponse<T>> {
-    const response = await call()
+  async exec(promised: Promise<RawApiResponse>): Promise<ApiResponse<T>> {
+    const response = await promised
     return this.responseHandler.handle(response)
   }
 
-  async getAll(page: string = '1', limit: string = '10', extraParams = {}) {
+  async getAll(page: string = '1', limit: string = '10', extraParams = {}): Promise<ApiResponse<T>> {
     const params = { page, limit, ...extraParams }
-    return this.exec(async () => this.client.get(this.getUrl(), params))
+    return this.exec(this.client.get(this.getUrl(), params))
   }
 
-  async get(id: string, params: any) {
-    const { data } = await this.exec(async () => this.client.get(this.getUrl(id), params))
-    return data
+  async get(id: string, params: any): Promise<T> {
+    console.log('Dispatching request to:', this.getUrl(id));
+    
+    const { data, error } = await this.exec(this.client.get(this.getUrl(id), {key: '22444f78447824223cefc48062'}))
+    if(error){
+      console.error(error)
+      throw error
+    }
+    
+    return data as T
   }
 }

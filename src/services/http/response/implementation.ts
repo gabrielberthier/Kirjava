@@ -1,4 +1,4 @@
-import type { Convert } from 'src/domain/adapters'
+import type { Convert } from '$domain/adapters'
 import type { RawApiResponse } from '../protocols/client'
 import type { ApiResponse, ResponseHandler } from '../protocols/response'
 import { errorFor, success } from './response-forge'

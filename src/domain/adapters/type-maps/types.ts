@@ -1,8 +1,8 @@
 import { Author, Entry, Post, Tag } from './entity-maps'
 
 export const typeMap: any = {
-  Entry,
-  Post,
-  Author,
-  Tag
+  "Entry": Entry,
+  "Post": Post,
+  "Author": Author,
+  "Tag": Tag
 }

@@ -2,7 +2,7 @@ import type { RawApiResponse } from './client'
 
 export interface SuccessResponse<T> {
   success: true
-  data: T
+  data?: T
   error: undefined
   status: number
   headers: any
@@ -11,7 +11,7 @@ export interface SuccessResponse<T> {
 // will contain an Error but no data
 export interface ErrorResponse {
   success: false
-  data: undefined | any | Error
+  data: undefined
   error: Error
   status: number
   headers: any
