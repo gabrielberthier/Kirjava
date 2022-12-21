@@ -15,8 +15,6 @@ export const postConverter = (post: Post): IPostResponse => {
       'yyyy-MM-dd'
     )
 
-  console.log(newDate)
-
   return {
     ...post,
     createdAt: newDate,

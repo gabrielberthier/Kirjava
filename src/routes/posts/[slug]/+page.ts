@@ -1,3 +1,5 @@
+import type { IPostResponse } from '$domain/models/post'
+import { env } from '$env/dynamic/public'
 import { error } from '@sveltejs/kit'
 import type { Load } from '@sveltejs/kit'
 
@@ -6,14 +8,18 @@ import type { Load } from '@sveltejs/kit'
 
 export const load: Load = async function ({ data }) {
   // load the markdown file based on slug
-  const post = data?.post
+  const post: IPostResponse = data?.post
 
   if (post) {
-    const component = await loadFromFile(post.slug, post.isIndexFile)
+    console.log('showing post', post)
+    let component
+    if (post.slug && env.USE_LOCAL) {
+      component = await loadFromFile('', post.isIndexFile)
+    }
 
     return {
-      post: data.post,
-      component: component.default,
+      post,
+      component: component?.default,
       layout: {
         fullWidth: true
       }
@@ -26,6 +32,6 @@ export const load: Load = async function ({ data }) {
 async function loadFromFile(slug: string, isIndex: boolean = false) {
   const template = `../../../../posts/${slug}`
   const file = isIndex ? `/index.md` : `.md`
-
+  /* @vite-ignore */
   return import(template + file)
 }

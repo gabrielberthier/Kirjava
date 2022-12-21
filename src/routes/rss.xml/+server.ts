@@ -11,6 +11,8 @@ export const prerender = true
 // update this to something more appropriate for your website
 const websiteDescription = `${name}'s blog`
 const postsUrl = `${website}/posts`
+const createdAt = (createdAt?: string) =>
+  (createdAt ? new Date(createdAt) : new Date()).toUTCString()
 
 export const GET: RequestHandler = async ({ setHeaders }) => {
   setHeaders({
@@ -33,7 +35,7 @@ export const GET: RequestHandler = async ({ setHeaders }) => {
                 <title>${post.title}</title>
                 <description>${post.preview.text}</description>
                 <link>${postsUrl}/${post.slug}</link>
-                <pubDate>${new Date(post.date).toUTCString()}</pubDate>
+                <pubDate>${createdAt(post.createdAt)}</pubDate>
             </item>
           `
           )

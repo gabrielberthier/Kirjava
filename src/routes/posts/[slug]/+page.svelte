@@ -1,18 +1,22 @@
-<script>
+<script lang="ts">
   import { format, parseISO } from 'date-fns'
   import { website, name, avatar } from '$lib/info'
   import ToC from '$components/ToC/ToC.svelte'
   import ArrowLeftIcon from '$components/Icons/ArrowLeftIcon.svelte'
   import SocialLinks from '$components/Social/SocialLinks.svelte'
   import { afterNavigate } from '$app/navigation'
+  import type { PageData } from './$types'
 
-  /** @type {import('./$types').PageData} */
-  export let data
+  export let data: PageData
+
+  $: createdAt = data.post.createdAt
+    ? format(new Date(parseISO(data.post.createdAt)), 'MMMM d, yyyy')
+    : ''
 
   // generated open-graph image for sharing on social media.
   // see https://og-image.vercel.app/ for more options.
   const ogImage = `https://og-image.vercel.app/**${encodeURIComponent(
-    data.post.title
+    data.post.title || ''
   )}**?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fhyper-color-logo.svg`
 
   const url = `${website}/${data.post.slug}`
@@ -66,6 +70,7 @@
         on:keydown={goBack}
       >
         <ArrowLeftIcon
+          _class=""
           class="w-4 h-4 transition stroke-zinc-500 group-hover:stroke-zinc-700 dark:stroke-zinc-500 dark:group-hover:stroke-zinc-400"
         />
       </svelte:element>
@@ -82,8 +87,8 @@
         </h1>
         <div class="flex items-center order-first text-base text-zinc-400 dark:text-zinc-500">
           <span class="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
-          <time dateTime={data.post.date}>
-            <span class="ml-3">{format(new Date(parseISO(data.post.date)), 'MMMM d, yyyy')}</span>
+          <time dateTime={data.post.createdAt}>
+            <span class="ml-3">{createdAt}</span>
           </time>
           <span class="mx-2">•</span>
           <span>{data.post.readingTime}</span>
@@ -91,9 +96,15 @@
       </header>
 
       <!-- render the post -->
-      <div class="prose dark:prose-invert ">
-        <svelte:component this={data.component} />
-      </div>
+      {#if data.component}
+        <div class="prose dark:prose-invert ">
+          <svelte:component this={data.component} />
+        </div>
+      {:else}
+        <div class="prose dark:prose-invert ">
+          {@html data.post.preview.html}
+        </div>
+      {/if}
     </article>
 
     <!-- bio -->

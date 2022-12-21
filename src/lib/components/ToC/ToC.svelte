@@ -1,9 +1,10 @@
-<script>
+<script lang="ts">
   import { browser } from '$app/environment'
   import { onMount } from 'svelte'
   import Card from '$components/Cards/Card.svelte'
+  import type { IPostResponse } from '$domain/models/post'
 
-  export let post
+  export let post: IPostResponse
 
   let elements = []
   let headings = post.headings

@@ -7,7 +7,7 @@ import { AllPostsApi } from '$services/api/posts-api'
 // Use a loader factory here to cases 1 - From local .md files and Ghost CMS
 
 const loadURL = async () => {
-  return await AllPostsApi.get('605360bbce93e1003bd6ddd6', {})
+  return await AllPostsApi.get('', {})
 }
 
 const from = async () =>
