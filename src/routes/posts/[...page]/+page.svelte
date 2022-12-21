@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { name } from '$lib/info.js'
+  import { name } from '$lib/info'
   import ArrowLeftIcon from '$components/Icons/ArrowLeftIcon.svelte'
   import ArrowRightIcon from '$components/Icons/ArrowRightIcon.svelte'
   import PostsList from '$components/Post/PostsList.svelte'

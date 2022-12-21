@@ -1,6 +1,6 @@
 <script>
   import { format, parseISO } from 'date-fns'
-  import { website, name, bio, avatar } from '$lib/info.js'
+  import { website, name, avatar } from '$lib/info'
   import ToC from '$components/ToC/ToC.svelte'
   import ArrowLeftIcon from '$components/Icons/ArrowLeftIcon.svelte'
   import SocialLinks from '$components/Social/SocialLinks.svelte'

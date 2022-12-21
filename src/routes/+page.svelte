@@ -3,7 +3,7 @@
   import PostsList from '$components/Post/PostsList.svelte'
   import About from '$lib/components/Personal/About.svelte'
   import WorkedOnCard from '$lib/components/Personal/WorkedOnCard.svelte'
-  import { bio, name } from '$lib/info.js'
+  import { bio, name } from '$lib/info'
   import type { PageData } from './$types'
 
   export let data: PageData

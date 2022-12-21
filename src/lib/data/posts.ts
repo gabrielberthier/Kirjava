@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 import { parse } from 'node-html-parser'
 import type { SvelteComponent } from 'svelte'
 import readingTime from 'reading-time'
-import { IPostResponse } from '$models/posts'
+import type { IPostResponse } from '$models/post'
 
 // we require some server-side APIs to parse all metadata
 if (browser) {

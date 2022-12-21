@@ -1,6 +1,6 @@
 <script lang="ts">
   import SocialLinks from '$components/Social/SocialLinks.svelte'
-  import { avatar, bio, name } from '$lib/info.js'
+  import { avatar, bio, name } from '$lib/info'
 </script>
 
 <div class="relative md:px-4 sm:px-0 lg:px-12">

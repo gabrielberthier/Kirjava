@@ -12,7 +12,7 @@ export interface IPostResponse {
   date?: string
   preview: {
     html?: string
-    text: string
+    text?: string
   }
 }
 
