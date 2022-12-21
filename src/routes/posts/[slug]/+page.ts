@@ -11,7 +11,6 @@ export const load: Load = async function ({ data }) {
   const post: IPostResponse = data?.post
 
   if (post) {
-    console.log('showing post', post)
     let component
     if (post.slug && env.USE_LOCAL) {
       component = await loadFromFile('', post.isIndexFile)

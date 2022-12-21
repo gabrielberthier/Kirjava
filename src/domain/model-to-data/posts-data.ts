@@ -4,11 +4,12 @@ import { headfy } from '$lib/dom/heading'
 import { addTimezoneOffset, siblingfy } from '$services/utils/functions'
 import { format } from 'date-fns'
 import readingTime from 'reading-time'
+import { parse } from 'node-html-parser'
 
 export const postConverter = (post: Post): IPostResponse => {
   const { html, excerpt, createdAt } = post
 
-  const htmlPostElement = new DOMParser().parseFromString(html || '', 'text/html')
+  const htmlPostElement = parse(html || '')
 
   const newDate =
     createdAt &&

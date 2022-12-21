@@ -1,3 +1,5 @@
+import type { HTMLElement } from 'node-html-parser'
+
 interface NodeHeading {
   value: string
   depth: number
@@ -15,7 +17,7 @@ const slugify = (text: string) =>
     .replace(/[^\w-]+/g, '')
     .replace(/--+/g, '-')
 
-export function headfy(node: Document): NodeHeading[] {
+export function headfy(node: HTMLElement): NodeHeading[] {
   const headings: NodeHeading[] = []
   for (const el of node.querySelectorAll('h1, h2, h3, h4, h5, h6')) {
     const id = slugify(el.innerHTML)
