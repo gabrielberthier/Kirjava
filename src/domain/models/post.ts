@@ -15,9 +15,10 @@ export interface IPostResponse {
     html?: string
     text?: string
   }
+  readingTime: string
 }
 
-export interface Post {
+export class Post {
   slug?: string
   id?: string
   uuid?: string
@@ -30,9 +31,9 @@ export interface Post {
   featured?: boolean
   metaTitle?: string | null
   metaDescription?: string | null
-  createdAt?: Date
-  updatedAt?: Date
-  publishedAt?: Date
+  createdAt?: string
+  updatedAt?: string
+  publishedAt?: string
   customExcerpt?: string
   codeinjectionHead?: string | null
   codeinjectionFoot?: string | null
@@ -46,8 +47,8 @@ export interface Post {
   canonicalURL?: string | null
   authors?: Author[]
   tags?: Tag[]
-  primaryAuthor?: Author|null
-  primaryTag?: Tag|null
+  primaryAuthor?: Author | null
+  primaryTag?: Tag | null
   url?: string
   excerpt?: string
 }

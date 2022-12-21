@@ -1,33 +1,40 @@
 import { cast, uncast } from './casting'
 import { r } from './type-maps/functions'
 import type { Post } from '../models/types'
+import { instanceToPlain, plainToClass, plainToInstance } from 'class-transformer'
+import { objectToCamelCase } from './utils/camel-case'
 
-export interface Entry {
-  posts: Post[]
+export class Entry {
+  posts: Post[] = []
 }
 
+type Constructor<T = {}> = new (...args: any[]) => T
+
 export abstract class Convert<T> {
-  constructor(protected entity: string) {}
+  constructor(protected destinationConstructor: Constructor<T>) {}
 
   public parseEntityFromJson(json: string): T {
     const jsonObject = JSON.parse(json)
+    console.log(jsonObject)
 
-    console.log(jsonObject);
-    
-    return cast(jsonObject, r(this.entity))
+    const jsonObjectToCamel = objectToCamelCase(jsonObject)
+
+    console.log(jsonObjectToCamel)
+
+    return this.parseEntity(jsonObjectToCamel)
   }
 
   public parseEntity(json: object): T {
-    return cast(json, r(this.entity))
+    return plainToInstance(this.destinationConstructor, json)
   }
 
   public entryToJson(value: T): string {
-    return JSON.stringify(uncast(value, r(this.entity)), null, 2)
+    return JSON.stringify(value)
   }
 }
 
 export class PostsEntryAdapter extends Convert<Entry> {
   constructor() {
-    super('Entry')
+    super(Entry)
   }
 }

@@ -1,12 +1,15 @@
-<script>
+<script lang="ts">
+    import type { IPostResponse } from '$domain/models/post'
   import { format, parseISO } from 'date-fns'
 
   export let decorate = 'sm'
-  export let post
+  export let post: IPostResponse
   export let collapsed = false
 
-  let _class
+  let _class: string
   export { _class as class }
+
+  $: createdAt = post.createdAt ? format(new Date(parseISO(post.createdAt)), 'MMMM d, yyyy') : ""
 </script>
 
 <div
@@ -22,8 +25,8 @@
     </span>
   {/if}
   <div class="flex" class:flex-col={!collapsed}>
-    <time datetime={post.date}>
-      {format(new Date(parseISO(post.date)), 'MMMM d, yyyy')}
+    <time datetime={post.createdAt}>
+      {createdAt}
     </time>
     {#if collapsed}
       <span class="mx-1">•</span>

@@ -3,7 +3,7 @@ import { parse } from 'node-html-parser'
 import type { SvelteComponent } from 'svelte'
 import readingTime from 'reading-time'
 import { browser } from '$app/environment'
-import { siblingfy } from '$services/utils/functions'
+import { addTimezoneOffset, siblingfy } from '$services/utils/functions'
 import type { IPostResponse } from '$domain/models/post'
 
 interface postFile {
@@ -47,7 +47,7 @@ export class FileSystemPostsLoader {
             createdAt: post.metadata.date
               ? format(
                   // offset by timezone so that the date is correct
-                  this.addTimezoneOffset(new Date(post.metadata.date)),
+                  addTimezoneOffset(new Date(post.metadata.date)),
                   'yyyy-MM-dd'
                 )
               : undefined,
@@ -70,10 +70,5 @@ export class FileSystemPostsLoader {
         // add references to the next/previous post
         .map(siblingfy<IPostResponse>)
     )
-  }
-
-  private addTimezoneOffset(date: string | Date) {
-    const offsetInMilliseconds = new Date().getTimezoneOffset() * 60 * 1000
-    return new Date(new Date(date).getTime() + offsetInMilliseconds)
   }
 }

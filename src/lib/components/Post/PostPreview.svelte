@@ -1,15 +1,18 @@
-<script>
+<script lang="ts">
   import Card from '$components/Cards/Card.svelte'
   import ArrowRightIcon from '$components/Icons/ArrowRightIcon.svelte'
+    import type { IPostResponse } from '$domain/models/post'
 
-  export let post
+  export let post: IPostResponse
+
+  $: excerpt = post.preview.text || post.preview.html
 </script>
 
-<Card href={`/posts/${post.slug}`} data-sveltekit-preload-data>
+<Card href={`/posts/${post.slug}`}>
   <slot slot="eyebrow" name="eyebrow" />
   <slot slot="title">{post.title}</slot>
   <div slot="description" class="prose dark:prose-invert">
-    {@html post.preview.html}
+    {@html excerpt}
   </div>
   <div slot="actions">
     <div class="flex items-center text-sky-500">
