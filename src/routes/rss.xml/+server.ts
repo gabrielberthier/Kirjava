@@ -4,6 +4,7 @@
 
 import { posts } from '$lib/data/posts'
 import { name, website } from '$lib/info'
+import type { RequestHandler } from '@sveltejs/kit'
 
 export const prerender = true
 
@@ -11,10 +12,7 @@ export const prerender = true
 const websiteDescription = `${name}'s blog`
 const postsUrl = `${website}/posts`
 
-/**
- * @type {import('@sveltejs/kit').RequestHandler}
- */
-export async function GET({ setHeaders }) {
+export const GET: RequestHandler = async ({ setHeaders }) => {
   setHeaders({
     'Cache-Control': `max-age=0, s-max-age=600`,
     'Content-Type': 'application/xml'
