@@ -6,7 +6,7 @@
 
   export let post: IPostResponse
 
-  let elements = []
+  let elements: HTMLElement[] = []
   let headings = post.headings
 
   onMount(() => {
@@ -15,15 +15,17 @@
   })
 
   let activeHeading = headings[0]
-  let scrollY
+  let scrollY: number
 
   function updateHeadings() {
     headings = post.headings
 
     if (browser) {
-      elements = headings.map((heading) => {
-        return document.getElementById(heading.id)
-      })
+      headings
+        .map((heading) => {
+          return document.getElementById(heading.id)
+        })
+        .forEach((el) => el && elements.push(el))
     }
   }
   function setActiveHeading() {

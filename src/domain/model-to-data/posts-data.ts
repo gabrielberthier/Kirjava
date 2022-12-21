@@ -1,11 +1,14 @@
 import type { Entry } from '$domain/adapters'
 import type { IPostResponse, Post } from '$domain/models/post'
+import { headfy } from '$lib/dom/heading'
 import { addTimezoneOffset, siblingfy } from '$services/utils/functions'
 import { format } from 'date-fns'
 import readingTime from 'reading-time'
 
 export const postConverter = (post: Post): IPostResponse => {
   const { html, excerpt, createdAt } = post
+
+  const htmlPostElement = new DOMParser().parseFromString(html || '', 'text/html')
 
   const newDate =
     createdAt &&
@@ -25,7 +28,8 @@ export const postConverter = (post: Post): IPostResponse => {
     },
     next: undefined,
     previous: undefined,
-    readingTime: readingTime(post.html || '').text
+    readingTime: readingTime(post.html || '').text,
+    headings: headfy(htmlPostElement)
   }
 }
 

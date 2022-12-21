@@ -1,6 +1,12 @@
 import type { Tag } from './tag'
 import type { Author } from './author'
 
+interface Heading {
+  value: string
+  depth: number
+  id: string
+}
+
 export interface IPostResponse {
   id?: string
   next?: IPostResponse
@@ -16,6 +22,7 @@ export interface IPostResponse {
     text?: string
   }
   readingTime: string
+  headings: Heading[]
 }
 
 export class Post {

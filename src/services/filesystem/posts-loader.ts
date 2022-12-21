@@ -25,7 +25,7 @@ export class FileSystemPostsLoader {
         import.meta.glob<postFile>('/posts/**/*.md', { eager: true })
       )
         .map(([filepath, post]) => {
-          const html = parse(post.default.render().html) || ""
+          const html = parse(post.default.render().html) || ''
           const preview = post.metadata.preview
             ? parse(post.metadata.preview)
             : html.querySelector('p')
@@ -57,7 +57,7 @@ export class FileSystemPostsLoader {
               // text-only preview (i.e no html elements), used for SEO
               text: preview?.structuredText ?? preview?.toString()
             },
-
+            headings: [],
             // get estimated reading time for the post
             readingTime: readingTime(html.structuredText).text
           }
@@ -65,10 +65,11 @@ export class FileSystemPostsLoader {
         // sort by date
         .sort(
           (a, b) =>
-            new Date(b.createdAt || new Date()).getTime() - new Date(a.createdAt || new Date()).getTime()
+            new Date(b.createdAt || new Date()).getTime() -
+            new Date(a.createdAt || new Date()).getTime()
         )
         // add references to the next/previous post
-        .map(siblingfy<IPostResponse>)
+        .map(siblingfy)
     )
   }
 }
