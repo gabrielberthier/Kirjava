@@ -10,8 +10,6 @@ export const load: Load = async function load({ params }) {
 
   const post = await postLoader.getOneBySlug(slug!)
 
-  console.log(post);
-
   if (!post) {
     throw error(404, 'Post not found')
   }
