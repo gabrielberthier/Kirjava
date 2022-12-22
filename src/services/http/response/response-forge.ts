@@ -9,9 +9,8 @@ export const errorFor = (
   error: Error,
   statusCode: number,
   headers: any,
-  data?: string | object
 ): ErrorResponse => {
-  console.error(data)
+  
   return {
     data: undefined,
     error,

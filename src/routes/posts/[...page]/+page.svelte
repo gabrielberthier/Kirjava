@@ -8,7 +8,7 @@
   export let data: PageData
 
   $: isFirstPage = data.page === 1
-  $: hasNextPage = data.posts[data.posts.length - 1]?.previous
+  $: hasNextPage = data.meta?.pagination.next
 </script>
 
 <svelte:head>
@@ -40,7 +40,7 @@
         {/if}
 
         {#if hasNextPage}
-          <a href={`/posts/page/${data.page + 1}`} data-sveltekit-preload-data
+          <a href={`/posts/page/${data.meta?.pagination?.next}`} data-sveltekit-preload-data
             >Next
             <ArrowRightIcon _class="w-4 h-4" />
           </a>

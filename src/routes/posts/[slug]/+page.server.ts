@@ -12,10 +12,6 @@ export const load: Load = async function load({ params }) {
     throw error(404, 'Post not found')
   }
 
-  console.log('Retrieving posts')
-
-  console.log(post)
-
   return {
     post
   }

@@ -1,17 +1,25 @@
-import type { IPostResponse } from '$models/post'
+import type { IAllPostResponse } from '$models/post'
 import { FileSystemPostsLoader } from '$services/filesystem/posts-loader'
-import { env } from '$env/dynamic/private'
 import { allPostsConverter } from '$domain/model-to-data/posts-data'
 import { AllPostsApi } from '$services/api/posts-api'
 
 // Use a loader factory here to cases 1 - From local .md files and Ghost CMS
 
-const loadURL = async () => {
-  return await AllPostsApi.get('', {})
+const loadURL = async (page?: number, limit?: number) => {
+  return await AllPostsApi.get('', { page, limit })
 }
 
-const from = async () =>
-  env.USE_LOCAL ? new FileSystemPostsLoader().load() : allPostsConverter(await loadURL())
+export class PostsLoader {
+  constructor(private useLocal: boolean) {}
 
-// Get all posts and add metadata
-export const posts: IPostResponse[] = await from()
+  async all(page?: number, limit?: number): Promise<IAllPostResponse> {
+    if (this.useLocal) {
+      return new FileSystemPostsLoader().load({
+        page,
+        limit
+      })
+    }
+
+    return allPostsConverter(await loadURL(page, limit))
+  }
+}

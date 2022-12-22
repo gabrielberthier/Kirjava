@@ -1,5 +1,5 @@
 import type { Entry } from '$domain/adapters'
-import type { IPostResponse, Post } from '$domain/models/post'
+import type { IAllPostResponse, IPostResponse, Post } from '$domain/models/post'
 import { headfy } from '$lib/dom/heading'
 import { addTimezoneOffset, siblingfy } from '$services/utils/functions'
 import { format } from 'date-fns'
@@ -34,6 +34,9 @@ export const postConverter = (post: Post): IPostResponse => {
   }
 }
 
-export function allPostsConverter(entrypoint: Entry): IPostResponse[] {
-  return entrypoint.posts.map((el) => postConverter(el)).map(siblingfy)
+export function allPostsConverter(entrypoint: Entry): IAllPostResponse {
+  return {
+    posts: entrypoint.posts.map((el) => postConverter(el)).map(siblingfy),
+    meta: entrypoint.meta?.classToInterface()
+  }
 }

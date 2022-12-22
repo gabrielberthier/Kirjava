@@ -1,4 +1,4 @@
-export interface Tag {
+export class Tag {
   id?: string
   name?: string
   slug?: string

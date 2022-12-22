@@ -15,6 +15,7 @@ export class ReaderApiService<T> {
 
   async exec(promised: Promise<RawApiResponse>): Promise<ApiResponse<T>> {
     const response = await promised
+    
     return this.responseHandler.handle(response)
   }
 
@@ -29,6 +30,7 @@ export class ReaderApiService<T> {
     const { data, error } = await this.exec(this.client.get(this.getUrl(id), {key: '22444f78447824223cefc48062'}))
     if(error){
       console.error(error)
+      
       throw error
     }
     

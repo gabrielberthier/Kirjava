@@ -1,11 +1,12 @@
-import { cast, uncast } from './casting'
-import { r } from './type-maps/functions'
 import type { Post } from '../models/types'
-import { instanceToPlain, plainToClass, plainToInstance } from 'class-transformer'
+import { plainToInstance, Type } from 'class-transformer'
 import { objectToCamelCase } from './utils/camel-case'
+import { MetaClass } from '$domain/models/meta'
 
 export class Entry {
-  posts: Post[] = []
+  posts: Post[] = [];
+  @Type(() => MetaClass)
+  meta?: MetaClass;
 }
 
 type Constructor<T = {}> = new (...args: any[]) => T

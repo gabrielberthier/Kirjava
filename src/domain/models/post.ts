@@ -1,10 +1,16 @@
 import type { Tag } from './tag'
 import type { Author } from './author'
+import type { Meta } from './meta'
 
 interface Heading {
   value: string
   depth: number
   id: string
+}
+
+export interface IAllPostResponse{
+  posts: IPostResponse[]
+  meta?: Meta
 }
 
 export interface IPostResponse {
