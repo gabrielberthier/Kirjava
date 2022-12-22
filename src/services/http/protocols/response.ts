@@ -1,3 +1,4 @@
+import { isObject } from '$services/utils/functions'
 import type { RawApiResponse } from './client'
 
 export interface SuccessResponse<T> {
@@ -15,6 +16,15 @@ export interface ErrorResponse {
   error: Error
   status: number
   headers: any
+}
+
+export class ApiErrorResponse extends Error {
+  constructor(message: string | object) {
+    if (isObject(message)) {
+      message = JSON.stringify(message)
+    }
+    super(message as string)
+  }
 }
 
 // our union type

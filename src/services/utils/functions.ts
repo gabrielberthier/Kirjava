@@ -8,3 +8,5 @@ export function addTimezoneOffset(date: string | Date) {
   const offsetInMilliseconds = new Date().getTimezoneOffset() * 60 * 1000
   return new Date(new Date(date).getTime() + offsetInMilliseconds)
 }
+
+export const isObject = (el: any) => typeof el === 'object' && el !== null

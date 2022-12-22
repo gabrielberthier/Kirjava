@@ -1,6 +1,7 @@
 import type { HttpClientReader, RawApiResponse } from '../protocols/client'
 import axios, { Axios } from 'axios'
 import type { RequestConfigBuilder, RequestConfig } from '../protocols/request'
+import { ApiErrorResponse } from '../protocols/response'
 
 export class AxiosClient implements HttpClientReader {
   private requestConfigBuilder: RequestConfigBuilder
@@ -25,7 +26,11 @@ export class AxiosClient implements HttpClientReader {
 
   public async get(path: string, params: any) {
     // build a request config to use kintone REST API
-    const requestConfig = await this.requestConfigBuilder.build('get', this.baseApiPath+path, params)
+    const requestConfig = await this.requestConfigBuilder.build(
+      'get',
+      this.baseApiPath + path,
+      params
+    )
     return this.sendRequest(requestConfig)
   }
 
@@ -42,19 +47,22 @@ export class AxiosClient implements HttpClientReader {
       return response
     } catch (error) {
       if (axios.isAxiosError(error)) {
+        let apiError: ApiErrorResponse
         if (error.response) {
+          apiError = new ApiErrorResponse(error.response.data as object | string)
           return {
-            data: error.response.data || {},
+            data: error.status || '',
             headers: error.response.headers,
             status: error.response.status,
-            error: error
+            error: apiError
           }
         } else if (error.request) {
+          apiError = new ApiErrorResponse(error.request as object | string)
           return {
-            data: error.request,
+            data: error.status || '',
             headers: undefined,
             status: 500,
-            error: error
+            error: apiError
           }
         }
       }

@@ -1,4 +1,4 @@
-import type { ApiResponse, ErrorResponse } from './protocol'
+import type { ApiResponse, ErrorResponse } from "../protocols/response"
 
 /**
  *
@@ -11,8 +11,9 @@ export const errorFor = (
   headers: any,
   data?: string | object
 ): ErrorResponse => {
+  console.error(data)
   return {
-    data,
+    data: undefined,
     error,
     status: statusCode,
     success: false,
@@ -54,16 +55,16 @@ export const ok = <T>(data: T, headers: any): ApiResponse<T> => {
  * @param {object} data
  * @returns {Response}
  */
-export const unprocessableEntity = (data: Error, headers: any): ErrorResponse => {
+export const unprocessableEntity = (error: Error, headers: any): ErrorResponse => {
   const statusText =
     'Não é possível processar a requisição. ' +
     'Um ou mais campos podem estar inválidos ' +
     'ou a requisição pode estar em formato errado'
   return {
-    error: data,
+    error,
     status: 422,
     success: false,
-    data,
+    data: undefined,
     headers
   }
 }
@@ -73,13 +74,11 @@ export const unprocessableEntity = (data: Error, headers: any): ErrorResponse =>
  * @param {object} data
  * @returns {Response}
  */
-export const badRequest = (data: Error, headers: any): ErrorResponse => {
-  let reason = data?.message
-
+export const badRequest = (error: Error, headers: any): ErrorResponse => {
   return {
-    data: { reason },
+    data: undefined,
     status: 400,
-    error: data,
+    error,
     success: false,
     headers
   }
