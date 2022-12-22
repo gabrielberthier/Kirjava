@@ -8,17 +8,26 @@ import { ImplementationRequestConfigBuilder } from '../request-builder/implement
 import { ResponseHandlerImplementation } from '../response/implementation'
 import type { Convert } from '$domain/adapters'
 
-export const readerServiceFactory = <T>(
-  resource: string,
-  converter: Convert<T>,
-  requestBuilder?: RequestConfigBuilder,
-  client?: HttpClientReader,
+export interface ApiReaderServiceOptions<T> {
+  resource: string
+  converter: Convert<T>
+  baseUrl?: string
+  requestBuilder?: RequestConfigBuilder
+  client?: HttpClientReader
   responseHandler?: ResponseHandler<T>
-): ReaderApiService<T> => {
-  const baseUrl = env.BACKEND_URL || ''
-  const rb = requestBuilder ?? new ImplementationRequestConfigBuilder({ baseUrl })
-  const cl = client ?? new AxiosClient(rb, '/api/content/')
-  const rh = responseHandler ?? new ResponseHandlerImplementation(converter)
+}
 
-  return new ReaderApiService(resource, cl, rh)
+export const readerServiceFactory = <T>(
+  options: ApiReaderServiceOptions<T>
+): ReaderApiService<T> => {
+  const {
+    resource,
+    baseUrl = env.BACKEND_URL || '',
+    requestBuilder = new ImplementationRequestConfigBuilder({ baseUrl }),
+    converter,
+    client = new AxiosClient(requestBuilder, '/api/content/'),
+    responseHandler = new ResponseHandlerImplementation(converter)
+  } = options
+
+  return new ReaderApiService(resource, client, responseHandler)
 }
