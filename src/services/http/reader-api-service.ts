@@ -26,8 +26,10 @@ export class ReaderApiService<T> {
 
   async get(id: string, params: any): Promise<T> {
     console.log('Dispatching request to:', this.getUrl(id));
+
+    Object.assign(params, {key: '22444f78447824223cefc48062'})
     
-    const { data, error } = await this.exec(this.client.get(this.getUrl(id), {key: '22444f78447824223cefc48062'}))
+    const { data, error } = await this.exec(this.client.get(this.getUrl(id), params))
     if(error){
       console.error(error)
       

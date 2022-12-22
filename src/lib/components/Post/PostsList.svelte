@@ -1,13 +1,13 @@
 <script lang="ts">
   import PostPreview from '$components/Post/PostPreview.svelte'
   import PostDate from '$components/Post/PostDate.svelte'
-    import type { IAllPostResponse } from '$domain/models/post'
+  import type { IPostResponse } from '$domain/models/post'
 
-  export let posts: IAllPostResponse
+  export let posts: IPostResponse[]
 </script>
 
 <div class="flex flex-col gap-16 md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
-  {#each posts.posts as post}
+  {#each posts as post}
     <article class="grid items-start grid-cols-4 gap-8">
       <PostDate class="flex-col hidden md:flex" {post} />
 

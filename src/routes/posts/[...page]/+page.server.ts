@@ -34,10 +34,10 @@ export async function load(event: ServerLoadEvent): Promise<LoadedPostResponse> 
     }
   }
 
-  const { posts, meta } = await postsLoader.all(limit, page)
+  const { posts, meta } = await postsLoader.all(page, limit)  
 
   // if page doesn't exist, direct to page 1
-  if (posts.length == 0 && page > 1) {
+  if (posts.length === 0 && page > 1) {
     throw redirect(302, '/posts')
   }
 

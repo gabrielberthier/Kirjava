@@ -9,6 +9,7 @@
 
   $: isFirstPage = data.page === 1
   $: hasNextPage = data.meta?.pagination.next
+  $: posts = data.posts
 </script>
 
 <svelte:head>
@@ -25,7 +26,7 @@
       </header>
 
       <div class="mt-16 sm:mt-20">
-        <PostsList posts={data.posts} />
+        <PostsList posts={posts} />
       </div>
 
       <!-- pagination -->

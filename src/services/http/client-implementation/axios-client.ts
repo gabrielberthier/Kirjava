@@ -35,9 +35,6 @@ export class AxiosClient implements HttpClientReader {
   }
 
   private async sendRequest(requestConfig: RequestConfig): Promise<RawApiResponse> {
-    console.log('Request config')
-    console.log(requestConfig)
-
     try {
       const response = await this.axios.request({
         ...requestConfig,
