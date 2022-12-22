@@ -2,8 +2,9 @@
 // It's helpful for SEO but does require you to keep it updated to reflect the routes of your website.
 // It is OK to delete this file if you'd rather not bother with it.
 
-import { posts } from '$lib/data/posts'
+import { PostsLoader } from '$lib/data/posts'
 import { website } from '$lib/info'
+import type { RequestHandler } from '@sveltejs/kit'
 
 export const prerender = true
 const postsUrl = `${website}/posts`
@@ -11,11 +12,12 @@ const postsUrl = `${website}/posts`
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
  */
-export async function GET({ setHeaders }) {
+export const GET: RequestHandler = async ({ setHeaders }) => {
   setHeaders({
     'Cache-Control': `max-age=0, s-max-age=600`,
     'Content-Type': 'application/xml'
   })
+  const posts = (await new PostsLoader(false).all()).posts
 
   const xml = `<?xml version="1.0" encoding="UTF-8" ?>
     <urlset
@@ -40,9 +42,9 @@ export async function GET({ setHeaders }) {
             <loc>${postsUrl}/${post.slug}</loc>
             <lastmod
               >${
-                post.updated
-                  ? new Date(post.updated).toISOString()
-                  : new Date(post.date).toISOString()
+                post.createdAt
+                  ? new Date(post.createdAt).toISOString()
+                  : new Date().toISOString()
               }</lastmod
             >
             <changefreq>monthly</changefreq>

@@ -1,4 +1,4 @@
-import { posts } from '$lib/data/posts'
+import { PostsLoader } from '$lib/data/posts'
 import { error } from '@sveltejs/kit'
 import type { Load } from '@sveltejs/kit'
 
@@ -6,7 +6,11 @@ export const load: Load = async function load({ params }) {
   const { slug } = params
 
   // get post with metadata
-  const post = posts.find((post) => slug === post.slug)
+  const postLoader = new PostsLoader(false)
+
+  const post = await postLoader.getOneBySlug(slug!)
+
+  console.log(post);
 
   if (!post) {
     throw error(404, 'Post not found')

@@ -1,4 +1,4 @@
-import type { IAllPostResponse } from '$models/post'
+import type { IAllPostResponse, IPostResponse } from '$models/post'
 import { FileSystemPostsLoader } from '$services/filesystem/posts-loader'
 import { allPostsConverter } from '$domain/model-to-data/posts-data'
 import { AllPostsApi } from '$services/api/posts-api'
@@ -21,5 +21,16 @@ export class PostsLoader {
     }
 
     return allPostsConverter(await loadURL(page, limit))
+  }
+
+  async getOneBySlug(slug: string): Promise<IPostResponse|undefined>{
+    let post: IPostResponse | undefined
+    if (this.useLocal) {
+      post = (await new FileSystemPostsLoader().findOne(slug)).post
+    }else{
+      post = allPostsConverter(await AllPostsApi.get(`slug/${slug}`, {})).posts[0]
+    }
+
+    return post
   }
 }

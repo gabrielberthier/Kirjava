@@ -1,4 +1,5 @@
 import { browser } from '$app/environment'
+import type { Meta } from '$domain/models/meta'
 import type { IAllPostResponse } from '$domain/models/post'
 import { PostsSingleton } from './posts-singleton'
 
@@ -25,23 +26,42 @@ export class FileSystemPostsLoader {
     }
   ): Promise<IAllPostResponse> {
     const { limit = 15, page = 1 } = options
-    const total = this.postsSingleton.posts.length
     const posts = this.postsSingleton.paginate(limit, page)
+
+    return {
+      posts,
+      meta: this.metaMaker(options)
+    }
+  }
+
+  metaMaker(
+    options: FileSystemLoadingOptions = {
+      page: 1,
+      limit: 15
+    }
+  ): Meta {
+    const { limit = 15, page = 1 } = options
+    const total = this.postsSingleton.posts.length
     const pages = Math.floor(total / limit)
     const next = page < pages ? page + 1 : undefined
     const prev = page >= 1 ? page - 1 : undefined
+
     return {
-      posts,
-      meta: {
-        pagination: {
-          page,
-          limit,
-          total,
-          pages,
-          next,
-          prev
-        }
+      pagination: {
+        page,
+        limit,
+        total,
+        pages,
+        next,
+        prev
       }
+    }
+  }
+
+  async findOne(slug: string) {
+    return {
+      post: this.postsSingleton.posts.find((post) => slug === post.slug),
+      meta: this.metaMaker()
     }
   }
 }
