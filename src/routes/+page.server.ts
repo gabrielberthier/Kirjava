@@ -1,8 +1,9 @@
-import { posts } from '$lib/data/posts'
+import { PostsLoader } from '$lib/data/posts'
 import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async function load() {
+  const p = new PostsLoader(false)
   return {
-    posts: posts.slice(0, 5)
+    posts: p.all()
   }
 }

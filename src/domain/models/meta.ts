@@ -23,19 +23,5 @@ export class PaginationClass {
 }
 
 export class MetaClass {
-  @Type(() => PaginationClass)
   pagination = new PaginationClass()
-
-  classToInterface(): Meta {
-    let { next, prev } = this.pagination
-    next ??= undefined
-    prev ??= undefined
-    return {
-      pagination: {
-        ...this.pagination,
-        next: next,
-        prev
-      }
-    }
-  }
 }

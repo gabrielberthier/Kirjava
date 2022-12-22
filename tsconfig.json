@@ -11,6 +11,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "types": ["reflect-metadata"]
   }
 }
