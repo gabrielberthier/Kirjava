@@ -10,7 +10,7 @@ export class ReaderApiService<T> {
   }
 
   getUrl(id: string | number = '') {
-    return `${this.resource}/${id}`
+    return [this.resource, id].filter(el => el).join('/')
   }
 
   async exec(promised: Promise<RawApiResponse>): Promise<ApiResponse<T>> {
@@ -24,10 +24,10 @@ export class ReaderApiService<T> {
     return this.exec(this.client.get(this.getUrl(), params))
   }
 
-  async get(id: string, params: any): Promise<T> {
+  async get(id: string, params?: any): Promise<T> {
     console.log('Dispatching request to:', this.getUrl(id));
 
-    Object.assign(params, {key: '22444f78447824223cefc48062'})
+    params && Object.assign(params, {key: '22444f78447824223cefc48062'}) 
     
     const { data, error } = await this.exec(this.client.get(this.getUrl(id), params))
     if(error){

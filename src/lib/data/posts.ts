@@ -28,7 +28,7 @@ export class PostsLoader {
     if (this.useLocal) {
       post = (await new FileSystemPostsLoader().findOne(slug)).post
     }else{
-      post = allPostsConverter(await AllPostsApi.get(`slug/${slug}`, {})).posts[0]
+      post = allPostsConverter(await AllPostsApi.get(`slug/${slug}`)).posts[0]
     }
 
     return post

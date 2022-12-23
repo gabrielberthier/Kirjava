@@ -12,3 +12,9 @@ export function addTimezoneOffset(date: string | Date) {
 export const isObject = (el: any) => typeof el === 'object' && el !== null
 
 export const removeTrailingSlash = (str: string) => str.replace(/^\/|\/$/g, '');
+
+export function dateRange(input: string|Date, target: Date = new Date()){
+  const inputDate = new Date(input);
+
+  return (target.getTime() - inputDate.getTime())/(1000 * 60 * 60 * 24)
+}

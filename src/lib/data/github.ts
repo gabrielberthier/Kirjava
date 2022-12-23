@@ -3,7 +3,7 @@ import { AllGitHubRepositories } from '$domain/models/github/user-repositories'
 import { github } from '$lib/info'
 import { readerServiceFactory } from '$services/http/factory/make-service'
 
-const url = 'https://api.github.com/users/'
+const url = 'https://api.github.com/users'
 
 class RepositoriesAdapter extends Convert<AllGitHubRepositories> {
   constructor() {

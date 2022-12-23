@@ -10,6 +10,9 @@ export abstract class Convert<T> {
   public parseEntityFromJson(json: string): T {
     const jsonObject = JSON.parse(json)
 
+    console.log(jsonObject);
+    
+
     const jsonObjectToCamel = objectToCamelCase(jsonObject)
 
     return this.parseEntity(jsonObjectToCamel)

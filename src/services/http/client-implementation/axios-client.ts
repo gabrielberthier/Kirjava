@@ -25,12 +25,12 @@ export class AxiosClient implements HttpClientReader {
   }
 
   public async get(path: string, params: any) {
-    // build a request config to use kintone REST API
     const requestConfig = await this.requestConfigBuilder.build(
       'get',
-      this.baseApiPath + '/' + path,
+      [this.baseApiPath, path].filter(el => el).join('/'),
       params
     )
+
     return this.sendRequest(requestConfig)
   }
 

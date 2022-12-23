@@ -1,5 +1,10 @@
 <script lang="ts">
+  import type { GitHubRepository } from '$domain/models/github/user-repositories'
+  import RepositoryListItem from './RepositoryListItem.svelte'
+
   const src = 'https://cdn-icons-png.flaticon.com/512/25/25231.png'
+
+  export let repositories: GitHubRepository[]
 </script>
 
 <div class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
@@ -25,39 +30,10 @@
     <span class="ml-3">Been Workin on</span>
   </h2>
   <ol class="mt-6 space-y-4">
-    <li class="flex gap-4">
-      <div
-        class="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
-      >
-        <img
-          alt=""
-          {src}
-          width="32"
-          height="32"
-          decoding="async"
-          data-nimg="1"
-          class="h-7 w-7"
-          loading="lazy"
-          style="color: transparent;"
-        />
-      </div>
-      <dl class="flex flex-auto flex-wrap gap-x-2">
-        <dt class="sr-only">Company</dt>
-        <dd class="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
-          Planetaria
-        </dd>
-        <dt class="sr-only">Role</dt>
-        <dd class="text-xs text-zinc-500 dark:text-zinc-400">CEO</dd>
-        <dt class="sr-only">Date</dt>
-        <dd
-          class="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
-          aria-label="2019 until Present"
-        >
-          <time datetime="2019">2019</time> <span aria-hidden="true">—</span>
-          <time datetime="2022">Present</time>
-        </dd>
-      </dl>
-    </li>
+    {#each repositories as repo}
+      <RepositoryListItem {...repo} src="{src}"/>
+    {/each}
+
     <li class="flex gap-4">
       <div
         class="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"

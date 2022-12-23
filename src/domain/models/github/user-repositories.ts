@@ -7,7 +7,7 @@ export class AllGitHubRepositories{
 export class GitHubRepository {
   id?: number
   nodeId?: string
-  name?: string
+  name: string = ''
   fullName?: string
   private?: boolean
   owner?: RepositoryOwner
@@ -51,7 +51,7 @@ export class GitHubRepository {
   labelsUrl?: string
   releasesUrl?: string
   deploymentsUrl?: string
-  createdAt?: string
+  createdAt: string = new Date().toISOString()
   updatedAt?: string
   pushedAt?: string
   gitUrl?: string
@@ -62,7 +62,7 @@ export class GitHubRepository {
   size?: number
   stargazersCount?: number
   watchersCount?: number
-  language?: string
+  language: string = ''
   hasIssues?: boolean
   hasProjects?: boolean
   hasDownloads?: boolean
@@ -78,11 +78,12 @@ export class GitHubRepository {
   allowForking?: boolean
   isTemplate?: boolean
   webCommitSignoffRequired?: boolean
-  topics?: string[] | string
+  topics?: string[]
   visibility?: string
   forks?: number
   openIssues?: number
   watchers?: number
   defaultBranch?: string
 }
+
 

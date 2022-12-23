@@ -1,6 +1,7 @@
 import type { HttpMethod, Params, ProxyConfig } from '../protocols/client'
 import type { RequestConfig, RequestConfigBuilder } from '../protocols/request'
 import { stringify } from 'qs'
+import { removeTrailingSlash } from '$services/utils/functions'
 
 type Data = Params | FormData
 
@@ -84,6 +85,8 @@ export class ImplementationRequestConfigBuilder implements RequestConfigBuilder 
   }
 
   private buildRequestUrl(path: string, params: Data): string {
-    return `${this.baseUrl}${path}?${stringify(params)}`
+    const parsedParams = params ? `?${stringify(params)}` : ''
+    const url = removeTrailingSlash(this.baseUrl)
+    return `${url}/${path}${parsedParams}`
   }
 }
