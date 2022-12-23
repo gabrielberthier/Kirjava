@@ -10,3 +10,5 @@ export function addTimezoneOffset(date: string | Date) {
 }
 
 export const isObject = (el: any) => typeof el === 'object' && el !== null
+
+export const removeTrailingSlash = (str: string) => str.replace(/^\/|\/$/g, '');

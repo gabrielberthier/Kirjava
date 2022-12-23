@@ -25,7 +25,7 @@ export class ImplementationRequestConfigBuilder implements RequestConfigBuilder 
     const requestConfig: RequestConfig = {
       method,
       headers: this.headers,
-      url: `${this.baseUrl}${path}`,
+      url: `${this.baseUrl}/${path}`,
       ...(options ? options : {}),
       proxy: this.proxy
     }

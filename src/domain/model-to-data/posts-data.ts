@@ -1,4 +1,4 @@
-import type { Entry } from '$domain/adapters'
+import type { Entry } from '$domain/models/posts-entry'
 import type { IAllPostResponse, IPostResponse, Post } from '$domain/models/post'
 import { headfy } from '$lib/dom/heading'
 import { addTimezoneOffset, siblingfy } from '$services/utils/functions'
