@@ -10,7 +10,7 @@ const loadURL = async (page?: number, limit?: number) => {
 }
 
 export class PostsLoader {
-  constructor(private useLocal: boolean) {}
+  constructor(private useLocal: boolean = false) {}
 
   async all(page?: number, limit?: number): Promise<IAllPostResponse> {
     if (this.useLocal) {
@@ -23,12 +23,12 @@ export class PostsLoader {
     return allPostsConverter(await loadURL(page, limit))
   }
 
-  async getOneBySlug(slug: string): Promise<IPostResponse|undefined>{
+  async getOneBySlug(slug: string): Promise<IPostResponse | undefined> {
     let post: IPostResponse | undefined
     if (this.useLocal) {
       post = (await new FileSystemPostsLoader().findOne(slug)).post
-    }else{
-      post = allPostsConverter(await AllPostsApi.get(`slug/${slug}`)).posts[0]
+    } else {
+      post = allPostsConverter(await AllPostsApi.get(`slug/${slug}`, {})).posts[0]
     }
 
     return post

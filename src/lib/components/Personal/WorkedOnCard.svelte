@@ -1,10 +1,10 @@
 <script lang="ts">
-  import type { GitHubRepository } from '$domain/models/github/user-repositories'
+  import type { IGitHubRepo } from '$domain/models/github/user-repositories'
   import RepositoryListItem from './RepositoryListItem.svelte'
 
   const src = 'https://cdn-icons-png.flaticon.com/512/25/25231.png'
 
-  export let repositories: GitHubRepository[]
+  export let repositories: IGitHubRepo[]
 </script>
 
 <div class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
@@ -31,7 +31,7 @@
   </h2>
   <ol class="mt-6 space-y-4">
     {#each repositories as repo}
-      <RepositoryListItem {...repo} src="{src}"/>
+      <RepositoryListItem {...repo} />
     {/each}
   </ol>
   <a

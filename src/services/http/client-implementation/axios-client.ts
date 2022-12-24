@@ -27,7 +27,7 @@ export class AxiosClient implements HttpClientReader {
   public async get(path: string, params: any) {
     const requestConfig = await this.requestConfigBuilder.build(
       'get',
-      [this.baseApiPath, path].filter(el => el).join('/'),
+      [this.baseApiPath, path].filter((el) => el).join('/'),
       params
     )
 

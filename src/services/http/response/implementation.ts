@@ -16,12 +16,7 @@ export class ResponseHandlerImplementation<T> implements ResponseHandler {
       return errorFor(error, status, headers)
     }
 
-    let values: T | null = null
-    if (typeof data === 'string') {
-      values = this.converter.parseEntityFromJson(data)
-    } else {
-      values = this.converter.parseEntity(data)
-    }
+    let values: T = this.converter.parseEntity(data)
 
     return success(status, values, headers)
   }

@@ -21,16 +21,13 @@
       if (el) {
         el.style.transform = 'translate(' + xAxis + '%,-' + yAxis + '%)'
       }
-
-      //console.log('X: ' + xAxis);
     })
   }
 </script>
 
 <div class="box">
-  <h1 class="absolute text-white four-o-four-txt" >404</h1>
+  <h1 class="absolute text-white four-o-four-txt">404</h1>
   <div class="box__ghost">
-    
     <div class="symbol" />
     <div class="symbol" />
     <div class="symbol" />
@@ -62,11 +59,7 @@
       </div>
     </div>
 
-    <a
-      href="/"
-      class="box__button"
-      >Go back</a
-    >
+    <a href="/" class="box__button">Go back</a>
   </div>
 </div>
 
@@ -83,7 +76,7 @@
     padding: 30px 50px;
   }
 
-  .four-o-four-txt{
+  .four-o-four-txt {
     left: 50%;
     transform: translate(-50%);
     top: 30vh;

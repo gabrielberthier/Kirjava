@@ -1,18 +1,22 @@
 <script lang="ts">
+  import { browser } from '$app/environment'
   import { dateRange } from '$services/utils/functions'
 
-  export let src: string
   export let language: string
   export let name: string
   export let createdAt: string
-  export let updatedAt: string = new Date().toISOString()
+  export let updatedAt: string = ''
+  export let url: string
 
-  const extractYear = (date: string) => new Date(date).getFullYear()
-  const isPresent = (date: string) => dateRange(date) < 31
+  let isDarkMode = browser ? Boolean(document.documentElement.classList.contains('dark')) : true
 
-  $: startedDate = `${extractYear(createdAt)}`
-  $: lastUpdated = `${extractYear(updatedAt)}`
+  const extractYear = (date?: string) => (date ? new Date(date).getFullYear().toString() : '...')
+  const isPresent = (date: string) => date && dateRange(date) < 31
+
+  $: startedDate = extractYear(createdAt)
+  $: lastUpdated = extractYear(updatedAt)
   $: until = isPresent(updatedAt) ? 'Present' : `${extractYear(updatedAt)}`
+  $: src = isDarkMode ? '/imgs/github-mark-white.svg' : '/imgs/github-mark.svg'
 </script>
 
 <li class="flex gap-4">
@@ -34,7 +38,7 @@
   <dl class="flex flex-auto flex-wrap gap-x-2">
     <dt class="sr-only">Repository</dt>
     <dd class="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
-      {name}
+      <a href={url} target="_blank" rel="noreferrer">{name}</a>
     </dd>
     <dt class="sr-only">Language</dt>
     <dd class="text-xs text-zinc-500 dark:text-zinc-400">{language}</dd>

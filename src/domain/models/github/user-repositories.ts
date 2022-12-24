@@ -1,11 +1,17 @@
-import type { RepositoryOwner } from "./github-user"
+import type { RepositoryOwner } from './github-user'
 
-export class AllGitHubRepositories{
+export class AllGitHubRepositories {
   repositories?: RepoCollection
 }
 
-export class RepoCollection extends Array<GitHubRepository> {
-  
+export class RepoCollection extends Array<GitHubRepository> {}
+
+export interface IGitHubRepo {
+  language: string
+  name: string
+  createdAt: string
+  updatedAt?: string
+  url: string
 }
 
 export class GitHubRepository {
@@ -89,5 +95,3 @@ export class GitHubRepository {
   watchers?: number
   defaultBranch?: string
 }
-
-
