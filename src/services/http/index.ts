@@ -1,5 +1,5 @@
 export * from './model-api-service'
-export * from './reader-api-service'
+export * from './api-services/reader'
 export * from './read-only-api-service'
 export * from './responses'
 export * from './utils'

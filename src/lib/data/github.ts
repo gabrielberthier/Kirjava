@@ -1,17 +1,17 @@
-import { Convert } from '$domain/adapters'
-import { AllGitHubRepositories } from '$domain/models/github/user-repositories'
+import { AbstractConverter } from '$domain/adapters'
+import { AllGitHubRepositories, GitHubRepository } from '$domain/models/github/user-repositories'
 import { github } from '$lib/info'
 import { readerServiceFactory } from '$services/http/factory/make-service'
 
 const url = 'https://api.github.com/users'
 
-class RepositoriesAdapter extends Convert<AllGitHubRepositories> {
+class RepositoriesAdapter extends AbstractConverter<GitHubRepository[]> {
   constructor() {
-    super(AllGitHubRepositories)
+    super(GitHubRepository)
   }
 }
 
-export const GitHubApiService = readerServiceFactory<AllGitHubRepositories>({
+export const GitHubApiService = readerServiceFactory<GitHubRepository>({
   baseUrl: `${url}/${github}`,
   resource: 'repos',
   converter: new RepositoriesAdapter()

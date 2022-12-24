@@ -1,7 +1,11 @@
 import type { RepositoryOwner } from "./github-user"
 
 export class AllGitHubRepositories{
-  repositories: GitHubRepository[] = []
+  repositories?: RepoCollection
+}
+
+export class RepoCollection extends Array<GitHubRepository> {
+  
 }
 
 export class GitHubRepository {

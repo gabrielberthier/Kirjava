@@ -1,4 +1,4 @@
-import type { HttpClientReader, RawApiResponse } from '../protocols/client'
+import type { HttpClientReader, RawApiResponse, Response } from '../protocols/client'
 import axios, { Axios } from 'axios'
 import type { RequestConfigBuilder, RequestConfig } from '../protocols/request'
 import { ApiErrorResponse } from '../protocols/response'
@@ -32,6 +32,10 @@ export class AxiosClient implements HttpClientReader {
     )
 
     return this.sendRequest(requestConfig)
+  }
+
+  dispatch(path: string, params: object) {
+    return this.get(path, params)
   }
 
   private async sendRequest(requestConfig: RequestConfig): Promise<RawApiResponse> {

@@ -1,12 +1,22 @@
+import type { GitHubRepository } from '$domain/models/github/user-repositories'
 import { GitHubApiService } from '$lib/data/github'
 import { PostsLoader } from '$lib/data/posts'
 import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async function load() {
-  const { posts } = await new PostsLoader(false).all(1, 4)
-  const {repositories} = await GitHubApiService.get('')
+  const [allPosts, repositories ] = await Promise.all([
+    new PostsLoader(false).all(1, 4),
+    GitHubApiService.get('', {sort: 'updated', per_page: 5})
+  ])
+  const { posts } = allPosts
+
+  const r = repositories as unknown as GitHubRepository[]
+
+  console.log(r);
+  
+
   return {
     posts,
-    repositories
+    // repositories: r
   }
 }

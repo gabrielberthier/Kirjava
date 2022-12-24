@@ -1,3 +1,5 @@
+import { isObject } from '$services/utils/functions'
+
 export const toCamelCase = (str = '') => {
   const [first = '', ...rest] = str.split('_')
   return (
@@ -15,14 +17,20 @@ interface OB {
   [key: string]: any
 }
 
-export function objectToCamelCase(obj: OB | OB[]): OB {
+export function objectToCamelCase(obj: OB): OB
+export function objectToCamelCase(obj: OB[]): OB[]
+
+export function objectToCamelCase(obj: unknown): unknown {
+  if (!isObject(obj)) {
+    throw new Error('Unsupported element')
+  }
   if (Array.isArray(obj)) {
     return obj.map((entry) => {
       if (entry && typeof entry === 'object') return objectToCamelCase(entry)
       return entry
     })
   }
-  const newObj = Object.entries(obj).reduce((obj, [key, value]) => {
+  const newObj = Object.entries(obj as object).reduce((obj, [key, value]) => {
     const newKey = typeof key === 'string' ? toCamelCase(key) : key
     let newValue = value
     if (value && typeof value === 'object') {

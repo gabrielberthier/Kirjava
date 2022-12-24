@@ -11,7 +11,11 @@ export type ProxyConfig = {
 
 export type Response = Promise<RawApiResponse>
 
-export interface HttpClientReader {
+export interface HttpClient{
+  dispatch: (path: string, params: object) => Response
+}
+
+export interface HttpClientReader extends HttpClient {
   get: (path: string, params: object) => Response
   getData: (path: string, params: object) => Promise<ArrayBuffer>
 }
