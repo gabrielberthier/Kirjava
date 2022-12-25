@@ -9,9 +9,15 @@ export function addTimezoneOffset(date: string | Date) {
   return new Date(new Date(date).getTime() + offsetInMilliseconds)
 }
 
-export const isObject = (el: any) => typeof el === 'object' && el !== null
+export const isObject = (el: any): el is object => typeof el === 'object' && el !== null
 
-export const isString = (el: any) => typeof el === 'string'
+export function isString(x: any): x is string {
+  return typeof x === 'string'
+}
+
+export function isNumber(x: any): x is number {
+  return typeof x === 'number'
+}
 
 export const removeTrailingSlash = (str: string) => str.replace(/^\/|\/$/g, '')
 

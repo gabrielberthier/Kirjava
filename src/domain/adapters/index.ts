@@ -3,14 +3,21 @@ import { isObject, isString } from '$services/utils/functions'
 import { plainToInstance } from 'class-transformer'
 import { objectToCamelCase } from './utils/camel-case'
 
-type Constructor<T = {} | []> = new (...args: any[]) => T
+export type Constructor<T = {} | []> = new (...args: any[]) => T
 
 export interface Convert<T> {
   parseEntity(json: string | object | object[]): T
   entryToJson(value: T): string
 }
 
-type GetElementType<T extends Array<Object>> = T extends (infer U)[] ? U : T
+export type GetElementType<T extends Array<Object>> = T extends (infer U)[] ? U : T
+
+function isOfArrayType<T extends object[]>(
+  array: any,
+  constructor: Constructor<GetElementType<T>>
+): array is T {
+  return Array.isArray(array) && array[0] instanceof constructor
+}
 
 export class MultiItemConverter<T extends Array<object>> implements Convert<T> {
   constructor(protected destinationConstructor: Constructor<GetElementType<T>>) {}
@@ -22,7 +29,13 @@ export class MultiItemConverter<T extends Array<object>> implements Convert<T> {
     if (Array.isArray(json)) {
       const jsonResponse = objectToCamelCase(json)
 
-      return plainToInstance(this.destinationConstructor, jsonResponse) as T
+      const instances = plainToInstance(this.destinationConstructor, jsonResponse)
+
+      if (isOfArrayType(instances, this.destinationConstructor)) {
+        return instances
+      }
+
+      console.log('It really is not!!!')
     }
 
     throw new Error(`${json} should be an instance of Array, but type ${typeof json} was given.`)
@@ -32,7 +45,7 @@ export class MultiItemConverter<T extends Array<object>> implements Convert<T> {
   }
 }
 
-export abstract class AbstractConverter<T> implements Convert<T> {
+export class Converter<T extends Object> implements Convert<T> {
   constructor(protected destinationConstructor: Constructor<T>) {}
 
   parseEntityFromJson(json: string): T {
@@ -53,7 +66,7 @@ export abstract class AbstractConverter<T> implements Convert<T> {
       )
     }
     if (isObject(json)) {
-      json = objectToCamelCase(json as object)
+      json = objectToCamelCase(json)
       return plainToInstance(this.destinationConstructor, json)
     }
 
@@ -67,7 +80,7 @@ export abstract class AbstractConverter<T> implements Convert<T> {
   }
 }
 
-export class PostsEntryAdapter extends AbstractConverter<Entry> {
+export class PostsEntryAdapter extends Converter<Entry> {
   constructor() {
     super(Entry)
   }

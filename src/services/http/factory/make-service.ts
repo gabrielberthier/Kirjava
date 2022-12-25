@@ -1,33 +1,38 @@
 import { env } from '$env/dynamic/private'
-import { AxiosClient } from '../client-implementation/axios-client'
 import type { HttpClientReader } from '../protocols/client'
 import type { ResponseHandler } from '../protocols/response'
-import type { RequestConfigBuilder } from '../protocols/request'
 import { ReaderApiService } from '../api-services/reader'
-import { ImplementationRequestConfigBuilder } from '../request-builder/implementation'
-import { ResponseHandlerImplementation } from '../response/implementation'
-import type { Convert } from '$domain/adapters'
+import type { Constructor, Convert } from '$domain/adapters'
 import { removeTrailingSlash } from '$services/utils/functions'
+import { axiosImplementation } from '../client-implementation/factories'
+import { makeDefaultResponseHandler, makeDefaultResponseHandlerMany } from '../response/factories'
 
-export interface ApiReaderServiceOptions<T> {
+export interface ApiReaderServiceOptions<T extends object> {
   resource: string
-  converter: Convert<T>
+  entity: Constructor<T>
   baseUrl?: string
   apiPath?: string
-  requestBuilder?: RequestConfigBuilder
   client?: HttpClientReader
+}
+
+export interface SingleItemApiReaderServiceOptions<T extends object>
+  extends ApiReaderServiceOptions<T> {
   responseHandler?: ResponseHandler<T>
 }
 
-export const readerServiceFactory = <T>(
-  options: ApiReaderServiceOptions<T>
+export interface MultiItemApiReaderServiceOptions<T extends object>
+  extends ApiReaderServiceOptions<T> {
+  responseHandler?: ResponseHandler<T[]>
+}
+
+export const readerServiceFactory = <T extends object>(
+  options: SingleItemApiReaderServiceOptions<T>
 ): ReaderApiService<T> => {
   let {
     resource,
-    converter,
+    entity,
     baseUrl = env.BACKEND_URL || '',
     apiPath = '',
-    requestBuilder,
     client,
     responseHandler
   } = options
@@ -35,9 +40,29 @@ export const readerServiceFactory = <T>(
   resource = removeTrailingSlash(resource)
   baseUrl = removeTrailingSlash(baseUrl)
   apiPath = removeTrailingSlash(apiPath)
-  requestBuilder ??= new ImplementationRequestConfigBuilder({ baseUrl })
-  client ??= new AxiosClient(requestBuilder, apiPath)
-  responseHandler ??= new ResponseHandlerImplementation(converter)
+  client ??= axiosImplementation(baseUrl, apiPath)
+  responseHandler ??= makeDefaultResponseHandler(entity)
+
+  return new ReaderApiService(resource, client, responseHandler)
+}
+
+export const multiReaderServiceFactory = <T extends object>(
+  options: MultiItemApiReaderServiceOptions<T>
+): ReaderApiService<T[]> => {
+  let {
+    resource,
+    entity,
+    baseUrl = env.BACKEND_URL || '',
+    apiPath = '',
+    client,
+    responseHandler
+  } = options
+
+  resource = removeTrailingSlash(resource)
+  baseUrl = removeTrailingSlash(baseUrl)
+  apiPath = removeTrailingSlash(apiPath)
+  client ??= axiosImplementation(baseUrl, apiPath)
+  responseHandler ??= makeDefaultResponseHandlerMany(entity)
 
   return new ReaderApiService(resource, client, responseHandler)
 }
