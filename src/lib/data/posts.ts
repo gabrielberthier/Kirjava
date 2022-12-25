@@ -1,7 +1,8 @@
 import type { IAllPostResponse, IPostResponse } from '$models/post'
 import { FileSystemPostsLoader } from '$services/filesystem/posts-loader'
-import { allPostsConverter } from '$domain/model-to-data/posts-data'
-import { AllPostsApi } from '$services/api/posts-api'
+import { allPostsConverter, postConverter } from '$domain/model-to-data/posts-data'
+import { AllPostsApi, singlePostApi } from '$services/api/posts-api'
+import { GhostClientSingle } from '$services/http/client-implementation/ghost-client'
 
 // Use a loader factory here to cases 1 - From local .md files and Ghost CMS
 
@@ -28,7 +29,7 @@ export class PostsLoader {
     if (this.useLocal) {
       post = (await new FileSystemPostsLoader().findOne(slug)).post
     } else {
-      post = allPostsConverter(await AllPostsApi.get(`slug/${slug}`, {})).posts[0]
+      post = postConverter(await singlePostApi.get('', { slug }))
     }
 
     return post

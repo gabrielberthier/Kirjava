@@ -34,8 +34,6 @@ export class MultiItemConverter<T extends Array<object>> implements Convert<T> {
       if (isOfArrayType(instances, this.destinationConstructor)) {
         return instances
       }
-
-      console.log('It really is not!!!')
     }
 
     throw new Error(`${json} should be an instance of Array, but type ${typeof json} was given.`)
@@ -77,11 +75,5 @@ export class Converter<T extends Object> implements Convert<T> {
 
   public entryToJson(value: T): string {
     return JSON.stringify(value)
-  }
-}
-
-export class PostsEntryAdapter extends Converter<Entry> {
-  constructor() {
-    super(Entry)
   }
 }

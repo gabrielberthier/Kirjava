@@ -37,7 +37,7 @@ export const postConverter = (post: Post): IPostResponse => {
 
 function classToInterface(meta: MetaClass): Meta {
   const { pagination } = meta
-  let { next, prev } = pagination
+  let { next = undefined, prev = undefined } = pagination
   next ??= undefined
   prev ??= undefined
   return {
