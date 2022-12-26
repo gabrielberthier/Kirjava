@@ -1,9 +1,9 @@
-import type { HttpClientReader, RawApiResponse, Response } from '../protocols/client'
+import type { JsonClientReader, RawApiResponse, Response } from '../protocols/client'
 import axios, { Axios } from 'axios'
 import type { RequestConfigBuilder, RequestConfig } from '../protocols/request'
 import { ApiErrorResponse } from '../protocols/response'
 
-export class AxiosClient implements HttpClientReader {
+export class AxiosClient implements JsonClientReader {
   private requestConfigBuilder: RequestConfigBuilder
   private axios: Axios
   private baseApiPath: string

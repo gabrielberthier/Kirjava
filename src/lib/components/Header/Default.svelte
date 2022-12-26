@@ -1,9 +1,20 @@
-<script>
+<script lang="ts">
   import SetColorThemeButton from '$components/Buttons/SetColorThemeButton.svelte'
   import MdLessNavContainer from '$components/Navigation/MDLessNavContainer.svelte'
   import MdPlusNav from '$components/Navigation/MDPlusNav.svelte'
   import Avatar from './Img/Avatar.svelte'
   import { headerToggle } from '$actions/header-toggle'
+  import { afterNavigate } from "$app/navigation";
+    import { browser } from '$app/environment'
+
+  afterNavigate((el) => {
+    const header = document.querySelector('header')
+    const token = 'scroll-down'
+    if (browser && header && header.classList.contains(token)) {
+      header.classList.remove(token)
+    }
+  })
+
 </script>
 
 <header

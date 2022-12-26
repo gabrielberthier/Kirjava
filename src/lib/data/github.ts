@@ -15,7 +15,7 @@ export const gatherRepositories = async (): Promise<IGitHubRepo[]> => {
   return repositories.map((el) => {
     return {
       url: el.htmlUrl ?? `${url}/${github}`,
-      language: el.language,
+      language: el.language ?? "Language unavailable",
       name: el.name,
       createdAt: el.createdAt,
       updatedAt: el.updatedAt

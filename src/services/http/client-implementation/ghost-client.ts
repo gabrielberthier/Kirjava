@@ -1,11 +1,11 @@
 import GhostContentAPI from '@tryghost/content-api'
-import type { HttpClientReader, RawApiResponse } from '../protocols/client'
+import type { JsonClientReader, RawApiResponse } from '../protocols/client'
 import type { GhostAPI, GhostError } from '@tryghost/content-api'
 import { env } from '$env/dynamic/private'
 
 export type EntitiesTypes = 'posts' | 'authors' | 'tags' | 'pages'
 
-export class GhostClient implements HttpClientReader {
+export class GhostClient implements JsonClientReader {
   private ghostApi: GhostAPI
 
   constructor(readonly ghostUrl: string) {
@@ -68,7 +68,7 @@ export class GhostClient implements HttpClientReader {
   }
 }
 
-export class GhostClientSingle implements HttpClientReader {
+export class GhostClientSingle implements JsonClientReader {
   private ghostApi: GhostAPI
 
   constructor(readonly ghostUrl: string) {

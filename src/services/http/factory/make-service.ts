@@ -1,5 +1,5 @@
 import { env } from '$env/dynamic/private'
-import type { HttpClientReader } from '../protocols/client'
+import type { JsonClientReader } from '../protocols/client'
 import type { ResponseHandler } from '../protocols/response'
 import { ReaderApiService } from '../api-services/reader'
 import type { Constructor, Convert } from '$domain/adapters'
@@ -12,7 +12,7 @@ export interface ApiReaderServiceOptions<T extends object> {
   entity: Constructor<T>
   baseUrl?: string
   apiPath?: string
-  client?: HttpClientReader
+  client?: JsonClientReader
 }
 
 export interface SingleItemApiReaderServiceOptions<T extends object>
