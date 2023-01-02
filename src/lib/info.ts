@@ -10,7 +10,7 @@ export const lastName = 'Berthier'
 export const name = `${firstName} ${lastName}`
 
 // Used for the landing page & footer of posts
-export const avatar = '/imgs/40048106.jfif'
+export const avatar = '/imgs/gabs-avatar.jpg'
 export const bio = `\
 I’m ${firstName}, a software engineer based in Canada. Lorem ipsum dolor sit amet, consectetur
 adipiscing elit. Phasellus accumsan quam at eros malesuada, id luctus lectus efficitur. Nulla
