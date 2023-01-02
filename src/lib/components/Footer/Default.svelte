@@ -4,7 +4,7 @@
   $: error404 = $page.status == 404
 </script>
 
-<footer class="mt-32">
+<footer>
   <div class="sm:px-8">
     <div class="mx-auto max-w-7xl lg:px-8">
       <div class="border-t border-zinc-100 pt-10 pb-16 dark:border-zinc-700/40">

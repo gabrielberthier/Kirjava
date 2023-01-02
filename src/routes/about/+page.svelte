@@ -16,7 +16,7 @@
               height="800"
               decoding="async"
               data-nimg="1"
-              class="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
+              class="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800 max-lg:mt-3"
               loading="lazy"
               style="color: transparent;"
             />

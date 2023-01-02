@@ -31,7 +31,7 @@
         <div class="relative px-4 sm:px-8 lg:px-12 container-header">
           <div class="mx-auto max-w-2xl lg:max-w-5xl">
             <div class="relative flex gap-4">
-              <div class="flex flex-1 hidden md:block">
+              <div class="flex flex-1 ">
                 <Avatar
                   src="https://coffective.com/wp-content/uploads/2018/06/icon-house-blue.png"
                 />

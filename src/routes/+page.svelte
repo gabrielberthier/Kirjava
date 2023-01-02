@@ -17,14 +17,14 @@
   <div class="gap-8 pb-16 relative px-4 sm:px-8 lg:px-12">
     <!--  -->
     <!-- bio -->
-    <div class="grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
+    <div class="grid max-w-xl grid-cols-1 lg:max-w-none lg:grid-cols-2">
       <About />
       <div class="space-y-10 lg:pl-16 xl:pl-24 md:flex items-center max-w-3xl">
         <WorkedOnCard repositories={data.repositories} />
       </div>
     </div>
 
-    <section class="mx-auto max-w-2xl lg:max-w-5xl">
+    <section class="mx-auto max-w-2xl lg:max-w-5xl mt-16">
       <div class="flex items-center justify-between gap-4 mb-8">
         <h2 class="text-sm font-medium sm:text-base text-zinc-400 dark:text-zinc-500">
           Recently Published
