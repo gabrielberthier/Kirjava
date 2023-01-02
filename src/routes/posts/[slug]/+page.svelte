@@ -6,6 +6,7 @@
   import SocialLinks from '$components/Social/SocialLinks.svelte'
   import { afterNavigate } from '$app/navigation'
   import type { PageData } from './$types'
+  import Disqus from '$components/Disqus/index.svelte'
 
   export let data: PageData
 
@@ -150,6 +151,12 @@
     <aside class="sticky hidden w-48 ml-8 xl:block top-8" aria-label="Table of Contents">
       <ToC post={data.post} />
     </aside>
+  </div>
+</div>
+
+<div class="">
+  <div class="mx-auto overflow-x-hidden">
+    <Disqus identifier={data.post.slug || ''} />
   </div>
 </div>
 
