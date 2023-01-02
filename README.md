@@ -1,11 +1,18 @@
 # SvelteKit blog template 
 
-This blog template is a fork of [this one](https://github.com/mattjennings/sveltekit-blog-template), but includes a new repagination and aims at using typescript as its default scripting language. 
+This blog template is a fork of [mattjennings's](https://github.com/mattjennings/sveltekit-blog-template), however it includes a repagination made for myself and aims at using typescript as its default scripting language. Also, it provides both cloud and local loading systems for posts, so you can get to choose either by specifying USE_LOCAL key into your .env file. In case you choose to use local files, they should be stored within `./posts/` folder using Markdown syntax. On the other hand, ignoring USE_LOCAL key will lead to use GhostCMS as your default posts manager, which will require you to use a default BACKEND_URL and your personal access key. Both can be achieved easily with GhostCMS integration, but you can check it out [here](https://ghost.org/docs/content-api/) how it is done and, once you get that piece of information, include it in your .env (please, gitignore this file once you clone this project). 
+
+````
+BACKEND_URL=https://demo.ghost.io
+KEY=22444f78447824223cefc48062
+```
+
+Henceforth, the project should correctly autoload either method to retrieve posts. 
 
 
 # SvelteKit Blog Template
 
-A SvelteKit blog template built on mdsvex and tailwind.
+A SvelteKit blog template built on mdsvex, tailwind, Typescript, GhostCMS.
 
 
 # Credits (copied from the original's)
