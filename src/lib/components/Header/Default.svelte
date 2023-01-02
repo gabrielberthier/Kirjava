@@ -6,6 +6,7 @@
   import { headerToggle } from '$actions/header-toggle'
   import { afterNavigate } from "$app/navigation";
     import { browser } from '$app/environment'
+    import SelectLanguage from '../Dropdowns/SelectLanguage.svelte'
 
   afterNavigate((el) => {
     const header = document.querySelector('header')
@@ -43,6 +44,7 @@
               <div class="flex justify-end md:flex-1">
                 <div class="pointer-events-auto">
                   <SetColorThemeButton />
+                  <SelectLanguage></SelectLanguage>
                 </div>
               </div>
             </div>

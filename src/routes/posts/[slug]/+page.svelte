@@ -154,6 +154,8 @@
   </div>
 </div>
 
+<hr>
+
 <div class="">
   <div class="mx-auto overflow-x-hidden">
     <Disqus identifier={data.post.slug || ''} />
