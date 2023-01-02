@@ -8,6 +8,7 @@ export const website = 'https://sveltekit-blog-template.vercel.app'
 export const firstName = 'Gabriel'
 export const lastName = 'Berthier'
 export const name = `${firstName} ${lastName}`
+export const whereIam = 'São Luís, BR'
 
 // Used for the landing page & footer of posts
 export const avatar = '/imgs/gabs-avatar.jpg'

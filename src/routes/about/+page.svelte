@@ -11,7 +11,7 @@
             <img
               alt=""
               sizes="(min-width: 1024px) 32rem, 20rem"
-              src="https://media3.giphy.com/media/TcdpZwYDPlWXC/giphy.gif"
+              src="/imgs/about-picture.jpg"
               width="800"
               height="800"
               decoding="async"

@@ -1,6 +1,6 @@
 <script lang="ts">
   import SocialLinks from '$components/Social/SocialLinks.svelte'
-  import { avatar, bio, name } from '$lib/info'
+  import { avatar, bio, name, whereIam } from '$lib/info'
 </script>
 
 <div class="relative md:px-4 sm:px-0 lg:px-12">
@@ -27,7 +27,35 @@
           >
             {bio}
           </p>
-          <div class="flex gap-6 mt-8 max-md:py-4 lg:mt-16 max-md:flex-center max-md:justify-center">
+          <div
+            class="flex gap-6 mt-8 max-md:py-4 lg:mt-16 max-md:flex-center max-md:justify-center"
+          >
+            <a href="/about" class="group flex justify-center" aria-label="Follow on Twitter">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 pr-2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                />
+              </svg>
+              <span>{whereIam}</span>
+            </a>
+          </div>
+          <div
+            class="flex gap-6 mt-4 max-md:py-3 max-md:flex-center max-md:justify-center"
+          >
             <SocialLinks />
           </div>
         </div>
