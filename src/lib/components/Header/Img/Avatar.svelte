@@ -1,7 +1,12 @@
-<script>
+<script lang="ts">
   import { page } from '$app/stores'
     import { locale } from '$lib/translations/translations'
-  export let src
+
+  export let src: string
+
+  let href: string = ''
+
+  locale.subscribe(l => href = `/${l}`)
 </script>
 
 <div
@@ -11,7 +16,7 @@ shadow-zinc-800/5 ring-1
 ring-zinc-900/5 backdrop-blur 
 dark:bg-zinc-800/90 dark:ring-white/10"
 >
-  <a aria-label="Home" href={`/${locale.get()}`} class="pointer-events-auto"
+  <a aria-label="Home" {href} class="pointer-events-auto"
     ><img
       alt=""
       sizes="2.25rem"

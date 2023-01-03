@@ -4,21 +4,12 @@
   import FourOFour from '$lib/custom-pages/four-o-four.svelte'
 
   export let status = $page.status
-  let message: string = ''
-
-  loadTranslations(locale.get(), 'error')?.then((el) => {
-    message = $t('shit.happens')
-    console.log(message);
-    console.log(el)
-  })
-
-  console.log();
   
 </script>
 
 <div>
   {#if status == 404}
-    <FourOFour {message}/>
+    <FourOFour message={$t('error.shit.happens')}/>
   {:else}
     {$page.error?.message}
   {/if}
