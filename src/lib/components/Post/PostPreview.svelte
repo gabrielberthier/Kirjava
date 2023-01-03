@@ -1,14 +1,19 @@
 <script lang="ts">
   import Card from '$components/Cards/Card.svelte'
   import ArrowRightIcon from '$components/Icons/ArrowRightIcon.svelte'
-    import type { IPostResponse } from '$domain/models/post'
+  import type { IPostResponse } from '$domain/models/post'
+  import { locale } from '$lib/translations/translations'
+
+  let loc: string
 
   export let post: IPostResponse
+
+  locale.subscribe((el) => (loc = el))
 
   $: excerpt = post.preview.text || post.preview.html
 </script>
 
-<Card href={`/posts/${post.slug}`}>
+<Card href={`${loc}/posts/${post.slug}`}>
   <slot slot="eyebrow" name="eyebrow" />
   <slot slot="title">{post.title}</slot>
   <div slot="description" class="prose dark:prose-invert">

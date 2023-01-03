@@ -148,7 +148,7 @@
 
   <!-- table of contents -->
   <div class="hidden xl:block pt-10">
-    <aside class="sticky hidden w-48 ml-8 xl:block top-8" aria-label="Table of Contents">
+    <aside class="sticky hidden w-48 ml-8 xl:block top-16" aria-label="Table of Contents">
       <ToC post={data.post} />
     </aside>
   </div>

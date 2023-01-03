@@ -1,7 +1,8 @@
 import type { ParamMatcher } from '@sveltejs/kit'
-import { supportedLanguages } from '$lib/info'
+import { locales } from '$lib/translations/translations'
 
 // only accept valid languages as a segment in the URL
 export const match: ParamMatcher = (param) => {
-	return supportedLanguages.includes(param)
+	const supportedLocales = locales.get()
+	return !!supportedLocales.find((l) => `${l}`.toLowerCase() === param)
 }

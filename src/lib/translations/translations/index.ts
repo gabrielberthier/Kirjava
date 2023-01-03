@@ -4,7 +4,7 @@ import en from './en'
 import de from './de'
 import cs from './cs'
 import lang from './lang.json'
-import br from './br'
+import pt from './pt'
 
 const config: Config = {
   translations: {
@@ -12,8 +12,8 @@ const config: Config = {
       ...en,
       lang
     },
-    br: {
-      ...br,
+    pt: {
+      ...pt,
       lang
     },
     de: {
@@ -29,7 +29,7 @@ const config: Config = {
 
 export const { t, locale, locales, loading, loadTranslations, translations } = new i18n(config)
 
-export const defaultLocale = 'br'
+export const defaultLocale = 'pt'
 
 // Translations logs
 loading.subscribe(async ($loading) => {

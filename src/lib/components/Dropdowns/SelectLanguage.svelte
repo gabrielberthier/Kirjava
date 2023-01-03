@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { supportedLanguages } from '$lib/info'
+  import { locales } from '$lib/translations/translations'
   import { getFlagEmoji } from '$services/utils/functions'
   import LangOptions from './LangOptions.svelte'
 
-  const langs = supportedLanguages
+  const langs = locales.get()
 
   let toggleHiddenNav = false
 </script>

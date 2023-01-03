@@ -1,11 +1,18 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-  const dispatch = createEventDispatcher();
+  import { createEventDispatcher } from 'svelte'
+  import { locale } from '$lib/translations/translations'
+    import type { MenuItem } from '../Header/protocols'
+
+  let loc = ''
+  const dispatch = createEventDispatcher()
 
   function closeModalMenu() {
-		dispatch('close-modal');
-	}
+    dispatch('close-modal')
+  }
 
+  locale.subscribe((el) => (loc = el))
+
+  export let linksList: MenuItem[]
 </script>
 
 <div>
@@ -42,18 +49,22 @@
             stroke-linejoin="round"
           /></svg
         >
-        </button>
+      </button>
       <h2 class="text-sm font-medium text-zinc-600 dark:text-zinc-400">Navigation</h2>
     </div>
     <nav class="mt-6">
       <ul
         class="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300"
       >
-        <li><a class="block py-2" data-headlessui-state="open" href="/about">About</a></li>
-        <li><a class="block py-2" data-headlessui-state="open" href="/articles">Articles</a></li>
-        <li><a class="block py-2" data-headlessui-state="open" href="/projects">Projects</a></li>
-        <li><a class="block py-2" data-headlessui-state="open" href="/speaking">Speaking</a></li>
-        <li><a class="block py-2" data-headlessui-state="open" href="/uses">Uses</a></li>
+        {#each linksList as link}
+          <li>
+            <a
+              class="block py-2"
+              data-headlessui-state="open"
+              href="{loc}/{link.to.toLocaleLowerCase()}">{link.text}</a
+            >
+          </li>
+        {/each}
       </ul>
     </nav>
   </div>

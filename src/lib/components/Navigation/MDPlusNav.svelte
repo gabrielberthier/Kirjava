@@ -1,5 +1,12 @@
 <script lang="ts">
-  const linksList = ['About', 'Articles', 'Projects', 'Speaking', 'Uses']
+  import { page } from '$app/stores'
+  import { locale } from '$lib/translations/translations'
+    import type { MenuItem } from '../Header/protocols'
+
+  export let linksList: MenuItem[]
+
+  let loc = ''
+  locale.subscribe((el) => (loc = el))
 </script>
 
 <nav class="pointer-events-auto hidden md:block">
@@ -10,9 +17,9 @@
       <li>
         <a
           class="relative block px-3 py-2 transition hover:text-sky-500 dark:hover:text-sky-400"
-          href="/{link.toLocaleLowerCase()}"
+          href="{loc}/{link.to.toLocaleLowerCase()}"
         >
-          {link}
+          {link.text}
         </a>
       </li>
     {/each}

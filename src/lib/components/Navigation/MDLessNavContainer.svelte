@@ -1,7 +1,10 @@
-<script>
+<script lang="ts">
+    import type { MenuItem } from "../Header/protocols"
     import HiddenMenu from "./HiddenMenu.svelte"
 
     let toggleHiddenNav = false
+
+    export let linksList: MenuItem[]
 
 </script>
 <div class="pointer-events-auto md:hidden" data-headlessui-state="">
@@ -29,7 +32,7 @@
     </svg>
   </button>
   {#if toggleHiddenNav}
-    <HiddenMenu on:close-modal={() => toggleHiddenNav = false}/>
+    <HiddenMenu on:close-modal={() => toggleHiddenNav = false} {linksList}/>
   {/if}
   <!-- <HiddenMenu></HiddenMenu> -->
 </div>
