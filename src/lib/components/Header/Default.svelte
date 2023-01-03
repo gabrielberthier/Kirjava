@@ -9,16 +9,27 @@
   import LanguageSelect from '../Select/LanguageSelect.svelte'
   import init from './translations'
   import { locale } from '$lib/translations/translations'
-    import type { MenuItem } from './protocols'
+  import type { MenuItem } from './protocols'
+  import { tick } from 'svelte';
+    
 
   const { t, loadTranslations } = init()
 
   console.log(locale.get())
 
-  const promise = loadTranslations(locale.get())
+  
+  let promise = loadTranslations(locale.get())?.then(() => genMenuItems())
 
-  const menuItems = (): MenuItem[] => {
-    return ['about', 'articles', 'projects', 'speaking', 'use'].map((el) => ({
+  let menuItemns: MenuItem[] = []
+  
+  locale.subscribe(async (loc) => {
+    await tick()
+    await loadTranslations(loc)
+    genMenuItems()
+  })
+  
+  const genMenuItems = (): void => {
+    menuItemns = ['about', 'articles', 'projects', 'speaking', 'use'].map((el) => ({
       to: el,
       text: $t('menu.items.' + el)
     }))
@@ -56,12 +67,8 @@
                   />
                 </div>
                 <div class="flex flex-1 justify-end md:justify-center">
-                  <MdLessNavContainer
-                    linksList={menuItems()}
-                  />
-                  <MdPlusNav
-                    linksList={menuItems()}
-                  />
+                  <MdLessNavContainer linksList={menuItemns} />
+                  <MdPlusNav linksList={menuItemns} />
                 </div>
                 <div class="flex justify-end md:flex-1">
                   <div class="pointer-events-auto flex">

@@ -61,7 +61,7 @@
             <a
               class="block py-2"
               data-headlessui-state="open"
-              href="{loc}/{link.to.toLocaleLowerCase()}">{link.text}</a
+              href="/{loc}/{link.to.toLocaleLowerCase()}">{link.text}</a
             >
           </li>
         {/each}

@@ -17,7 +17,7 @@
       <li>
         <a
           class="relative block px-3 py-2 transition hover:text-sky-500 dark:hover:text-sky-400"
-          href="{loc}/{link.to.toLocaleLowerCase()}"
+          href="/{loc}/{link.to.toLocaleLowerCase()}"
         >
           {link.text}
         </a>
