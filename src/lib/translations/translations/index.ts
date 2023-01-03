@@ -1,83 +1,35 @@
 import i18n from 'sveltekit-i18n'
 import type { Config } from 'sveltekit-i18n'
+import en from './en'
+import de from './de'
+import cs from './cs'
+import lang from './lang.json'
+import br from './br'
 
 const config: Config = {
-  loaders: [
-    {
-      locale: 'en',
-      key: 'menu',
-      loader: async () => (await import('./en/menu.json')).default
+  translations: {
+    en: {
+      ...en,
+      lang
     },
-    {
-      locale: 'en',
-      key: 'home',
-      routes: ['', '/'],
-      loader: async () => (await import('./en/home.json')).default
+    br: {
+      ...br,
+      lang
     },
-    {
-      locale: 'en',
-      key: 'about',
-      routes: ['/about'],
-      loader: async () => (await import('./en/about.json')).default
+    de: {
+      ...de,
+      lang
     },
-    {
-      locale: 'de',
-      key: 'menu',
-      loader: async () => (await import('./de/menu.json')).default
-    },
-    {
-      locale: 'en',
-      key: 'error',
-      routes: ['error'],
-      loader: async () => (await import('./en/error.json')).default
-    },
-    {
-      locale: 'de',
-      key: 'home',
-      routes: ['', '/'],
-      loader: async () => (await import('./de/home.json')).default
-    },
-    {
-      locale: 'de',
-      key: 'about',
-      routes: ['/about'],
-      loader: async () => (await import('./de/about.json')).default
-    },
-    {
-      locale: 'cs',
-      key: 'menu',
-      loader: async () => (await import('./cs/menu.json')).default
-    },
-    {
-      locale: 'de',
-      key: 'error',
-      routes: ['error'],
-      loader: async () => (await import('./de/error.json')).default
-    },
-    {
-      locale: 'cs',
-      key: 'home',
-      routes: ['', '/'],
-      loader: async () => (await import('./cs/home.json')).default
-    },
-    {
-      locale: 'cs',
-      key: 'about',
-      routes: ['/about'],
-      loader: async () => (await import('./cs/about.json')).default
-    },
-    {
-      locale: 'cs',
-      key: 'error',
-      routes: ['error'],
-      loader: async () => (await import('./cs/error.json')).default
+    cs: {
+      ...cs,
+      lang
     }
-  ]
+  }
 }
 
-export const defaultLocale = 'en'
-
 export const { t, locale, locales, loading, loadTranslations, translations } = new i18n(config)
+
+export const defaultLocale = 'br'
 
 // Translations logs
 loading.subscribe(async ($loading) => {

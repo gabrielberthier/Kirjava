@@ -1,8 +1,15 @@
+<script lang="ts">
+  import { t } from '$lib/translations/translations'; 
+</script>
+
+
+
 <div class="mx-auto max-w-7xl lg:px-8">
   <div class="relative px-4 sm:px-8 lg:px-12">
     <div class="mx-auto max-w-2xl lg:max-w-5xl">
       <header class="pt-4">
         <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">Itss a me, Mario</h1>
+        <h1>{$t('about.title')}</h1>
       </header>
 
       <div class="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
