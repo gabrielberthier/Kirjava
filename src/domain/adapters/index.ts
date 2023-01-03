@@ -1,4 +1,3 @@
-import { Entry } from '$domain/models/posts-entry'
 import { isObject, isString } from '$services/utils/functions'
 import { plainToInstance } from 'class-transformer'
 import { objectToCamelCase } from './utils/camel-case'

@@ -186,6 +186,18 @@
     svelte-hmr "^0.15.1"
     vitefu "^0.2.2"
 
+"@sveltekit-i18n/base@1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@sveltekit-i18n/base/-/base-1.2.1.tgz#5e97f1aaefb132858ecc7e5ad5efbb7849d6e224"
+  integrity sha512-F8gqG2+KAOeT0o2wYlUrW3TRCX7zaD7rBy/1CEVNw0irfw9TgFf/ODmhubkHHT3+6Zk+SMz8RNgeuffBfAMbJw==
+  optionalDependencies:
+    "@sveltekit-i18n/parser-default" "^1.x"
+
+"@sveltekit-i18n/parser-default@1.0.3", "@sveltekit-i18n/parser-default@^1.x":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@sveltekit-i18n/parser-default/-/parser-default-1.0.3.tgz#6ca5fee97d280e840c6222eb80e59da82a5d5524"
+  integrity sha512-HheveklTjp3hxpYQhoHfyA6B4bQaUeSV5MQf2usIv/58UF2jY/YqhCAWj9bDBjufbuZc5pSz4BXvdX3WVT+viA==
+
 "@tailwindcss/typography@^0.5.7":
   version "0.5.8"
   resolved "https://registry.yarnpkg.com/@tailwindcss/typography/-/typography-0.5.8.tgz#8fb31db5ab0590be6dfa062b1535ac86ad9d12bf"
@@ -2588,6 +2600,14 @@ svelte@^3.50.0:
   version "3.55.0"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.55.0.tgz#29cb958750a23e751309a6535ccd811fcabc9038"
   integrity sha512-uGu2FVMlOuey4JoKHKrpZFkoYyj0VLjJdz47zX5+gVK5odxHM40RVhar9/iK2YFRVxvfg9FkhfVlR0sjeIrOiA==
+
+sveltekit-i18n@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/sveltekit-i18n/-/sveltekit-i18n-2.2.2.tgz#5916c81c27e1773049c1201d574b0af12ba4ca23"
+  integrity sha512-6eygICleGCSL7elY7A3trF8XUhV+mlW56ZSoD0UUKXlw+Y6u0MTTHDq48u1LyY73SfnlbPHXgTarhTjZ0BvUKA==
+  dependencies:
+    "@sveltekit-i18n/base" "1.2.1"
+    "@sveltekit-i18n/parser-default" "1.0.3"
 
 svgo@^2.7.0:
   version "2.8.0"

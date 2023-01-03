@@ -11,7 +11,9 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
     "experimentalDecorators": true,
+    "resolveJsonModule": true,
     "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
     "types": ["reflect-metadata"]
   }
 }

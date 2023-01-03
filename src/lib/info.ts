@@ -9,6 +9,7 @@ export const firstName = 'Gabriel'
 export const lastName = 'Berthier'
 export const name = `${firstName} ${lastName}`
 export const whereIam = 'São Luís, BR'
+export const supportedLanguages = ['br', 'es', 'en']
 
 // Used for the landing page & footer of posts
 export const avatar = '/imgs/gabs-avatar.jpg'

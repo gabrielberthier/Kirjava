@@ -1,7 +1,7 @@
 import { redirect } from '@sveltejs/kit'
 import type { ServerLoadEvent } from '@sveltejs/kit'
 import { PostsLoader } from '$lib/data/posts'
-import type { IPostResponse } from '../../../domain/models/post'
+import type { IPostResponse } from '$domain/models/post'
 import { env } from '$env/dynamic/private'
 import type { Meta } from '$domain/models/meta'
 

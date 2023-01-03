@@ -4,6 +4,7 @@
   import About from '$lib/components/Personal/About.svelte'
   import WorkedOnCard from '$lib/components/Personal/WorkedOnCard.svelte'
   import { bio, name } from '$lib/info'
+  import { t } from "$lib/translations/translations";
   import type { PageData } from './$types'
 
   export let data: PageData
@@ -18,6 +19,8 @@
     <!--  -->
     <!-- bio -->
     <div class="grid max-w-xl grid-cols-1 lg:max-w-none lg:grid-cols-2">
+      
+      <h1>{$t('home.title')}</h1>
       <About />
       <div class="space-y-10 lg:pl-16 xl:pl-24 md:flex items-center max-w-3xl">
         <WorkedOnCard repositories={data.repositories} />

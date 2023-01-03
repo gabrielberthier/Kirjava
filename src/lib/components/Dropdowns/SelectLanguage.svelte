@@ -1,11 +1,11 @@
 <script lang="ts">
-    import { getFlagEmoji } from '$services/utils/functions'
+  import { supportedLanguages } from '$lib/info'
+  import { getFlagEmoji } from '$services/utils/functions'
   import LangOptions from './LangOptions.svelte'
 
-  const langs = ['br', 'fr', 'en']
+  const langs = supportedLanguages
 
   let toggleHiddenNav = false
-
 </script>
 
 <div class="relative inline-block text-left">
@@ -36,6 +36,6 @@
     </button>
   </div>
   {#if toggleHiddenNav}
-    <LangOptions {langs} on:close-dropdown={() => (toggleHiddenNav = false)}/>
+    <LangOptions {langs} on:close-dropdown={() => (toggleHiddenNav = false)} />
   {/if}
 </div>
