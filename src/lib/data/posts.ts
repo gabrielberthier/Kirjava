@@ -24,14 +24,27 @@ export class PostsLoader {
     return allPostsConverter(await loadURL(page, limit))
   }
 
-  async getOneBySlug(slug: string): Promise<IPostResponse | undefined> {
+  async getOneBySlug(slug: string, params?: any): Promise<IPostResponse | undefined> {
     let post: IPostResponse | undefined
     if (this.useLocal) {
       post = (await new FileSystemPostsLoader().findOne(slug)).post
     } else {
-      post = postConverter(await singlePostApi.get('', { slug }))
+      post = postConverter(await singlePostApi.get('', { slug, ...params }))
     }
 
     return post
+  }
+
+  async getArticles(page?: number, limit?: number){
+    if (this.useLocal) {
+      return new FileSystemPostsLoader().load({
+        page,
+        limit
+      })
+    }
+
+    const posts = await AllPostsApi.get('', { page, limit, filter: 'tag:article' })
+
+    return allPostsConverter(posts)
   }
 }

@@ -1,6 +1,7 @@
 <script lang="ts">
   import SocialLinks from '$components/Social/SocialLinks.svelte'
-  import { avatar, bio, name, whereIam } from '$lib/info'
+  import { avatar, name, whereIam } from '$lib/info'
+  import { t } from "$lib/translations/translations";
 </script>
 
 <div class="relative md:px-4 sm:px-0 lg:px-12">
@@ -25,7 +26,7 @@
             dark:text-zinc-400 relative 
             sm:py-6 max-md:my-4"
           >
-            {bio}
+            {@html $t('bio.whoammi')}
           </p>
           <div
             class="flex gap-6 mt-8 max-md:py-4 lg:mt-16 max-md:flex-center max-md:justify-center"

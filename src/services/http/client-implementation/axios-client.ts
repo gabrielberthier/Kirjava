@@ -1,4 +1,4 @@
-import type { JsonClientReader, RawApiResponse, Response } from '../protocols/client'
+import type { JsonClientReader, RawApiResponse } from '../protocols/client'
 import axios, { Axios } from 'axios'
 import type { RequestConfigBuilder, RequestConfig } from '../protocols/request'
 import { ApiErrorResponse } from '../protocols/response'
@@ -18,10 +18,6 @@ export class AxiosClient implements JsonClientReader {
         'Content-Type': 'application/json;charset=UTF-8'
       }
     })
-  }
-
-  async getData(path: string, params: object): Promise<ArrayBuffer> {
-    return new ArrayBuffer(0)
   }
 
   public async get(path: string, params: any) {

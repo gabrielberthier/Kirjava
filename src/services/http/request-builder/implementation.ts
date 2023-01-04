@@ -12,9 +12,10 @@ export class ImplementationRequestConfigBuilder implements RequestConfigBuilder 
   private headers: any
   private proxy?: ProxyConfig
 
-  constructor({ baseUrl, proxy }: { baseUrl: string; proxy?: ProxyConfig }) {
+  constructor({ baseUrl, proxy, headers }: { baseUrl: string; proxy?: ProxyConfig, headers?: any }) {
     this.baseUrl = baseUrl
     this.proxy = proxy
+    this.headers = headers
   }
 
   public async build(

@@ -13,6 +13,7 @@ export interface ApiReaderServiceOptions<T extends object> {
   baseUrl?: string
   apiPath?: string
   client?: JsonClientReader
+  headers?: any
 }
 
 export interface SingleItemApiReaderServiceOptions<T extends object>
@@ -34,13 +35,14 @@ export const readerServiceFactory = <T extends object>(
     baseUrl = env.BACKEND_URL || '',
     apiPath = '',
     client,
-    responseHandler
+    responseHandler,
+    headers
   } = options
 
   resource = removeTrailingSlash(resource)
   baseUrl = removeTrailingSlash(baseUrl)
   apiPath = removeTrailingSlash(apiPath)
-  client ??= axiosImplementation(baseUrl, apiPath)
+  client ??= axiosImplementation(baseUrl, apiPath, headers)
   responseHandler ??= makeDefaultResponseHandler(entity)
 
   return new ReaderApiService(resource, client, responseHandler)
@@ -55,14 +57,15 @@ export const multiReaderServiceFactory = <T extends object>(
     baseUrl = env.BACKEND_URL || '',
     apiPath = '',
     client,
-    responseHandler
+    responseHandler,
+    headers,
   } = options
 
   resource = removeTrailingSlash(resource)
   baseUrl = removeTrailingSlash(baseUrl)
   apiPath = removeTrailingSlash(apiPath)
-  client ??= axiosImplementation(baseUrl, apiPath)
-  responseHandler ??= makeDefaultResponseHandlerMany(entity)
+  client ??= axiosImplementation(baseUrl, apiPath, headers)
+  responseHandler ??= makeDefaultResponseHandlerMany(entity,)
 
   return new ReaderApiService(resource, client, responseHandler)
 }
