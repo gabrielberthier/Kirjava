@@ -1,7 +1,12 @@
 import type { JsonClientReader, RawApiResponse } from '../protocols/client'
-import axios, { Axios, AxiosError } from 'axios'
+import { Axios, AxiosError } from 'axios'
 import type { RequestConfigBuilder, RequestConfig } from '../protocols/request'
 import { ApiErrorResponse } from '../protocols/response'
+import { isObject } from '$services/utils/functions'
+
+const isAxiosError = (payload: any): payload is AxiosError => {
+  return isObject(payload) && 'isAxiosError' in payload && payload.isAxiosError === true
+}
 
 export class AxiosClient implements JsonClientReader {
   private requestConfigBuilder: RequestConfigBuilder
@@ -44,10 +49,10 @@ export class AxiosClient implements JsonClientReader {
       if (response.status >= 200 && response.status < 300) {
         return response
       }
-      
-      throw new AxiosError(response.statusText, response.status)
+
+      throw new AxiosError(response.statusText, `${response.status}`)
     } catch (error) {
-      if (axios.isAxiosError(error)) {
+      if (isAxiosError(error)) {
         let apiError: ApiErrorResponse
         if (error.response) {
           apiError = new ApiErrorResponse(error.response.data as object | string)
