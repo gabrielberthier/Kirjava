@@ -1,8 +1,12 @@
+<script lang="ts">
+import { t } from "$lib/translations/translations";
+</script>
+
 <div class="mx-auto max-w-7xl lg:px-12" style="min-height: 600px;">
   <div class="text-center">
     <header class="pt-4">
-      <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">Yes, I have books to publish</h1>
-      <p class="mt-6">But you can read them firstly here and buy a copy later, if you want it ;)</p>
+      <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">{$t('books.title')}</h1>
+      <p class="mt-6">{$t('books.text')}</p>
     </header>
   </div>
 
@@ -38,12 +42,7 @@
               >
             </h2>
             <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-              As Dores Crônicas é um livro de crônicas, poesias e prosas que foram reunidas em um
-              único volume e que satiriza ainda no título a forma da arte pela qual se propõe a
-              expressar. Compreendendo um longo período da vida do autor, a obra se baseia em
-              perspectivas e relatos próprios de sua vivência, fazendo uso da escrita em diferentes
-              linhas de expressão para dar voz às narrativas que se acumularam e depreenderam do
-              convívio social e das suas relações em meio a diferentes períodos.
+              {$t('books.dores_cronicas')}
             </p>
             <p
               class="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200"
@@ -52,7 +51,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15M9 12l3 3m0 0l3-3m-3 3V2.25" />
             </svg>
               
-            <span class="ml-2">Get it</span>
+            <span class="ml-2">Download</span>
             </p>
           </div>
         </li>

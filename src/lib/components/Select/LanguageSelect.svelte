@@ -30,6 +30,8 @@
       font-normal
       text-gray-700
       bg-white bg-clip-padding bg-no-repeat
+      dark:text-zinc-100
+      dark:bg-zinc-900
       border border-solid border-gray-300
       rounded
       transition

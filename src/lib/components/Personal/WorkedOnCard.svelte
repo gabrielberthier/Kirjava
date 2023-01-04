@@ -38,7 +38,7 @@
   {:else}
   <div class="p-3">
   <h3 class="py-2">Damn
-    <img src="/imgs/OIP.jfif" alt="grr icon" class="inline w-6">
+    <img src="/imgs/grr.png" alt="grr icon" class="inline w-6">
   </h3> 
   
     <p class="text-sm">It seems like an error occorured while fetching my repos at GitHub or they finally took my connection down for their API (grr bastads). But you can still check my repos out at <a href="https://github.com/gabrielberthier?tab=repositories" class="link text-sky-500">GitHub</a> ;)</p>
