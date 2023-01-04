@@ -14,9 +14,6 @@
     
 
   const { t, loadTranslations } = init()
-
-  console.log(locale.get())
-
   
   let promise = loadTranslations(locale.get())?.then(() => genMenuItems())
 

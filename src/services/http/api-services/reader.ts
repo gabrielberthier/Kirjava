@@ -6,7 +6,7 @@ export class ReaderApiService<T> extends BaseApiService<T> {
 
     if (error) {
       console.error(error)
-      console.log(data)
+      console.error(data)
 
       throw error
     }

@@ -25,9 +25,7 @@ interface DisqusConfig {
   url?: string
 }
 
-export function DisqusThread(node: HTMLElement, params: DisqusConfig) {
-    console.log(params);
-    
+export function DisqusThread(node: HTMLElement, params: DisqusConfig) {    
   if (!params.identifier || params.identifier === window.location.pathname)
     console.warn(
       "Warning: disqus-svelte Comments created without 'identifier' property. This is not recommended & default settings are not guaranteed to work."
