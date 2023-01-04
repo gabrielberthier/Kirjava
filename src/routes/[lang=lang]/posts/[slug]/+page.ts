@@ -12,7 +12,7 @@ export const load: Load = async function ({ data }) {
 
   if (post) {
     let component
-    if (post.slug && env.USE_LOCAL) {
+    if (post.slug && env.PUBLIC_USE_LOCAL) {
       component = await loadFromFile('', post.isIndexFile)
     }
 

@@ -14,6 +14,8 @@ export class PostsLoader {
   constructor(private useLocal: boolean = false) {}
 
   async all(page?: number, limit?: number): Promise<IAllPostResponse> {
+    page ??= 1
+    limit ??= 10
     if (this.useLocal) {
       return new FileSystemPostsLoader().load({
         page,
