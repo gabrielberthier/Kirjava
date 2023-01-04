@@ -4,7 +4,10 @@
   import About from '$lib/components/Personal/About.svelte'
   import WorkedOnCard from '$lib/components/Personal/WorkedOnCard.svelte'
   import { bio, name } from '$lib/info'
+  import { locale } from '$lib/translations/translations'
   import type { PageData } from './$types'
+  let loc: string = ''
+  locale.subscribe((el) => (loc = el))
 
   export let data: PageData
 </script>
@@ -29,7 +32,7 @@
         <h2 class="text-sm font-medium sm:text-base text-zinc-400 dark:text-zinc-500">
           Recently Published
         </h2>
-        <a href="/posts" class="flex items-center gap-1 text-sm font-medium text-sky-500">
+        <a href="{loc}/posts" class="flex items-center gap-1 text-sm font-medium text-sky-500">
           View All <ArrowRightIcon _class="w-4 h-4" /></a
         >
       </div>

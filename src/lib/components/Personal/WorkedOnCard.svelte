@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { IGitHubRepo } from '$domain/models/github/user-repositories'
   import RepositoryListItem from './RepositoryListItem.svelte'
+  import { t } from "$lib/translations/translations";
 
   const src = 'https://cdn-icons-png.flaticon.com/512/25/25231.png'
 
@@ -41,7 +42,9 @@
     <img src="/imgs/grr.png" alt="grr icon" class="inline w-6">
   </h3> 
   
-    <p class="text-sm">It seems like an error occorured while fetching my repos at GitHub or they finally took my connection down for their API (grr bastads). But you can still check my repos out at <a href="https://github.com/gabrielberthier?tab=repositories" class="link text-sky-500">GitHub</a> ;)</p>
+    <p class="text-sm">
+      {@html $t('error.github')}
+    </p>
   </div>
   {/if}
  

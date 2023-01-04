@@ -4,6 +4,7 @@ import home from './home.json'
 import menu from './menu.json'
 import bio from './bio.json'
 import books from './books.json'
+import posts from './posts.json'
 
 export default {
   about,
@@ -11,5 +12,6 @@ export default {
   home,
   menu,
   bio,
-  books
+  books,
+  posts
 }
