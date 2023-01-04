@@ -29,7 +29,7 @@
   })
   
   const genMenuItems = (): void => {
-    menuItemns = ['about', 'articles', 'projects', 'speaking', 'use'].map((el) => ({
+    menuItemns = ['about', 'articles', 'projects', 'speaking', 'books'].map((el) => ({
       to: el,
       text: $t('menu.items.' + el)
     }))
