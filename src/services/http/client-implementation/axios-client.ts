@@ -1,5 +1,5 @@
 import type { JsonClientReader, RawApiResponse } from '../protocols/client'
-import axios, { Axios } from 'axios'
+import axios, { Axios, AxiosError } from 'axios'
 import type { RequestConfigBuilder, RequestConfig } from '../protocols/request'
 import { ApiErrorResponse } from '../protocols/response'
 
@@ -41,7 +41,11 @@ export class AxiosClient implements JsonClientReader {
         maxContentLength: Infinity
       })
 
-      return response
+      if (response.status >= 200 && response.status < 300) {
+        return response
+      }
+      
+      throw new AxiosError(response.statusText, response.status)
     } catch (error) {
       if (axios.isAxiosError(error)) {
         let apiError: ApiErrorResponse

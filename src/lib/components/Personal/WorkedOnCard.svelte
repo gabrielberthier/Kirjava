@@ -29,11 +29,22 @@
     </svg>
     <span class="ml-3">Been Workin on</span>
   </h2>
+  {#if repositories.length}
   <ol class="mt-6 space-y-4">
     {#each repositories as repo}
       <RepositoryListItem {...repo} />
     {/each}
   </ol>
+  {:else}
+  <div class="p-3">
+  <h3 class="py-2">Damn
+    <img src="/imgs/OIP.jfif" alt="grr icon" class="inline w-6">
+  </h3> 
+  
+    <p class="text-sm">It seems like an error occorured while fetching my repos at GitHub or they finally took my connection down for their API (grr bastads). But you can still check my repos out at <a href="https://github.com/gabrielberthier?tab=repositories" class="link text-sky-500">GitHub</a> ;)</p>
+  </div>
+  {/if}
+ 
   <a
     class="inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none bg-zinc-50 font-medium text-zinc-900 hover:bg-zinc-100 active:bg-zinc-100 active:text-zinc-900/60 dark:bg-zinc-800/50 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:active:bg-zinc-800/50 dark:active:text-zinc-50/70 group mt-6 w-full"
     href="/docs/Curriculum - Gabriel Berthier - EN 2022.pdf" download
