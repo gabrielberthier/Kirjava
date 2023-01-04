@@ -6,7 +6,6 @@ import { PostsLoader } from '$lib/data/posts'
 import { website } from '$lib/info'
 import type { RequestHandler } from '@sveltejs/kit'
 
-export const prerender = true
 const postsUrl = `${website}/posts`
 
 /**

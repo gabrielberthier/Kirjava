@@ -24,10 +24,6 @@ const config = {
       $services: 'src/services',
       $models: 'src/domain/models',
       $actions: 'src/lib/actions',
-    },
-    // remove this if you don't want prerendering
-    prerender: {
-      entries: ['/sitemap.xml', '/rss.xml']
     }
   }
 }
