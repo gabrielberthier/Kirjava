@@ -9,6 +9,8 @@ export class GhostClient implements JsonClientReader {
   private ghostApi: GhostAPI
 
   constructor(readonly ghostUrl: string) {
+    console.log(env);
+    
     this.ghostApi = new GhostContentAPI({
       url: ghostUrl,
       key: env.KEY,

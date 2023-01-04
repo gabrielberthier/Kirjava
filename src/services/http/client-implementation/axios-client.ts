@@ -57,7 +57,7 @@ export class AxiosClient implements JsonClientReader {
         if (error.response) {
           apiError = new ApiErrorResponse(error.response.data as object | string)
           return {
-            data: error.status || '',
+            data: String(error.status) || '',
             headers: error.response.headers,
             status: error.response.status,
             error: apiError
@@ -65,7 +65,7 @@ export class AxiosClient implements JsonClientReader {
         } else if (error.request) {
           apiError = new ApiErrorResponse(error.request as object | string)
           return {
-            data: error.status || '',
+            data: String(error.status) || '',
             headers: undefined,
             status: 500,
             error: apiError
