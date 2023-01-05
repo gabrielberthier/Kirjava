@@ -15,9 +15,11 @@ export const handle: Handle = async ({ event, resolve }) => {
     )
 
     if (!locale) {
-      locale = `${`${request.headers.get('accept-language')}`.match(
-        /[a-zA-Z]+?(?=-|_|,|;)/
-      )}`.toLowerCase()
+      const [acceptedLang] = `${request.headers.get('accept-language')}`.match(
+        /^[a-z]{2,4}(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?$/
+      ) ?? ['pt-BR']
+
+      locale = acceptedLang
 
       if (!supportedLocales.includes(locale)) locale = defaultLocale
 

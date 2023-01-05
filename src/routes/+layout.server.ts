@@ -10,9 +10,10 @@ export const load: LayoutServerLoad = async ({ url }) => {
   const { pathname } = url
 
   const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`
-  const route = pathname.replace(new RegExp(`^/${lang}`), '') ?? ""
-  
-  await loadTranslations(lang, route) // keep this just before the `return`
+
+  const route = pathname.replace(new RegExp(`^/${lang}`), '') ?? ''
+
+  await loadTranslations(lang, route)
 
   const internationalization: Internationalization = {
     lang,

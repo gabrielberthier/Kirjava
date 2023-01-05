@@ -28,4 +28,4 @@ export function dateRange(input: string | Date, target: Date = new Date()) {
 }
 
 export const getFlagEmoji = (countryCode: string) =>
-  String.fromCodePoint(...[...countryCode.toUpperCase()].map((x) => 0x1f1a5 + x.charCodeAt(0)))
+  String.fromCodePoint(...[...(countryCode.split('-').reverse().pop() ?? "").toUpperCase()].map((x) => 0x1f1a5 + x.charCodeAt(0)))
