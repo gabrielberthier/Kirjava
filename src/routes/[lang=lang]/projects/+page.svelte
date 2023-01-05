@@ -2,20 +2,23 @@
   <div class="text-center">
     <h1 class="text-2xl py-3">Projects</h1>
 
-  <p class="max-w-md max-w-prose mx-auto">Aren't we all projecting something somehow?
-    But I copy-pasted the cards below, I guess that counts something...
+    <p class="max-w-md max-w-prose mx-auto">
+      Aren't we all projecting something somehow? But I copy-pasted the cards below, I guess that
+      counts something...
+    </p>
+    <br />
 
-  </p><br>
-
-  <p></p>
+    <p />
   </div>
 
   <div class="mx-auto max-w-2xl lg:max-w-5xl">
     <div class="mt-16 sm:mt-20">
       <ul class="grid gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
-        <li  class="group relative flex flex-col items-start">
+        <li class="group relative flex flex-col items-start">
           <div
-            class="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
+            class="relative z-10 flex h-12 w-12 items-center justify-center rounded-full 
+            bg-white shadow-md shadow-zinc-800/5 ring-1 
+            ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
           >
             <img
               alt=""
@@ -43,7 +46,7 @@
             Creating technology to empower civilians to explore space on their own terms.
           </p>
           <p
-            class="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200"
+            class="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-sky-500 dark:text-zinc-200"
           >
             <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 flex-none"
               ><path
@@ -83,7 +86,7 @@
             High performance web animation library, hand-written in optimized WASM.
           </p>
           <p
-            class="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200"
+            class="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-sky-500 dark:text-zinc-200"
           >
             <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 flex-none"
               ><path
@@ -123,7 +126,7 @@
             Real-time video streaming library, optimized for interstellar transmission.
           </p>
           <p
-            class="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200"
+            class="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-sky-500 dark:text-zinc-200"
           >
             <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 flex-none"
               ><path
@@ -163,7 +166,7 @@
             The operating system that powers our Planetaria space shuttles.
           </p>
           <p
-            class="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200"
+            class="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-sky-500 dark:text-zinc-200"
           >
             <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 flex-none"
               ><path
@@ -203,7 +206,7 @@
             The schematics for the first rocket I designed that successfully made it to orbit.
           </p>
           <p
-            class="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200"
+            class="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-sky-500 dark:text-zinc-200"
           >
             <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 flex-none"
               ><path

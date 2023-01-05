@@ -1,7 +1,8 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
   import { locale } from '$lib/translations/translations'
-    import type { MenuItem } from '../Header/protocols'
+  import type { MenuItem } from '../Header/protocols'
+  import { clickOutside } from '$lib/actions/on-click-outside'
 
   let loc = ''
   const dispatch = createEventDispatcher()
@@ -15,7 +16,7 @@
   export let linksList: MenuItem[]
 </script>
 
-<div>
+<div >
   <div
     class="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-sm dark:bg-black/80 opacity-100"
     id="headlessui-popover-overlay-:r6u:"
@@ -27,6 +28,7 @@
     id="headlessui-popover-panel-:Rqb6H1:"
     tabindex="-1"
     data-headlessui-state="open"
+    use:clickOutside on:clickoutside={closeModalMenu}
   >
     <div class="flex flex-row-reverse items-center justify-between">
       <button

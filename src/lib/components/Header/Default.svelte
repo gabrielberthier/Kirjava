@@ -10,21 +10,20 @@
   import init from './translations'
   import { locale } from '$lib/translations/translations'
   import type { MenuItem } from './protocols'
-  import { tick } from 'svelte';
-    
+  import { tick } from 'svelte'
 
   const { t, loadTranslations } = init()
-  
+
   let promise = loadTranslations(locale.get())?.then(() => genMenuItems())
 
   let menuItemns: MenuItem[] = []
-  
+
   locale.subscribe(async (loc) => {
     await tick()
     await loadTranslations(loc)
     genMenuItems()
   })
-  
+
   const genMenuItems = (): void => {
     menuItemns = ['about', 'articles', 'projects', 'speaking', 'books'].map((el) => ({
       to: el,
@@ -59,15 +58,13 @@
             <div class="mx-auto max-w-2xl lg:max-w-5xl">
               <div class="relative flex gap-4">
                 <div class="flex flex-1 ">
-                  <Avatar
-                    src="https://coffective.com/wp-content/uploads/2018/06/icon-house-blue.png"
-                  />
+                  <Avatar />
                 </div>
                 <div class="flex flex-1 justify-end md:justify-center">
                   <MdLessNavContainer linksList={menuItemns} />
                   <MdPlusNav linksList={menuItemns} />
                 </div>
-                <div class="flex justify-end md:flex-1">
+                <div class="flex justify-end md:flex-1 mt-1">
                   <div class="pointer-events-auto flex">
                     <SetColorThemeButton />
                     <LanguageSelect />

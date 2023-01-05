@@ -6,11 +6,10 @@ import { PostsLoader } from '$lib/data/posts'
 import { website } from '$lib/info'
 import type { RequestHandler } from '@sveltejs/kit'
 
+export const prerender = true
+
 const postsUrl = `${website}/posts`
 
-/**
- * @type {import('@sveltejs/kit').RequestHandler}
- */
 export const GET: RequestHandler = async ({ setHeaders }) => {
   setHeaders({
     'Cache-Control': `max-age=0, s-max-age=600`,
@@ -41,9 +40,7 @@ export const GET: RequestHandler = async ({ setHeaders }) => {
             <loc>${postsUrl}/${post.slug}</loc>
             <lastmod
               >${
-                post.createdAt
-                  ? new Date(post.createdAt).toISOString()
-                  : new Date().toISOString()
+                post.createdAt ? new Date(post.createdAt).toISOString() : new Date().toISOString()
               }</lastmod
             >
             <changefreq>monthly</changefreq>

@@ -11,7 +11,7 @@ export class GhostClient implements JsonClientReader {
   constructor(readonly ghostUrl: string) {
     this.ghostApi = new GhostContentAPI({
       url: ghostUrl,
-      key: env.KEY,
+      key: env.KEY ?? '',
       version: 'v5.0'
     })
   }
@@ -74,7 +74,7 @@ export class GhostClientSingle implements JsonClientReader {
   constructor(readonly ghostUrl: string) {
     this.ghostApi = new GhostContentAPI({
       url: ghostUrl,
-      key: env.KEY,
+      key: env.KEY ?? '',
       version: 'v5.0'
     })
   }
