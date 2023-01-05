@@ -38,7 +38,7 @@
   </ol>
   {:else}
   <div class="p-3">
-  <h3 class="py-2">Damn
+  <h3 class="py-2">grr
     <img src="/imgs/grr.png" alt="grr icon" class="inline w-6">
   </h3> 
   

@@ -1,10 +1,13 @@
+<script lang="ts">
+  import { t } from '$lib/translations/translations'
+</script>
+
 <div class="mx-auto max-w-7xl lg:px-12">
   <div class="text-center">
-    <h1 class="text-2xl py-3">Projects</h1>
+    <h1 class="text-2xl py-3">{$t('projects.title')}</h1>
 
     <p class="max-w-md max-w-prose mx-auto">
-      Aren't we all projecting something somehow? But I copy-pasted the cards below, I guess that
-      counts something...
+      {$t('projects.text')}
     </p>
     <br />
 
