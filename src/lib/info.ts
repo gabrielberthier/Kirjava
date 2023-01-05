@@ -23,6 +23,6 @@ vehicula sapien vitae sagittis.
 // For sake of the live demo, I'm using `username/repo` for github,
 // but you can replace with just your username.
 export const github = 'gabrielberthier'
-export const twitter = 'gabrielberthier'
+export const twitter = 'GabriBerthier'
 export const linkedin = 'gabriel-nogueira-berthier-1b280214a'
-export const instagram = 'gabriel.berthier'
+export const instagram = 'gabrielberthier'
