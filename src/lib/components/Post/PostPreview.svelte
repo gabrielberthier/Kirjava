@@ -13,7 +13,7 @@
   $: excerpt = post.preview.text || post.preview.html
 </script>
 
-<Card href={`${loc}/posts/${post.slug}`}>
+<Card href={`/${loc}/posts/${post.slug}`}>
   <slot slot="eyebrow" name="eyebrow" />
   <slot slot="title">{post.title}</slot>
   <div slot="description" class="prose dark:prose-invert">

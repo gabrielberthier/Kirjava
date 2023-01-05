@@ -1,4 +1,7 @@
 <script lang="ts">
+    import { locale } from "$lib/translations/translations"
+
+
   export let message: string = ''
 </script>
 
@@ -22,7 +25,7 @@
           click the button below to go back to the homepage.
         </p>
         <button class="btn-green">
-          <a href="/">HOME</a>
+          <a href="/{$locale}">HOME</a>
         </button>
       </div>
     </div>
