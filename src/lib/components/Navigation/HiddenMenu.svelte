@@ -61,6 +61,8 @@
               data-headlessui-state="open"
               href="{link.to}"
             >
+            {link.text}
+            </a>
           </li>
         {/each}
       </ul>
