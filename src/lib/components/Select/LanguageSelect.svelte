@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { locales, locale } from '$lib/translations/translations'
+  import { locales, locale } from '$lib/translations/common'
 
   import { goto } from '$app/navigation'
   import { getFlagEmoji } from '$services/utils/functions'

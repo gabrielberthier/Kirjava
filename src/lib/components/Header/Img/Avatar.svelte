@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { locale } from '$lib/translations/translations'
+  import { locale } from '$lib/translations/common'
   let href: string = ''
 
   locale.subscribe((l) => (href = `/${l}`))

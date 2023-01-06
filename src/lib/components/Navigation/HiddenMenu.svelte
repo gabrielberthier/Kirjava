@@ -1,17 +1,13 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
-  import { locale } from '$lib/translations/translations'
   import type { MenuItem } from '../Header/protocols'
   import { clickOutside } from '$lib/actions/on-click-outside'
 
-  let loc = ''
   const dispatch = createEventDispatcher()
 
   function closeModalMenu() {
     dispatch('close-modal')
   }
-
-  locale.subscribe((el) => (loc = el))
 
   export let linksList: MenuItem[]
 </script>
@@ -63,7 +59,7 @@
             <a
               class="block py-2"
               data-headlessui-state="open"
-              href="/{loc}/{link.to.toLocaleLowerCase()}">{link.text}</a
+              href="{link.to}"
             >
           </li>
         {/each}

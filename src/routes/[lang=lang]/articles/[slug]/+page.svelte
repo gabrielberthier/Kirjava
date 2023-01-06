@@ -82,7 +82,7 @@
     <article>
       <header class="flex flex-col">
         <h1
-          class="mt-6 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl"
+          class="mt-4 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl"
         >
           {data.post.title}
         </h1>
@@ -98,13 +98,13 @@
 
       <!-- render the post -->
       {#if data.component}
-        <div class="prose dark:prose-invert ">
+        <main class="prose dark:prose-invert">
           <svelte:component this={data.component} />
-        </div>
+        </main>
       {:else}
-        <div class="prose dark:prose-invert ">
+        <main class="prose dark:prose-invert ">
           {@html data.post.preview.html}
-        </div>
+        </main>
       {/if}
     </article>
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { locales } from '$lib/translations/translations'
+  import { locales } from '$lib/translations/common'
   import { getFlagEmoji } from '$services/utils/functions'
   import LangOptions from './LangOptions.svelte'
 

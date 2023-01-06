@@ -2,7 +2,7 @@
   import Card from '$components/Cards/Card.svelte'
   import ArrowRightIcon from '$components/Icons/ArrowRightIcon.svelte'
   import type { IPostResponse } from '$domain/models/post'
-  import { locale } from '$lib/translations/translations'
+  import { locale } from '$lib/translations/common'
 
   let loc: string
 

@@ -4,7 +4,7 @@
   import About from '$lib/components/Personal/About.svelte'
   import WorkedOnCard from '$lib/components/Personal/WorkedOnCard.svelte'
   import { bio, name } from '$lib/info'
-  import { locale } from '$lib/translations/translations'
+  import { locale } from '$lib/translations/common'
   import type { PageData } from './$types'
   let loc: string = ''
   locale.subscribe((el) => (loc = el))

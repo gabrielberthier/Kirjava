@@ -1,4 +1,4 @@
-import { loadTranslations } from '$lib/translations/translations'
+import { loadTranslations } from '$lib/translations/common'
 import type { LayoutServerLoad } from './$types'
 
 interface Internationalization {

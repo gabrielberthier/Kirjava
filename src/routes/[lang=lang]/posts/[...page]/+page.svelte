@@ -4,7 +4,7 @@
   import ArrowRightIcon from '$components/Icons/ArrowRightIcon.svelte'
   import PostsList from '$components/Post/PostsList.svelte'
   import type {PageData} from './$types'
-  import { t } from "$lib/translations/translations";
+  import { t } from "$lib/translations/common";
 
   export let data: PageData
 

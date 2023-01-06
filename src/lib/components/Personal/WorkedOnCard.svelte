@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { IGitHubRepo } from '$domain/models/github/user-repositories'
   import RepositoryListItem from './RepositoryListItem.svelte'
-  import { t } from "$lib/translations/translations";
+  import { t } from "$lib/translations/common";
 
   const src = 'https://cdn-icons-png.flaticon.com/512/25/25231.png'
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { locale } from "$lib/translations/translations"
+    import { locale } from "$lib/translations/common"
 
 
   export let message: string = ''

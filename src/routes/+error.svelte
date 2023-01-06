@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores'
-  import { t, locale, loadTranslations } from '$lib/translations/translations'
+  import { t, locale, loadTranslations } from '$lib/translations/common'
   import FourOFour from '$lib/custom-pages/four-o-four.svelte'
 
   export let status = $page.status

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { twitter, github, linkedin, instagram } from '$lib/info'
-  import { t } from '$lib/translations/translations'
+  import { t } from '$lib/translations/common'
 </script>
 
 <div class="mx-auto max-w-7xl lg:px-8">

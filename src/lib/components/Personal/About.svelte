@@ -1,7 +1,7 @@
 <script lang="ts">
   import SocialLinks from '$components/Social/SocialLinks.svelte'
   import { avatar, name, whereIam } from '$lib/info'
-  import { t } from "$lib/translations/translations";
+  import { t } from "$lib/translations/common";
 </script>
 
 <div class="relative md:px-4 sm:px-0 lg:px-12">

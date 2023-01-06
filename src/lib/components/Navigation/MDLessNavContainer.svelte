@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { clickOutside } from "$lib/actions/on-click-outside"
     import type { MenuItem } from "../Header/protocols"
     import HiddenMenu from "./HiddenMenu.svelte"
 
