@@ -10,6 +10,21 @@ KEY=22444f78447824223cefc48062
 Henceforth, the project should correctly autoload either method to retrieve posts. 
 
 
+# Next Steps Roadmap
+
+This is an early development version. I am currently considering:
+
+- [ ] Support for JSON safety using Zod instead of class-transformer
+- [x] Adjust bookmarks
+- [X] ~~Dark theme support (+ auto detecting system's dark/light mode).~~ Support for detecting theme's colors was added.
+- [ ] Zoom button controls (`+` / `-` / `reset`).
+- [ ] Add Spotify API because why not?
+- [ ] Ignoring files or directories.
+- [ ] Improve landing page splitting work from bio.
+- [ ] Create Curriculum Page.
+- [x] Optional autostart.
+
+
 # SvelteKit Blog Template
 
 A SvelteKit blog template built on mdsvex, tailwind, Typescript, GhostCMS.
