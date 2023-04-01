@@ -1,6 +1,7 @@
 import { browser } from '$app/environment'
 import type { Meta } from '$domain/models/meta'
-import type { IAllPostResponse } from '$domain/models/post'
+import type { IAllPostResponse, IPostResponse } from '$domain/models/post'
+import type { PostFetcher } from '$lib/data/posts'
 import { PostsSingleton } from './posts-singleton'
 
 interface FileSystemLoadingOptions {
@@ -8,15 +9,37 @@ interface FileSystemLoadingOptions {
   limit?: number
 }
 
-export class FileSystemPostsLoader {
+export class FileSystemPostsLoader implements PostFetcher {
   private postsSingleton: PostsSingleton
 
   constructor() {
-    this.postsSingleton = PostsSingleton.getInstance()
-
     if (browser) {
       throw new Error(`posts can only be imported server-side`)
     }
+
+    this.postsSingleton = PostsSingleton.getInstance()
+  }
+  async getArticles(
+    page?: number | undefined,
+    limit?: number | undefined
+  ): Promise<Partial<{ posts: IPostResponse[]; meta: Meta }>> {
+    return this.load({
+      page,
+      limit
+    })
+  }
+
+  async all(page?: number, limit?: number): Promise<Partial<IAllPostResponse>> {
+    return this.load({
+      page,
+      limit
+    })
+  }
+
+  async getOneWithSlug(slug: string, _params?: any): Promise<IPostResponse | undefined> {
+    const { post } = await this.findOne(slug)
+
+    return post
   }
 
   async load(
