@@ -1,21 +1,20 @@
 <script lang="ts">
-  import { menuItems } from "$lib/stores/menu-store";
   import SetColorThemeButton from '$components/Buttons/SetColorThemeButton.svelte'
   import MdLessNavContainer from '$components/Navigation/MDLessNavContainer.svelte'
   import MdPlusNav from '$components/Navigation/MDPlusNav.svelte'
   import Avatar from './Img/Avatar.svelte'
   import { headerToggle } from '$actions/header-toggle'
   import { afterNavigate } from '$app/navigation'
-  import { browser } from '$app/environment'
   import LanguageSelect from '../Select/LanguageSelect.svelte'
+  import type { MenuItem } from './protocols'
+  import { locale, t } from '$lib/translations/common'
+  import { onUpdateItems, updateHeaderAfterNavigate } from "./header-behaviour";
 
-  afterNavigate((el) => {
-    const header = document.querySelector('header')
-    const token = 'scroll-down'
-    if (browser && header && header.classList.contains(token)) {
-      header.classList.remove(token)
-    }
-  })
+  let menuItems: MenuItem[] = []
+
+  afterNavigate(updateHeaderAfterNavigate)
+
+  locale.subscribe(async (loc) => menuItems = onUpdateItems(loc))
 </script>
 
 <header
@@ -36,8 +35,8 @@
                 <Avatar />
               </div>
               <div class="flex flex-1 justify-end md:justify-center">
-                <MdLessNavContainer linksList={$menuItems} />
-                <MdPlusNav linksList={$menuItems} />
+                <MdLessNavContainer linksList={menuItems} />
+                <MdPlusNav linksList={menuItems} />
               </div>
               <div class="flex justify-end md:flex-1 mt-1">
                 <div class="pointer-events-auto flex">

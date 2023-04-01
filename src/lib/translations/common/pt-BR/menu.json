@@ -1,3 +1,9 @@
 {
-  "items": ["Sobre", "Artigos", "Projetos", "Palestras", "Casos de Uso"]
+  "items": {
+    "about": "Sobre",
+    "articles": "Artigos",
+    "projects": "Projetos",
+    "speaking": "Palestras",
+    "books": "Livros"
+  }
 }
