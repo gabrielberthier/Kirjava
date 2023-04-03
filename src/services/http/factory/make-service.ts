@@ -1,11 +1,11 @@
-import { env } from '$env/dynamic/private'
 import type { JsonClientReader } from '../protocols/client'
 import type { ResponseHandler } from '../protocols/response'
+import type { Constructor } from '$domain/adapters'
 import { ReaderApiService } from '../api-services/reader'
-import type { Constructor, Convert } from '$domain/adapters'
 import { removeTrailingSlash } from '$services/utils/functions'
 import { axiosImplementation } from '../client-implementation/factories'
 import { makeDefaultResponseHandler, makeDefaultResponseHandlerMany } from '../response/factories'
+import { env } from '$env/dynamic/private'
 
 export interface ApiReaderServiceOptions<T extends object> {
   resource: string
@@ -39,13 +39,14 @@ export const readerServiceFactory = <T extends object>(
     headers
   } = options
 
-  resource = removeTrailingSlash(resource)
-  baseUrl = removeTrailingSlash(baseUrl)
-  apiPath = removeTrailingSlash(apiPath)
-  client ??= axiosImplementation(baseUrl, apiPath, headers)
+  const [res = '', url = '', path = ''] = [resource, baseUrl, apiPath].map((el) =>
+    removeTrailingSlash(el)
+  )
+
+  client ??= axiosImplementation(url, path, headers)
   responseHandler ??= makeDefaultResponseHandler(entity)
 
-  return new ReaderApiService(resource, client, responseHandler)
+  return new ReaderApiService(res, client, responseHandler)
 }
 
 export const multiReaderServiceFactory = <T extends object>(
@@ -58,14 +59,15 @@ export const multiReaderServiceFactory = <T extends object>(
     apiPath = '',
     client,
     responseHandler,
-    headers,
+    headers
   } = options
 
-  resource = removeTrailingSlash(resource)
-  baseUrl = removeTrailingSlash(baseUrl)
-  apiPath = removeTrailingSlash(apiPath)
-  client ??= axiosImplementation(baseUrl, apiPath, headers)
-  responseHandler ??= makeDefaultResponseHandlerMany(entity,)
+  const [res = '', url = '', path = ''] = [resource, baseUrl, apiPath].map((el) =>
+    removeTrailingSlash(el)
+  )
 
-  return new ReaderApiService(resource, client, responseHandler)
+  client ??= axiosImplementation(url, path, headers)
+  responseHandler ??= makeDefaultResponseHandlerMany(entity)
+
+  return new ReaderApiService(res, client, responseHandler)
 }
