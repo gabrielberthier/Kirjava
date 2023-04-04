@@ -1,6 +1,5 @@
 import { GithubDataProvider } from '$lib/data/github'
-import { PostsDataProvider } from '$lib/data/posts/posts'
-import { PostFetcherFactory } from '$services/posts/post-fetcher-factory'
+import { PostLoaderFactory } from '$services/posts/post-fetcher-factory'
 import type { PageServerLoad } from './$types'
 import { github } from '$lib/info'
 import { env as private_env } from '$env/dynamic/private'
@@ -10,7 +9,7 @@ import type { IPostResponse } from '$domain/models/post'
 import type { PojoHttpException } from '$services/http/exceptions/http-exceptions'
 
 export const load: PageServerLoad = async function load() {
-  const postsDataProvider = new PostsDataProvider(PostFetcherFactory.getPostFetcher())
+  const postsDataProvider = PostLoaderFactory.get()
   const githuhDataProvider = new GithubDataProvider(
     new GitHubApi(private_env.GITHUB_KEY ?? '', public_env.PUBLIC_GITHUB_URL ?? '', github)
   )

@@ -2,8 +2,8 @@
 // It's helpful for SEO but does require you to keep it updated to reflect the routes of your website.
 // It is OK to delete this file if you'd rather not bother with it.
 
-import { PostsLoader } from '$lib/data/posts/posts'
 import { website } from '$lib/info'
+import { PostLoaderFactory } from '$services/posts/post-fetcher-factory'
 import type { RequestHandler } from '@sveltejs/kit'
 
 export const prerender = true
@@ -15,7 +15,11 @@ export const GET: RequestHandler = async ({ setHeaders }) => {
     'Cache-Control': `max-age=0, s-max-age=600`,
     'Content-Type': 'application/xml'
   })
-  const posts = (await new PostsLoader(false).all()).posts
+  const postsDataProvider = PostLoaderFactory.get()
+  const { posts } = (await postsDataProvider.getArticles()).unwrapOr({
+    posts: [],
+    meta: undefined
+  })
 
   const xml = `<?xml version="1.0" encoding="UTF-8" ?>
     <urlset

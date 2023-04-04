@@ -1,9 +1,8 @@
 import { redirect } from '@sveltejs/kit'
 import type { ServerLoadEvent } from '@sveltejs/kit'
-import { PostsLoader } from '$lib/data/posts/posts'
 import type { IPostResponse } from '$domain/models/post'
-import { env } from '$env/dynamic/public'
 import type { Meta } from '$domain/models/meta'
+import { PostLoaderFactory } from '$services/posts/post-fetcher-factory'
 
 export interface LoadedPostResponse {
   posts: IPostResponse[]
@@ -17,9 +16,9 @@ export async function load(event: ServerLoadEvent): Promise<LoadedPostResponse> 
   let page = 1
   let limit = 10
 
-  const useLocal = !!env.PUBLIC_USE_LOCAL
 
-  const postsLoader = new PostsLoader(useLocal)
+
+  const postsDataProvider = PostLoaderFactory.get()
 
   if (params.page) {
     try {
@@ -34,7 +33,10 @@ export async function load(event: ServerLoadEvent): Promise<LoadedPostResponse> 
     }
   }
 
-  const { posts, meta } = await postsLoader.all(page, limit)  
+  const { posts, meta } = (await postsDataProvider.getArticles(page, limit)).unwrapOr({
+    posts: [],
+    meta: undefined
+  })
 
   // if page doesn't exist, direct to page 1
   if (posts.length === 0 && page > 1) {

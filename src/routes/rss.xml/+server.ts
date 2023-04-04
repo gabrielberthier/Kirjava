@@ -2,8 +2,8 @@
 // It is OK to delete this file if you don't want an RSS feed.
 // credit: https://scottspence.com/posts/make-an-rss-feed-with-sveltekit#add-posts-for-the-rss-feed
 
-import { PostsLoader } from '$lib/data/posts/posts'
 import { name, website } from '$lib/info'
+import { PostLoaderFactory } from '$services/posts/post-fetcher-factory'
 import type { RequestHandler } from '@sveltejs/kit'
 
 export const prerender = true
@@ -19,8 +19,11 @@ export const GET: RequestHandler = async ({ setHeaders }) => {
     'Cache-Control': `max-age=0, s-max-age=600`,
     'Content-Type': 'application/xml'
   })
-
-  const posts = (await new PostsLoader().all()).posts
+  const postsDataProvider = PostLoaderFactory.get()
+  const { posts } = (await postsDataProvider.getArticles()).unwrapOr({
+    posts: [],
+    meta: undefined
+  })
 
   const xml = `<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
       <channel>
