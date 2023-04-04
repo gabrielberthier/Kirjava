@@ -2,8 +2,7 @@ import GhostContentAPI from '@tryghost/content-api'
 import type { JsonClientReader, RawApiResponse } from '../../protocols/client'
 import type { GhostAPI } from '@tryghost/content-api'
 import { env } from '$env/dynamic/private'
-import { isAllowedType, isGhostError } from './is-type'
-import type { GhostResponse } from './types'
+import { isAllowedType } from './is-type'
 import {
   DomainHttpException,
   notFoundError,
@@ -29,13 +28,13 @@ export class GhostClient implements JsonClientReader {
   async dispatch(path: string, params: any): Promise<RawApiResponse> {
     if (isAllowedType(path)) {
       try {
-        let data: GhostResponse
+        let data: object
         if (this.singleItem) {
           const entity = await this.ghostApi[path].read(params)
-          data = { entity, meta: undefined }
+          data = { ...entity, meta: undefined }
         } else {
           const response = await this.ghostApi[path].browse(params)
-          data = { entity: response, meta: response.meta }
+          data = { [path]: response, meta: response.meta }
         }
 
         return {
@@ -63,8 +62,8 @@ export class GhostClient implements JsonClientReader {
             data: error.message
           }
         } else if (error instanceof Error) {
-          console.error("Found error")
-          console.log(error.stack)
+          console.error('Found error')
+          console.error(error.stack)
 
           throw error
         } else {

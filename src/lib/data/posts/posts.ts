@@ -7,7 +7,10 @@ export class PostsDataProvider {
     page ??= 1
     limit ??= 10
 
-    return this.postFetcher.all(page, limit)
+    const response = this.postFetcher.all(page, limit);
+    (await response).mapErr((e) => console.error(e))
+
+    return response
   }
 
   async getOneBySlug(slug: string, params?: any) {

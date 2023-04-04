@@ -1,6 +1,5 @@
-import type { GhostError, Nullable } from '@tryghost/content-api'
-
-export type EntitiesTypes = 'posts' | 'authors' | 'tags' | 'pages'
+import type { GhostError } from '@tryghost/content-api'
+import type { EntitiesTypes } from './types'
 
 export const isAllowedType = (type: string): type is EntitiesTypes =>
   ['posts', 'authors', 'tags', 'pages'].includes(type)
@@ -13,4 +12,3 @@ export const isGhostError = (object: any): object is GhostError => {
 
   return false
 }
-

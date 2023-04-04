@@ -25,6 +25,8 @@ export const load: PageServerLoad = async function load() {
 
   if(allPosts.isErr()){
     postError = allPosts.error.toPojo()
+    console.error(postError);
+    
   }
   else{
     posts = allPosts.value.posts

@@ -1,5 +1,7 @@
 import type { Author, Authors, Nullable, PostOrPage, PostsOrPages, Tag, Tags } from "@tryghost/content-api";
 
+export type EntitiesTypes = 'posts' | 'authors' | 'tags' | 'pages'
+
 export interface Pagination {
     page: number;
     limit: number;

@@ -35,6 +35,7 @@
         <PostsList posts={posts} />
       </div>
       {:else}
+      <h3 class="bold"><b>~Nada publicado ainda</b></h3>
       <img src="/imgs/empty.jpg" alt="Empty..." class="max-w-full h-auto rounded-lg mt-12">
       {/if}
       

@@ -25,7 +25,7 @@ export const postConverter = (post: Post): IPostResponse => {
     createdAt: newDate,
     isIndexFile: false,
     preview: {
-      text: excerpt,
+      text: excerpt ?? '',
       html
     },
     next: undefined,
