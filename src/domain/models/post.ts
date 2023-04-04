@@ -8,12 +8,10 @@ interface Heading {
   id: string
 }
 
-type PostResponseSet = {
+export interface IAllPostResponse{
   posts: IPostResponse[]
-  meta: Meta
+  meta?: Meta
 }
-
-export type IAllPostResponse = Partial<PostResponseSet>
 
 export interface IPostResponse {
   id?: string

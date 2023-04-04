@@ -1,9 +1,9 @@
-import { isObject } from '$services/utils/functions'
+import type { DomainHttpException } from '../exceptions/http-exceptions'
 import type { RawApiResponse } from './client'
 
 export interface SuccessResponse<T> {
   success: true
-  data?: T
+  data: T
   error: undefined
   status: number
   headers: any
@@ -13,18 +13,9 @@ export interface SuccessResponse<T> {
 export interface ErrorResponse {
   success: false
   data: undefined
-  error: Error
+  error: DomainHttpException
   status: number
   headers: any
-}
-
-export class ApiErrorResponse extends Error {
-  constructor(message: string | object) {
-    if (isObject(message)) {
-      message = JSON.stringify(message)
-    }
-    super(message as string)
-  }
 }
 
 // our union type

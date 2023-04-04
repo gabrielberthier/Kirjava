@@ -2,7 +2,7 @@
 // It is OK to delete this file if you don't want an RSS feed.
 // credit: https://scottspence.com/posts/make-an-rss-feed-with-sveltekit#add-posts-for-the-rss-feed
 
-import { PostsLoader } from '$lib/data/posts'
+import { PostsLoader } from '$lib/data/posts/posts'
 import { name, website } from '$lib/info'
 import type { RequestHandler } from '@sveltejs/kit'
 

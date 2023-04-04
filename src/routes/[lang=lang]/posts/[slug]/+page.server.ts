@@ -1,4 +1,4 @@
-import { PostsLoader } from '$lib/data/posts'
+import { PostsLoader } from '$lib/data/posts/posts'
 import { error } from '@sveltejs/kit'
 import type { Load } from '@sveltejs/kit'
 

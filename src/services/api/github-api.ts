@@ -20,14 +20,18 @@ export class GitHubApi {
   async getRepositories(): Promise<IGitHubRepo[]> {
     const repositories = await this.githubReaderService.get('', { sort: 'updated', per_page: 5 })
 
-    return repositories.map((el) => {
-      return {
-        url: el.htmlUrl ?? `${this.url}/${this.githubProfile}`,
-        language: el.language ?? 'Language unavailable',
-        name: el.name,
-        createdAt: el.createdAt,
-        updatedAt: el.updatedAt
-      }
-    })
+    if (repositories.success) {
+      repositories.data.map((el) => {
+        return {
+          url: el.htmlUrl ?? `${this.url}/${this.githubProfile}`,
+          language: el.language ?? 'Language unavailable',
+          name: el.name,
+          createdAt: el.createdAt,
+          updatedAt: el.updatedAt
+        }
+      })
+    }
+
+    return []
   }
 }

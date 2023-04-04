@@ -1,7 +1,7 @@
 import type { JsonClientReader, RawApiResponse } from '../protocols/client'
 import { Axios, AxiosError } from 'axios'
 import type { RequestConfigBuilder, RequestConfig } from '../protocols/request'
-import { ApiErrorResponse } from '../protocols/response'
+import { ApiErrorResponse } from '../protocols/errors'
 import { isObject } from '$services/utils/functions'
 
 const isAxiosError = (payload: any): payload is AxiosError => {

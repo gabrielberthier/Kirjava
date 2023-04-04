@@ -2,7 +2,7 @@
 // It's helpful for SEO but does require you to keep it updated to reflect the routes of your website.
 // It is OK to delete this file if you'd rather not bother with it.
 
-import { PostsLoader } from '$lib/data/posts'
+import { PostsLoader } from '$lib/data/posts/posts'
 import { website } from '$lib/info'
 import type { RequestHandler } from '@sveltejs/kit'
 

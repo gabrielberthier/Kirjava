@@ -5,10 +5,6 @@ export class GithubDataProvider {
   constructor(private api: GitHubApi) {}
 
   async gatherRepositories(): Promise<IGitHubRepo[]> {
-    try {
-      return this.api.getRepositories()
-    } catch (error) {
-      return []
-    }
+    return this.api.getRepositories()
   }
 }

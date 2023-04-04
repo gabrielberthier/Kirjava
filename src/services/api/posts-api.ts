@@ -1,50 +1,62 @@
 import { Entry } from '$domain/models/posts-entry'
 import { readerServiceFactory } from '../http/factory/make-service'
 import { env } from '$env/dynamic/private'
-import { GhostClient, GhostClientSingle } from '$services/http/client-implementation/ghost-client'
+import { GhostClient } from '$services/http/client-implementation/ghost/ghost-client'
 import { Post } from '$domain/models/post'
 import type { IAllPostResponse } from '$domain/models/post'
 import type { IPostResponse } from '$domain/models/post'
-import type { PostFetcher } from '$lib/data/posts'
 import { allPostsConverter, postConverter } from '$domain/model-to-data/posts-data'
+import { err, ok, Result } from 'neverthrow'
+import type { DomainHttpException } from '$services/http/exceptions/http-exceptions'
 
 export const AllPostsApi = readerServiceFactory<Entry>({
   resource: 'posts',
   apiPath: 'api/content',
-  client: new GhostClient(env.BACKEND_URL || ''),
+  client: new GhostClient(env.BACKEND_URL || '', false),
   entity: Entry
 })
 
 export const singlePostApi = readerServiceFactory<Post>({
   resource: 'posts',
   apiPath: 'api/content',
-  client: new GhostClientSingle(env.BACKEND_URL || ''),
+  client: new GhostClient(env.BACKEND_URL || '', true),
   entity: Post
 })
 
-export class ApiPostsLoader implements PostFetcher {
+export class ApiPostsLoader {
   async getArticles(
     page?: number | undefined,
     limit?: number | undefined
-  ): Promise<IAllPostResponse> {
-    const posts = await AllPostsApi.get('', { page, limit, filter: 'tag:article' })
+  ): Promise<Result<IAllPostResponse, DomainHttpException>> {
+    const entry = await AllPostsApi.get('', { page, limit, filter: 'tag:article' })
 
-    return allPostsConverter(posts)
+    if (entry.success) {
+      return ok(allPostsConverter(entry.data))
+    }
+
+    return err(entry.error)
   }
 
-  async all(page?: number | undefined, limit?: number | undefined): Promise<IAllPostResponse> {
-    const entry = await this.loadURL(page, limit)
+  async all(page?: number, limit?: number): Promise<Result<IAllPostResponse, DomainHttpException>> {
+    const entry = await AllPostsApi.get('', { page, limit })
 
-    return allPostsConverter(entry)
+    if (entry.success) {
+      return ok(allPostsConverter(entry.data))
+    }
+
+    return err(entry.error)
   }
 
-  async getOneWithSlug(slug: string, params?: any): Promise<IPostResponse | undefined> {
-    const post = await singlePostApi.get('', { slug, ...params })
+  async getOneWithSlug(
+    slug: string,
+    params?: any
+  ): Promise<Result<IPostResponse, DomainHttpException>> {
+    const response = await singlePostApi.get('', { slug, ...params })
 
-    return postConverter(post)
-  }
+    if (response.success) {
+      return ok(postConverter(response.data))
+    }
 
-  async loadURL(page?: number, limit?: number): Promise<Entry> {
-    return AllPostsApi.get('', { page, limit })
+    return err(response.error)
   }
 }

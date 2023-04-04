@@ -1,7 +1,11 @@
 import { browser } from '$app/environment'
 import type { Meta } from '$domain/models/meta'
 import type { IAllPostResponse, IPostResponse } from '$domain/models/post'
-import type { PostFetcher } from '$lib/data/posts'
+import type { PostFetcher } from '$lib/data/posts/protocols'
+import { notFoundError } from '$services/http/exceptions/http-exceptions'
+import type { DomainHttpException } from '$services/http/exceptions/http-exceptions'
+import { err, ok } from 'neverthrow'
+import type { Result } from 'neverthrow'
 import { PostsSingleton } from './posts-singleton'
 
 interface FileSystemLoadingOptions {
@@ -20,26 +24,31 @@ export class FileSystemPostsLoader implements PostFetcher {
     this.postsSingleton = PostsSingleton.getInstance()
   }
   async getArticles(
-    page?: number | undefined,
-    limit?: number | undefined
-  ): Promise<Partial<{ posts: IPostResponse[]; meta: Meta }>> {
-    return this.load({
+    page?: number,
+    limit?: number
+  ): Promise<Result<IAllPostResponse, DomainHttpException>> {
+    const result = await this.load({
       page,
       limit
     })
+
+    return ok(result)
   }
 
-  async all(page?: number, limit?: number): Promise<Partial<IAllPostResponse>> {
-    return this.load({
+  async all(page?: number, limit?: number): Promise<Result<IAllPostResponse, DomainHttpException>> {
+    const result = await this.load({
       page,
       limit
     })
+
+    return ok(result)
   }
 
-  async getOneWithSlug(slug: string, _params?: any): Promise<IPostResponse | undefined> {
+  async getOneWithSlug(slug: string): Promise<Result<IPostResponse, DomainHttpException>> {
     const { post } = await this.findOne(slug)
 
-    return post
+    if (post) return ok(post)
+    else return err(notFoundError('Not found in getOneWithSlug'))
   }
 
   async load(
