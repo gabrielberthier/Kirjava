@@ -15,6 +15,10 @@ export abstract class BaseApiService<T> {
   protected async exec(path: string, params?: any): Promise<ApiResponse<T>> {
     const response = await this.client.dispatch(path, params)
 
+    if (response.error) {
+      console.error("\x1b[31m%s\x1b[0m", response.error)
+    }
+
     return this.responseHandler.handle(response)
   }
 }

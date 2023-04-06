@@ -1,11 +1,18 @@
 import type { JsonClientReader, RawApiResponse } from '../protocols/client'
 import { Axios, AxiosError } from 'axios'
+import type { AxiosResponse } from 'axios'
 import type { RequestConfigBuilder, RequestConfig } from '../protocols/request'
 import { ApiErrorResponse } from '../protocols/errors'
 import { isObject } from '$services/utils/functions'
 
 const isAxiosError = (payload: any): payload is AxiosError => {
   return isObject(payload) && 'isAxiosError' in payload && payload.isAxiosError === true
+}
+
+const toApiError = ({ data }: AxiosResponse<unknown, any>): ApiErrorResponse => {
+  const strResponse = isObject(data) ? JSON.stringify(data) : String(data)
+
+  return new ApiErrorResponse(strResponse)
 }
 
 export class AxiosClient implements JsonClientReader {
@@ -53,22 +60,19 @@ export class AxiosClient implements JsonClientReader {
       throw new AxiosError(response.statusText, `${response.status}`)
     } catch (error) {
       if (isAxiosError(error)) {
-        let apiError: ApiErrorResponse
         if (error.response) {
-          apiError = new ApiErrorResponse(error.response.data as object | string)
           return {
             data: String(error.status) || '',
             headers: error.response.headers,
             status: error.response.status,
-            error: apiError
+            error: toApiError(error.response)
           }
         } else if (error.request) {
-          apiError = new ApiErrorResponse(error.request as object | string)
           return {
             data: String(error.status) || '',
             headers: undefined,
             status: 500,
-            error: apiError
+            error: error.request
           }
         }
       }

@@ -7,8 +7,8 @@ export class PostsDataProvider {
     page ??= 1
     limit ??= 10
 
-    const response = this.postFetcher.all(page, limit);
-    (await response).mapErr((e) => console.error(e))
+    const response = await this.postFetcher.all(page, limit);
+    response.mapErr((e) => console.error("\x1b[31m%s\x1b[0m", e))
 
     return response
   }

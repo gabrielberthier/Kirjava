@@ -62,8 +62,8 @@ export class GhostClient implements JsonClientReader {
             data: error.message
           }
         } else if (error instanceof Error) {
-          console.error('Found error')
-          console.error(error.stack)
+          console.error("\x1b[31m%s\x1b[0m",'Found error')
+          console.error("\x1b[31m%s\x1b[0m", error.stack)
 
           throw error
         } else {
