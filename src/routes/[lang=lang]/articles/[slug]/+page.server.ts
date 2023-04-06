@@ -5,23 +5,17 @@ import type { Load } from '@sveltejs/kit'
 export const load: Load = async function load({ params }) {
   const { slug } = params
 
-  try {
-    const postsDataProvider = PostLoaderFactory.get()
+  const postsDataProvider = PostLoaderFactory.get()
 
-    const post = await (await postsDataProvider.getOneBySlug(slug!, { filter: 'tag:article' })).unwrapOr(null)
+  const resultPosts = await postsDataProvider.getOneBySlug(slug!, { filter: 'tag:article' })
 
-    if (!post) {
-      throw error(404, 'Post not found')
-    }
+  const post = resultPosts.unwrapOr(null)
 
-    return {
-      post
-    }
-  } catch (error) {
-    console.error(error)
-    
-    return {
-      post: undefined
-    }
+  if (!post) {
+    throw error(404, 'Post not found')
+  }
+
+  return {
+    post
   }
 }

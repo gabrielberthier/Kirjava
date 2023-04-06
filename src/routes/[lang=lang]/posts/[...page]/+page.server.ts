@@ -33,7 +33,7 @@ export async function load(event: ServerLoadEvent): Promise<LoadedPostResponse> 
     }
   }
 
-  const { posts, meta } = (await postsDataProvider.getArticles(page, limit)).unwrapOr({
+  const { posts, meta } = (await postsDataProvider.all(page, limit)).unwrapOr({
     posts: [],
     meta: undefined
   })

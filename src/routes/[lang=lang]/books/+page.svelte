@@ -16,8 +16,8 @@
         <li class="group relative flex items-start flex-col md:flex-row">
           <div class="min-w-full md:min-w-[20%] h-full">
             <div
-              class="relative z-10 md:top-5 align-middle flex md:h-36 md:w-36 items-center justify-center 
-              bg-white shadow-md max-md:rounded shadow-zinc-800/5 ring-1 ring-zinc-900/5 
+              class="relative z-10 md:top-5 align-middle flex md:h-36 md:w-36 items-center justify-center
+              bg-white shadow-md max-md:rounded shadow-zinc-800/5 ring-1 ring-zinc-900/5
               dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0 mx-auto max-md:p-5"
             >
               <img
@@ -36,11 +36,10 @@
               <div
                 class="absolute -inset-y-6 -inset-x-4 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl"
               />
-              <a
-                ><span
-                  class="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl"
-                /><span class="relative z-10">As Dores Crônicas</span></a
-              >
+              <div>
+                <span class="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl" />
+                <span class="relative z-10">As Dores Crônicas</span>
+              </div>
             </h2>
             <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
               {$t('books.dores_cronicas')}
