@@ -24,7 +24,7 @@
       <span class="h-full w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
     </span>
   {/if}
-  <div class="flex" class:flex-col={!collapsed}>
+  <div class="flex justify-between" >
     <time datetime={post.createdAt}>
       {createdAt}
     </time>

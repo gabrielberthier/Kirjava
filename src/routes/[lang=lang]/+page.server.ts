@@ -14,7 +14,7 @@ export const load: PageServerLoad = async function load() {
     new GitHubApi(private_env.GITHUB_KEY ?? '', public_env.PUBLIC_GITHUB_URL ?? '', github)
   )
 
-  const [allPosts, ] = await Promise.all([
+  const [allPosts, repositories] = await Promise.all([
     postsDataProvider.all(1, 4),
     githuhDataProvider.gatherRepositories()
   ])
@@ -34,6 +34,6 @@ export const load: PageServerLoad = async function load() {
   return {
     posts,
     postError,
-    repositories: []
+    repositories
   }
 }

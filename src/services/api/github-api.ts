@@ -21,7 +21,7 @@ export class GitHubApi {
     const repositories = await this.githubReaderService.get('', { sort: 'updated', per_page: 5 })
 
     if (repositories.success) {
-      repositories.data.map((el) => {
+      return repositories.data.map((el) => {
         return {
           url: el.htmlUrl ?? `${this.url}/${this.githubProfile}`,
           language: el.language ?? 'Language unavailable',

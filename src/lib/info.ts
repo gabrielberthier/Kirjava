@@ -26,3 +26,41 @@ export const github = 'gabrielberthier'
 export const twitter = 'GabriBerthier'
 export const linkedin = 'gabriel-nogueira-berthier-1b280214a'
 export const instagram = 'gabrielberthier'
+
+type PlacesIveWorked = {
+  name: string
+  position: string
+  image: string
+  from: string
+  to?: string
+}
+
+export const placesIveWorkd: PlacesIveWorked[] = [
+  {
+    name: 'DM',
+    position: 'Dev Backend PL (Python)',
+    image: 'dm',
+    from: '10/2022'
+  },
+  {
+    name: 'IBM',
+    position: 'Dev Backend JR (Python)',
+    image: 'ibm',
+    from: '01/2022',
+    to: '09/2022'
+  },
+  {
+    name: 'Zappts',
+    position: 'Dev Backend JR (Python)',
+    image: 'zappts',
+    from: '06/2021',
+    to: '01/2021'
+  },
+  {
+    name: 'DPE',
+    position: 'Full-stack JS/TS Intern Dev',
+    image: 'dpe',
+    from: '03/2020',
+    to: '03/2021'
+  }
+]

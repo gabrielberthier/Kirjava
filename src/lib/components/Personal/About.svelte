@@ -1,7 +1,7 @@
 <script lang="ts">
   import SocialLinks from '$components/Social/SocialLinks.svelte'
   import { avatar, name, whereIam } from '$lib/info'
-  import { t } from "$lib/translations/common";
+  import { t } from '$lib/translations/common'
 </script>
 
 <div class="relative md:px-4 sm:px-0 lg:px-12">
@@ -12,24 +12,25 @@
         alt={name}
         class="rounded-full w-36 h-36 ring-2 ring-zinc-200 dark:ring-zinc-700 max-md:mx-auto"
       />
-      <div class="my-6 max-w-2xl lg:max-w-5xl">
-        <div class="max-w-2xl max-md:text-center">
+      <div class="my-6 max-w-2xl lg:max-w-1/4">
+        <div class="max-md:text-center " style="text-align: justify; text-justify: inter-word;">
           <h1
             class="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl"
           >
             Gabriel Berthier
           </h1>
           <p
-            class="text-base 
-            text-zinc-600 dark:text-zinc-400 
-            max-md:text-justify text-base text-zinc-600 
-            dark:text-zinc-400 relative 
+            class="text-base
+            text-zinc-600 dark:text-zinc-400
+            max-md:text-justify text-base text-zinc-600
+            dark:text-zinc-400 relative
             sm:py-6 max-md:my-4"
+            
           >
             {@html $t('bio.whoammi')}
           </p>
           <div
-            class="flex gap-6 mt-8 max-md:py-4 lg:mt-16 max-md:flex-center max-md:justify-center"
+            class="flex gap-6 mt-4 max-md:py-4 max-md:flex-center max-md:justify-center"
           >
             <a href="/about" class="group flex justify-center" aria-label="Follow on Twitter">
               <svg
@@ -54,9 +55,7 @@
               <span>{whereIam}</span>
             </a>
           </div>
-          <div
-            class="flex gap-6 mt-4 max-md:py-3 max-md:flex-center max-md:justify-center"
-          >
+          <div class="flex gap-6 mt-4 max-md:py-3 max-md:flex-center max-md:justify-center">
             <SocialLinks />
           </div>
         </div>
