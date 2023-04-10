@@ -21,7 +21,7 @@
       />
     </svg>
 
-    <span class="ml-3">Been Workin on</span>
+    <span class="ml-3">Worked @</span>
   </h2>
   <ol class="mt-6 space-y-4">
     {#each placesIveWorkd as placeIWorkd}

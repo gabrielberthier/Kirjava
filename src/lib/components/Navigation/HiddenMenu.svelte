@@ -60,6 +60,7 @@
               class="block py-2"
               data-headlessui-state="open"
               href="{link.to}"
+              on:click={closeModalMenu}
             >
             {link.text}
             </a>
