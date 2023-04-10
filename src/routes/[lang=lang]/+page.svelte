@@ -17,7 +17,7 @@
   <title>{name}</title>
   <meta name="description" content={bio} />
 </svelte:head>
-<div class="mx-auto max-w-7xl lg:px-8">
+<div class="mx-auto max-w-7xl lg:px-8 relative">
   <div class="gap-8 pb-16 relative px-4 sm:px-8 lg:px-12">
     <!--  -->
     <!-- bio -->
@@ -25,7 +25,7 @@
       <About />
     </div>
 
-    <section class="mx-auto max-w-2xl lg:max-w-5xl mt-8">
+    <section class="mx-auto max-w-2xl lg:max-w-5xl mt-4">
       <div class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
         {#if data.posts.length}
           <div>
