@@ -18,7 +18,7 @@
   role="switch"
   aria-label="Toggle Dark Mode"
   aria-checked={isDarkMode}
-  class="w-8 h-8 p-1"
+  class=" mr-1 group rounded-full bg-white px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
   on:click={() => {
     isDarkMode = !isDarkMode
     localStorage.setItem('isDarkMode', isDarkMode.toString())
@@ -32,6 +32,6 @@
     }
   }}
 >
-  <MoonIcon class="hidden text-blue-500 dark:block" />
-  <SunIcon class="block text-amber-400 dark:hidden" />
+  <MoonIcon class="hidden text-blue-500 dark:block w-4 h-4" />
+  <SunIcon class="block text-amber-300 dark:hidden w-4 h-4" />
 </button>

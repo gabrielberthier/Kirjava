@@ -31,14 +31,14 @@
         <div class="relative px-4 sm:px-8 lg:px-12 container-header">
           <div class="mx-auto max-w-2xl lg:max-w-5xl">
             <div class="relative flex gap-4">
-              <div class="flex flex-1 ">
+              <div class="flex flex-1">
                 <Avatar />
               </div>
               <div class="flex flex-1 justify-end md:justify-center">
                 <MdLessNavContainer linksList={menuItems} />
                 <MdPlusNav linksList={menuItems} />
               </div>
-              <div class="flex justify-end md:flex-1 mt-1">
+              <div class="flex justify-end md:flex-1">
                 <div class="pointer-events-auto flex">
                   <SetColorThemeButton />
                   <LanguageSelect />
