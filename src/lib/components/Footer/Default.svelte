@@ -27,7 +27,7 @@
                 {/each}
               </div>
               <p class="text-sm text-zinc-400 dark:text-zinc-500">
-                © <!-- -->2022<!-- --> Gabriel Berthier. All rights reserved.
+                © <!-- -->2023<!-- --> Gabriel Berthier. All rights reserved.
               </p>
             </div>
           </div>

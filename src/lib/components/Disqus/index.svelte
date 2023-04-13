@@ -7,12 +7,12 @@
 
 <div class="relative md:px-4 sm:px-0 lg:px-36">
   <section class="flex flex-col gap-16 pt-8 pb-16">
-<div 
-  use:DisqusThread={{
-    identifier,
-    url
-  }}
-  class={container}
-/>
-</section>
+    <div
+      use:DisqusThread={{
+        identifier,
+        url
+      }}
+      class={container}
+    />
+  </section>
 </div>
