@@ -3,10 +3,11 @@
   export let container = 'disqus_container'
   export let url = 'https://gabrieu.disqus.com/embed.js'
   export let identifier: string
+  
 </script>
 
 <div class="relative md:px-4 sm:px-0 lg:px-36">
-  <section class="flex flex-col gap-16 pt-8 pb-16">
+  <section class="flex flex-col gap-16 pt-8 pb-16 mx-auto max-w-7xl lg:px-8">
     <div
       use:DisqusThread={{
         identifier,
