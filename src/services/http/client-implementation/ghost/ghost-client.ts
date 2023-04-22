@@ -40,9 +40,6 @@ export class GhostClient implements JsonClientReader {
           data = { [path]: response, meta: response?.meta }
         }
 
-        console.log(data);
-        
-
         return {
           data,
           headers: [],
@@ -79,7 +76,14 @@ export class GhostClient implements JsonClientReader {
           console.error('\x1b[31m%s\x1b[0m', 'Found error')
           console.error('\x1b[31m%s\x1b[0m', error.stack)
 
-          throw error
+          const finalMistake = serverError(error.stack, error)
+
+          return {
+            error: finalMistake,
+            headers: [],
+            status: finalMistake.status,
+            data: finalMistake.message
+          }
         } else {
           throw new Error('Unrecognized error ')
         }
