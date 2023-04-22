@@ -1,4 +1,4 @@
-import { isObject } from '$services/utils/functions'
+import { isObject, isString } from '$services/utils/is'
 
 export const toCamelCase = (str = '') => {
   const [first = '', ...rest] = str.split('_')
@@ -13,12 +13,9 @@ export const toCamelCase = (str = '') => {
   )
 }
 
-interface OB {
+type objectWithStringKeys = {
   [key: string]: any
 }
-
-export function objectToCamelCase(obj: OB): OB
-export function objectToCamelCase(obj: OB[]): OB[]
 
 export function objectToCamelCase(obj: unknown): unknown {
   if (!isObject(obj)) {
@@ -31,13 +28,11 @@ export function objectToCamelCase(obj: unknown): unknown {
     })
   }
   const newObj = Object.entries(obj as object).reduce((obj, [key, value]) => {
-    const newKey = typeof key === 'string' ? toCamelCase(key) : key
-    let newValue = value
-    if (value && typeof value === 'object') {
-      newValue = objectToCamelCase(value)
+    if (isString(key)) {
+      obj[toCamelCase(key)] = value && isObject(value) ? objectToCamelCase(value) : value
     }
-    obj[newKey] = newValue
+
     return obj
-  }, {} as OB)
+  }, {} as objectWithStringKeys)
   return newObj
 }

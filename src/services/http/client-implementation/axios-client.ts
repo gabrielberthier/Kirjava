@@ -3,7 +3,7 @@ import { Axios, AxiosError } from 'axios'
 import type { AxiosResponse } from 'axios'
 import type { RequestConfigBuilder, RequestConfig } from '../protocols/request'
 import { ApiErrorResponse } from '../protocols/errors'
-import { isObject } from '$services/utils/functions'
+import { isObject } from '$services/utils/is'
 
 const isAxiosError = (payload: any): payload is AxiosError => {
   return isObject(payload) && 'isAxiosError' in payload && payload.isAxiosError === true

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { browser } from '$app/environment'
-  import { dateRange } from '$services/utils/functions'
+  import { dateRange } from '$services/utils/time'
 
   export let language: string
   export let name: string

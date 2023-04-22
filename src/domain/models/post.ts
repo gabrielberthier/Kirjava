@@ -1,5 +1,3 @@
-import type { Tag } from './tag'
-import type { Author } from './author'
 import type { Meta } from './meta'
 
 interface Heading {
@@ -8,7 +6,7 @@ interface Heading {
   id: string
 }
 
-export interface IAllPostResponse{
+export interface IAllPostResponse {
   posts: IPostResponse[]
   meta?: Meta
 }
@@ -29,39 +27,4 @@ export interface IPostResponse {
   }
   readingTime: string
   headings: Heading[]
-}
-
-export class Post {
-  slug?: string
-  id?: string
-  uuid?: string
-  title?: string
-  html?: string
-  commentID?: string
-  featureImage?: string
-  featureImageAlt?: string | null
-  featureImageCaption?: string | null
-  featured?: boolean
-  metaTitle?: string | null
-  metaDescription?: string | null
-  createdAt?: string
-  updatedAt?: string
-  publishedAt?: string
-  customExcerpt?: string
-  codeinjectionHead?: string | null
-  codeinjectionFoot?: string | null
-  ogImage?: string | null
-  ogTitle?: string | null
-  ogDescription?: string | null
-  twitterImage?: string | null
-  twitterTitle?: string | null
-  twitterDescription?: string | null
-  customTemplate?: string | null
-  canonicalURL?: string | null
-  authors?: Author[]
-  tags?: Tag[]
-  primaryAuthor?: Author | null
-  primaryTag?: Tag | null
-  url?: string
-  excerpt?: string
 }

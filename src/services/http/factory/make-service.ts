@@ -1,37 +1,29 @@
 import type { JsonClientReader } from '../protocols/client'
 import type { ResponseHandler } from '../protocols/response'
-import type { Constructor } from '$domain/adapters'
 import { ReaderApiService } from '../api-services/reader'
-import { removeTrailingSlash } from '$services/utils/functions'
+import { removeTrailingSlash } from '$services/utils/string-belt'
 import { axiosImplementation } from '../client-implementation/factories'
-import { makeDefaultResponseHandler, makeDefaultResponseHandlerMany } from '../response/factories'
+import { makeDefaultResponseHandler } from '../response/factories'
 import { env } from '$env/dynamic/private'
+import type { AnyZodObject } from 'zod'
+import { MultiItemConverter, SingleItemConverter } from '$domain/adapters'
 
 export interface ApiReaderServiceOptions<T extends object> {
   resource: string
-  entity: Constructor<T>
+  schema: AnyZodObject
+  responseHandler?: ResponseHandler<T>
   baseUrl?: string
   apiPath?: string
   client?: JsonClientReader
   headers?: any
 }
 
-export interface SingleItemApiReaderServiceOptions<T extends object>
-  extends ApiReaderServiceOptions<T> {
-  responseHandler?: ResponseHandler<T>
-}
-
-export interface MultiItemApiReaderServiceOptions<T extends object>
-  extends ApiReaderServiceOptions<T> {
-  responseHandler?: ResponseHandler<T[]>
-}
-
 export const readerServiceFactory = <T extends object>(
-  options: SingleItemApiReaderServiceOptions<T>
+  options: ApiReaderServiceOptions<T>
 ): ReaderApiService<T> => {
   let {
     resource,
-    entity,
+    schema,
     baseUrl = env.BACKEND_URL || '',
     apiPath = '',
     client,
@@ -44,17 +36,17 @@ export const readerServiceFactory = <T extends object>(
   )
 
   client ??= axiosImplementation(url, path, headers)
-  responseHandler ??= makeDefaultResponseHandler(entity)
+  responseHandler ??= makeDefaultResponseHandler<T>(new SingleItemConverter(schema))
 
   return new ReaderApiService(res, client, responseHandler)
 }
 
-export const multiReaderServiceFactory = <T extends object>(
-  options: MultiItemApiReaderServiceOptions<T>
-): ReaderApiService<T[]> => {
+export const multiReaderServiceFactory = <T extends Array<{}>>(
+  options: ApiReaderServiceOptions<T>
+): ReaderApiService<T> => {
   let {
     resource,
-    entity,
+    schema,
     baseUrl = env.BACKEND_URL || '',
     apiPath = '',
     client,
@@ -67,7 +59,7 @@ export const multiReaderServiceFactory = <T extends object>(
   )
 
   client ??= axiosImplementation(url, path, headers)
-  responseHandler ??= makeDefaultResponseHandlerMany(entity)
+  responseHandler ??= makeDefaultResponseHandler<T>(new MultiItemConverter(schema))
 
   return new ReaderApiService(res, client, responseHandler)
 }

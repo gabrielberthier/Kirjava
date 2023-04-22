@@ -1,6 +1,6 @@
 <script lang="ts">
   import { locales } from '$lib/translations/common'
-  import { getFlagEmoji } from '$services/utils/functions'
+  import { getFlagEmoji } from '$services/utils/string-belt'
   import LangOptions from './LangOptions.svelte'
 
   const langs = locales.get()

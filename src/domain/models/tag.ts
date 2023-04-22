@@ -1,4 +1,4 @@
-export class Tag {
+export type Tag = {
   id?: string
   name?: string
   slug?: string

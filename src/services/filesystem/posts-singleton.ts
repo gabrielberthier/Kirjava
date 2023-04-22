@@ -1,5 +1,5 @@
 import type { IPostResponse } from '$domain/models/post'
-import { paginate } from '$services/utils/pagination'
+import { paginate } from '$services/utils/data-sets-utilities'
 import { posts } from './const-posts'
 
 export class PostsSingleton {

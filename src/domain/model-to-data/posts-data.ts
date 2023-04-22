@@ -1,11 +1,12 @@
-import type { Entry } from '$domain/models/posts-entry'
-import type { IAllPostResponse, IPostResponse, Post } from '$domain/models/post'
+import type { IAllPostResponse, IPostResponse } from '$domain/models/post'
 import { headfy } from '$lib/dom/heading'
-import { addTimezoneOffset, siblingfy } from '$services/utils/functions'
+import { addTimezoneOffset } from '$services/utils/time'
+import { siblingfy } from '$services/utils/data-sets-utilities'
 import { format } from 'date-fns'
 import readingTime from 'reading-time'
 import { parse } from 'node-html-parser'
-import type { Meta, MetaClass } from '$domain/models/meta'
+import type { Meta } from '$domain/models/meta'
+import type { Post, Entry } from 'src/schemas'
 
 export const postConverter = (post: Post): IPostResponse => {
   const { html, excerpt, createdAt } = post
@@ -35,7 +36,7 @@ export const postConverter = (post: Post): IPostResponse => {
   }
 }
 
-function classToInterface(meta: MetaClass): Meta {
+function classToInterface(meta: Meta): Meta {
   const { pagination } = meta
   let { next = undefined, prev = undefined } = pagination
   next ??= undefined

@@ -1,7 +1,8 @@
 import { format } from 'date-fns'
 import { parse } from 'node-html-parser'
 import readingTime from 'reading-time'
-import { addTimezoneOffset, siblingfy } from '$services/utils/functions'
+import { addTimezoneOffset } from '$services/utils/time'
+import { siblingfy } from '$services/utils/data-sets-utilities'
 import type { SvelteComponent } from 'svelte'
 import type { IPostResponse } from '$domain/models/post'
 

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { clickOutside } from '$lib/actions/on-click-outside'
-  import { getFlagEmoji } from '$services/utils/functions'
+  import { getFlagEmoji } from '$services/utils/string-belt'
 
   export let langs: string[]
 

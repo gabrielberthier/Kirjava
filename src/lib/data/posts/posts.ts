@@ -8,6 +8,8 @@ export class PostsDataProvider {
     limit ??= 10
 
     const response = await this.postFetcher.all(page, limit);
+    console.log(response);
+    
     response.mapErr((e) => console.error("\x1b[31m%s\x1b[0m", e))
 
     return response

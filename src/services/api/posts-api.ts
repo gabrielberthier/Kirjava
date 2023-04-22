@@ -1,26 +1,27 @@
-import { Entry } from '$domain/models/posts-entry'
 import { readerServiceFactory } from '../http/factory/make-service'
 import { env } from '$env/dynamic/private'
 import { GhostClient } from '$services/http/client-implementation/ghost/ghost-client'
-import { Post } from '$domain/models/post'
 import type { IAllPostResponse } from '$domain/models/post'
 import type { IPostResponse } from '$domain/models/post'
 import { allPostsConverter, postConverter } from '$domain/model-to-data/posts-data'
 import { err, ok, Result } from 'neverthrow'
 import type { DomainHttpException } from '$services/http/exceptions/http-exceptions'
+import { entrySchema, postSchema } from '../../schemas'
+import type { Post, Entry } from '../../schemas'
+
 
 export const AllPostsApi = readerServiceFactory<Entry>({
   resource: 'posts',
   apiPath: 'api/content',
   client: new GhostClient(env.BACKEND_URL || '', false),
-  entity: Entry
+  schema: entrySchema
 })
 
 export const singlePostApi = readerServiceFactory<Post>({
   resource: 'posts',
   apiPath: 'api/content',
   client: new GhostClient(env.BACKEND_URL || '', true),
-  entity: Post
+  schema: postSchema
 })
 
 export class ApiPostsLoader {

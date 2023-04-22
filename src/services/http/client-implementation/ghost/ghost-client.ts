@@ -2,7 +2,7 @@ import GhostContentAPI from '@tryghost/content-api'
 import type { JsonClientReader, RawApiResponse } from '../../protocols/client'
 import type { GhostAPI } from '@tryghost/content-api'
 import { env } from '$env/dynamic/private'
-import { isAllowedType } from './is-type'
+import { isAllowedType, isGhostError } from './is-type'
 import {
   DomainHttpException,
   notFoundError,
@@ -22,6 +22,9 @@ export class GhostClient implements JsonClientReader {
   }
 
   public async get(path: string, params: any): Promise<RawApiResponse> {
+    console.log(`path: ${path}`)
+    console.log(`params: ${ params}`)
+
     return this.dispatch(path, params)
   }
 
@@ -31,11 +34,14 @@ export class GhostClient implements JsonClientReader {
         let data: object
         if (this.singleItem) {
           const entity = await this.ghostApi[path].read(params)
-          data = { ...entity, meta: undefined }
+          data = { ...entity }
         } else {
           const response = await this.ghostApi[path].browse(params)
-          data = { [path]: response, meta: response.meta }
+          data = { [path]: response, meta: response?.meta }
         }
+
+        console.log(data);
+        
 
         return {
           data,
@@ -43,27 +49,35 @@ export class GhostClient implements JsonClientReader {
           status: 200
         }
       } catch (error) {
-        if (error instanceof Error) {
+        if (isGhostError(error)) {
           let finalMistake: DomainHttpException
-          switch (error.name) {
+          const ghostError = error.errors.pop()
+          const stack = error.errors.join('\n')
+          const message = ghostError?.message
+          const newError = new Error(message)
+          switch (ghostError?.errorType) {
             case 'UnauthorizedError':
-              finalMistake = unauthorizedError(error.stack, new Error(error.message))
+              finalMistake = unauthorizedError(stack, newError)
               break
             case 'NotFoundError':
-              finalMistake = notFoundError(error.stack, new Error(error.message))
+              finalMistake = notFoundError(stack, newError)
               break
             default:
-              finalMistake = serverError(error.stack, new Error(error.message))
+              finalMistake = serverError(stack, newError)
           }
+
+          console.error('\x1b[31m%s\x1b[0m', 'Found error')
+          console.error('\x1b[31m%s\x1b[0m', error)
+
           return {
             error: finalMistake,
             headers: [],
             status: finalMistake.status,
-            data: error.message
+            data: finalMistake.message
           }
         } else if (error instanceof Error) {
-          console.error("\x1b[31m%s\x1b[0m",'Found error')
-          console.error("\x1b[31m%s\x1b[0m", error.stack)
+          console.error('\x1b[31m%s\x1b[0m', 'Found error')
+          console.error('\x1b[31m%s\x1b[0m', error.stack)
 
           throw error
         } else {

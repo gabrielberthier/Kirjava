@@ -2,7 +2,7 @@
   import { locales, locale } from '$lib/translations/common'
 
   import { goto } from '$app/navigation'
-  import { getFlagEmoji } from '$services/utils/functions'
+  import { getFlagEmoji } from '$services/utils/string-belt'
 
   function onChange(event: Event) {
     const target = event.target as HTMLSelectElement
@@ -16,7 +16,7 @@
 </script>
 
 <div class="flex justify-center">
-  <div >
+  <div>
     <select
       on:change={onChange}
       id="langs"
@@ -35,14 +35,16 @@
       rounded
       transition
       ease-in-out
-      shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur 
+      shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur
       transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20
       m-0 rounded-full cursor-pointer
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
       aria-label=".form-select-sm example"
     >
       {#each $locales as lc}
-        <option value="/{lc}{route}" class="w-4 h-4" selected={lc === $locale}>{getFlagEmoji(lc || '')}</option>
+        <option value="/{lc}{route}" class="w-4 h-4" selected={lc === $locale}
+          >{getFlagEmoji(lc || '')}</option
+        >
       {/each}
     </select>
   </div>

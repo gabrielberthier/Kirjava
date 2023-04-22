@@ -16,7 +16,7 @@ export class ResponseHandlerImplementation<T> implements ResponseHandler {
       return errorFor(error, status, headers)
     }
 
-    let values: T = this.converter.parseEntity(data)
+    let values = this.converter.parseEntity(data)
 
     return success(status, values, headers)
   }
