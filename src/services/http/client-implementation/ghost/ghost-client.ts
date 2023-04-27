@@ -22,9 +22,6 @@ export class GhostClient implements JsonClientReader {
   }
 
   public async get(path: string, params: any): Promise<RawApiResponse> {
-    console.log(`path: ${path}`)
-    console.log(`params: ${ params}`)
-
     return this.dispatch(path, params)
   }
 
