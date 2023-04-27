@@ -98,11 +98,11 @@
 
       <!-- render the post -->
       {#if data.component}
-        <div class="prose dark:prose-invert ">
+        <div class="prose dark:prose-invert">
           <svelte:component this={data.component} />
         </div>
       {:else}
-        <div class="prose dark:prose-invert ">
+        <div class="prose dark:prose-invert">
           {@html data.post.preview.html}
         </div>
       {/if}
@@ -127,7 +127,7 @@
         </div>
       </div> -->
       <div class="flex flex-col gap-8 pt-4">
-        <div class="flex justify-center ">
+        <div class="flex justify-center">
           <a href="/" class="inline-block rounded-full">
             <img
               src={avatar}
@@ -139,7 +139,7 @@
         <div class="flex justify-center">
           <p>Author: <b>Gabriel Berthier</b></p>
         </div>
-        <div class="flex justify-center col-span-2 gap-6 ">
+        <div class="flex justify-center col-span-2 gap-6">
           <SocialLinks />
         </div>
       </div>
@@ -154,7 +154,7 @@
   </div>
 </div>
 
-<hr>
+<hr />
 
 <div class="">
   <div class="mx-auto overflow-x-hidden">
@@ -174,4 +174,6 @@
       grid-template-columns: 1fr 42rem 1fr;
     }
   }
+
+ 
 </style>

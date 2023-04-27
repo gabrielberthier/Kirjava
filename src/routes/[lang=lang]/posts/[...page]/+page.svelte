@@ -3,8 +3,8 @@
   import ArrowLeftIcon from '$components/Icons/ArrowLeftIcon.svelte'
   import ArrowRightIcon from '$components/Icons/ArrowRightIcon.svelte'
   import PostsList from '$components/Post/PostsList.svelte'
-  import type {PageData} from './$types'
-  import { t } from "$lib/translations/common";
+  import type { PageData } from './$types'
+  import { t } from '$lib/translations/common'
 
   export let data: PageData
 
@@ -23,18 +23,18 @@
         <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
           {$t('posts.title')}
         </h1>
-        <p class="mt-6">{$t('posts.text')}</p>
+        <p class="mt-6 posts-text">{$t('posts.text')}</p>
       </header>
 
       <div class="mt-16 sm:mt-20">
-        <PostsList posts={posts} />
+        <PostsList {posts} />
       </div>
 
       <!-- pagination -->
       <div class="flex items-center justify-between pt-16 pb-8">
         {#if !isFirstPage}
           <a href={`/posts/page/${data.page - 1}`} data-sveltekit-preload-data>
-            <ArrowLeftIcon _class="w-4 h-4"/>
+            <ArrowLeftIcon _class="w-4 h-4" />
             Previous
           </a>
         {:else}

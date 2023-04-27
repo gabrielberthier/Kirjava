@@ -3,6 +3,8 @@
 @import './prism.css';
 @import 'tailwindcss/utilities';
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 @layer base {
   body {
     @apply text-zinc-600 dark:text-zinc-400;
@@ -20,4 +22,138 @@
   hr {
     @apply border-zinc-100 dark:border-zinc-700/25;
   }
+}
+
+/* HEADER STYLING */
+
+header .container-header {
+  transition: transform 0.5s ease-in-out;
+}
+
+.scroll-down .container-header {
+  transition: transform 0.5s ease-in-out;
+  transform: translate3d(0, -200%, 0);
+}
+
+.scroll-up .container-header {
+  transform: none;
+}
+
+/* Added styling for figure class */
+figure.kg-bookmark-card {
+  border: 1px solid #292929;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.kg-bookmark-container {
+  display: flex;
+  flex-wrap: wrap;
+  color: black;
+  text-decoration: none;
+  /* Automatically has a bottom border so I forced it out of there */
+  border: none !important;
+}
+
+.kg-bookmark-content {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-width: 50%;
+  padding: 0px;
+  color: #fff;
+  padding: 20px 0 0 20px;
+}
+
+.kg-bookmark-title {
+  font-weight: 500;
+  overflow-x: hidden;
+  /* Little bit of a hack to tidy up the title an not display some text. only works for specific text, so may not be the best solution for you */
+  text-indent: -16ch;
+  padding-right: 14px;
+  font-size: 18px;
+  margin-bottom: 10px !important;
+}
+
+.kg-bookmark-description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 18ch;
+  color: #757575;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.kg-bookmark-metadata {
+  margin-top: 12px;
+  color: #ff466e;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.kg-bookmark-thumbnail {
+  flex-basis: 15rem;
+  flex-grow: 1;
+}
+
+.kg-bookmark-thumbnail img {
+  vertical-align: bottom;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Added max-width to icon to make it behave on iPhone */
+.kg-bookmark-icon {
+  max-width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  padding-bottom: 2px;
+  vertical-align: bottom;
+}
+
+.kg-bookmark-author:after {
+  content: "•";
+  margin: 0 6px;
+}
+
+/* Some added styling for iPhone portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  figure.kg-bookmark-card {
+    border: 1px solid #292929;
+    margin-bottom: 20px;
+    margin-top: 60px;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+/*PROSE STYLING*/
+.prose *{
+  font-family: "Inter", "Poppins", "Helvetica", "Arial", sans-serif;
+}
+
+.prose :where(h2):not(:where([class~="not-prose"] *)){
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.prose :where(h3):not(:where([class~="not-prose"] *)){
+  font-size: 1.25rem;
+}
+
+.prose :where(h4):not(:where([class~="not-prose"] *)){
+  font-size: 1rem;
+}
+
+.prose :where(h2, h3, h4):not(:where([class~="not-prose"] *)):hover{
+  text-decoration: underline !important;
+}
+
+.prose code{
+  font-family: monospace;
 }

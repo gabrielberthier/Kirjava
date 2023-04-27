@@ -41,7 +41,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Nunito Sans';
+    font-family: "Poppins", "Avenir", "Helvetica", "Arial", sans-serif;
+    font-weight: 300;
     color: $blue;
     font-size: 1em;
     height: max-content;
@@ -55,7 +56,8 @@
   }
 
   button {
-    font-family: 'Nunito Sans';
+    font-family: "Poppins", "Avenir", "Helvetica", "Arial", sans-serif;
+    font-weight: 200;
   }
 
   .btn-green {
