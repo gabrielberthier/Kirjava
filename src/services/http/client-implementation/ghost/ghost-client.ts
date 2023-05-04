@@ -30,10 +30,10 @@ export class GhostClient implements JsonClientReader {
       try {
         let data: object
         if (this.singleItem) {
-          const entity = await this.ghostApi[path].read(params)
+          const entity = await this.ghostApi[path].read({ ...params, include: 'tags,authors' })
           data = { ...entity }
         } else {
-          const response = await this.ghostApi[path].browse(params)
+          const response = await this.ghostApi[path].browse({ ...params, include: 'tags,authors' })
           data = { [path]: response, meta: response?.meta }
         }
 

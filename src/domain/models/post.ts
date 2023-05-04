@@ -1,4 +1,5 @@
 import type { Meta } from './meta'
+import type { Tag } from './tag'
 
 interface Heading {
   value: string
@@ -27,4 +28,5 @@ export interface IPostResponse {
   }
   readingTime: string
   headings: Heading[]
+  tags: Tag[]
 }

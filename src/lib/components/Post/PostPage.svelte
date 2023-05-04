@@ -4,14 +4,56 @@
   import { afterNavigate } from '$app/navigation'
   import { onMount } from 'svelte'
   import type { IPostResponse } from '$domain/models/post'
-  
+
   import ToC from '$components/ToC/ToC.svelte'
   import ArrowLeftIcon from '$components/Icons/ArrowLeftIcon.svelte'
   import SocialLinks from '$components/Social/SocialLinks.svelte'
   import Disqus from '$components/Disqus/index.svelte'
+  import PostTag from '../Tags/PostTag.svelte'
+    import type { Tag } from '$domain/models/tag'
 
   export let post: IPostResponse
   export let component: any
+
+  const tags: Tag[] = [
+    {
+      name:'weather',
+    },
+    {
+      name:    'quickest',
+    },
+    {
+      name:    'milky',
+    },
+    {
+      name:    'appreciate',
+    },
+    {
+      name:    'well-to-do',
+    },
+    {
+      name:    'health',
+    },
+    {
+      name:    'license',
+    },
+    {
+      name:    'tax',
+    },
+    {
+      name:    'curve',
+    },
+    {
+      name:    'highfalutin',
+    },
+    {
+      name:    'imagine',
+    },
+    {
+      name:    'vulgar'
+    },
+    
+  ]
 
   onMount(async () => {
     await import('$lib/prism')
@@ -100,7 +142,14 @@
           <span>{post.readingTime}</span>
         </div>
       </header>
-
+      <div class="flex items-center justify-end pt-5 flex-wrap">
+        <!-- {#each post.tags as tag}
+          <PostTag {tag} />
+        {/each} -->
+        {#each tags as tag}
+          <PostTag {tag} />
+        {/each}
+      </div>
       <!-- render the post -->
       {#if component}
         <div class="prose dark:prose-invert">

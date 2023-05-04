@@ -1,11 +1,11 @@
 export type Tag = {
-  id?: string
-  name?: string
-  slug?: string
+  id?: string | null
+  name?: string | null
+  slug?: string | null
   description?: string | null
   featureImage?: string | null
-  visibility?: string
+  visibility?: string | null
   metaTitle?: string | null
   metaDescription?: string | null
-  url?: string
+  url?: string | null
 }

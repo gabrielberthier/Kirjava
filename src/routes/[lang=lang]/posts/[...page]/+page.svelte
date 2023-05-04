@@ -5,12 +5,23 @@
   import PostsList from '$components/Post/PostsList.svelte'
   import type { PageData } from './$types'
   import { t } from '$lib/translations/common'
+  import type { Tag } from '$domain/models/tag'
+  import PostTag from '$lib/components/Tags/PostTag.svelte'
 
   export let data: PageData
 
   $: isFirstPage = data.page === 1
   $: hasNextPage = data.meta?.pagination.next
   $: posts = data.posts
+  $: tags = Array.from(
+    posts
+      .map((post) => post.tags)
+      .flat()
+      .reduce(
+        (accumulator, currentValue) => accumulator.set(currentValue.name || '', currentValue),
+        new Map<string, Tag>()
+      ), (el) => el[1]
+  )
 </script>
 
 <svelte:head>
@@ -26,7 +37,13 @@
         <p class="mt-6 posts-text">{$t('posts.text')}</p>
       </header>
 
-      <div class="mt-16 sm:mt-20">
+      <div class="flex items-center justify-end pt-5 flex-wrap">
+        {#each tags as tag}
+          <PostTag {tag} />
+        {/each}
+      </div>
+
+      <div class="mt-4 sm:mt-12">
         <PostsList {posts} />
       </div>
 
