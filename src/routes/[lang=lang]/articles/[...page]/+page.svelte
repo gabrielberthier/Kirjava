@@ -13,7 +13,7 @@
 </script>
 
 <svelte:head>
-  <title>{name} | Posts</title>
+  <title>{name} | Articles</title>
 </svelte:head>
 <div class="mx-auto max-w-7xl lg:px-8">
   <div class="relative px-4 sm:px-8 lg:px-12">
@@ -27,7 +27,7 @@
         </svg>
       </span>
         </h1>
-        <p class="mt-6">All of written articles collected in one place</p>
+        <p class="mt-6">Written articles collected in one place</p>
       </header>
 
       {#if posts.length}
