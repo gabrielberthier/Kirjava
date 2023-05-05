@@ -8,7 +8,7 @@ import { err, ok, Result } from 'neverthrow'
 import type { DomainHttpException } from '$services/http/exceptions/http-exceptions'
 import { entrySchema, postSchema } from '../../schemas'
 import type { Post, Entry } from '../../schemas'
-
+import type { PostFetcher } from '$lib/data/posts/protocols'
 
 export const AllPostsApi = readerServiceFactory<Entry>({
   resource: 'posts',
@@ -24,7 +24,7 @@ export const singlePostApi = readerServiceFactory<Post>({
   schema: postSchema
 })
 
-export class ApiPostsLoader {
+export class ApiPostsLoader implements PostFetcher {
   async getArticles(
     page?: number | undefined,
     limit?: number | undefined
@@ -38,8 +38,13 @@ export class ApiPostsLoader {
     return err(entry.error)
   }
 
-  async all(page?: number, limit?: number): Promise<Result<IAllPostResponse, DomainHttpException>> {
-    const entry = await AllPostsApi.get('', { page, limit })
+  async all(
+    page?: number,
+    limit?: number,
+    params?: any
+  ): Promise<Result<IAllPostResponse, DomainHttpException>> {
+    params ||= {}
+    const entry = await AllPostsApi.get('', { page, limit, ...params })
 
     if (entry.success) {
       return ok(allPostsConverter(entry.data))

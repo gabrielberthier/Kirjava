@@ -1,9 +1,11 @@
 import { error } from '@sveltejs/kit'
-import type { Load } from '@sveltejs/kit'
 import { PostLoaderFactory } from '$services/posts/post-fetcher-factory'
+import type { PageServerLoad } from './$types'
 
-export const load: Load = async function load({ params }) {
+export const load: PageServerLoad = async function load({ params, url }) {
   const { slug } = params
+
+  console.log(url.searchParams.get('tag'))
 
   const postsDataProvider = PostLoaderFactory.get()
 

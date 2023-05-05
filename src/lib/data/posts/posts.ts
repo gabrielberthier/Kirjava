@@ -3,11 +3,11 @@ import type { PostFetcher } from './protocols'
 export class PostsDataProvider {
   constructor(private postFetcher: PostFetcher) {}
 
-  async all(page?: number, limit?: number) {
+  async all(page?: number, limit?: number, params?: Object) {
     page ??= 1
     limit ??= 10
 
-    const response = await this.postFetcher.all(page, limit);
+    const response = await this.postFetcher.all(page, limit, params);
     
     response.mapErr((e) => console.error("\x1b[31m%s\x1b[0m", e))
 

@@ -35,7 +35,11 @@ export class FileSystemPostsLoader implements PostFetcher {
     return ok(result)
   }
 
-  async all(page?: number, limit?: number): Promise<Result<IAllPostResponse, DomainHttpException>> {
+  async all(
+    page?: number,
+    limit?: number,
+    params?: any
+  ): Promise<Result<IAllPostResponse, DomainHttpException>> {
     const result = await this.load({
       page,
       limit

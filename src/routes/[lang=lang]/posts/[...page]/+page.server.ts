@@ -1,8 +1,8 @@
 import { redirect } from '@sveltejs/kit'
-import type { ServerLoadEvent } from '@sveltejs/kit'
 import type { IPostResponse } from '$domain/models/post'
 import type { Meta } from '$domain/models/meta'
 import { PostLoaderFactory } from '$services/posts/post-fetcher-factory'
+import type { PageServerLoad } from './$types'
 
 export interface LoadedPostResponse {
   posts: IPostResponse[]
@@ -11,14 +11,15 @@ export interface LoadedPostResponse {
   meta?: Meta
 }
 
-export async function load(event: ServerLoadEvent): Promise<LoadedPostResponse> {
-  const { params } = event
+export const load: PageServerLoad = async ({ params, url }) => {
   let page = 1
   let limit = 10
 
-
-
   const postsDataProvider = PostLoaderFactory.get()
+  const extraParams: any = {}
+  if (url.searchParams.get('tag')) {
+    extraParams.filter = `tag:${url.searchParams.get('tag')}`
+  }
 
   if (params.page) {
     try {
@@ -33,7 +34,7 @@ export async function load(event: ServerLoadEvent): Promise<LoadedPostResponse> 
     }
   }
 
-  const { posts, meta } = (await postsDataProvider.all(page, limit)).unwrapOr({
+  const { posts, meta } = (await postsDataProvider.all(page, limit, extraParams)).unwrapOr({
     posts: [],
     meta: undefined
   })

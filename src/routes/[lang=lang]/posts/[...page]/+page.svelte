@@ -20,7 +20,8 @@
       .reduce(
         (accumulator, currentValue) => accumulator.set(currentValue.name || '', currentValue),
         new Map<string, Tag>()
-      ), (el) => el[1]
+      ),
+    ([_, val]) => val
   )
 </script>
 

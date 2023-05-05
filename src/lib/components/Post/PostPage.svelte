@@ -1,59 +1,29 @@
 <script lang="ts">
   import { format, parseISO } from 'date-fns'
   import { website, name, avatar } from '$lib/info'
-  import { afterNavigate } from '$app/navigation'
+  import { afterNavigate, goto } from '$app/navigation'
   import { onMount } from 'svelte'
   import type { IPostResponse } from '$domain/models/post'
+  import { page } from '$app/stores'
 
   import ToC from '$components/ToC/ToC.svelte'
   import ArrowLeftIcon from '$components/Icons/ArrowLeftIcon.svelte'
   import SocialLinks from '$components/Social/SocialLinks.svelte'
   import Disqus from '$components/Disqus/index.svelte'
   import PostTag from '../Tags/PostTag.svelte'
-    import type { Tag } from '$domain/models/tag'
 
   export let post: IPostResponse
   export let component: any
 
-  const tags: Tag[] = [
-    {
-      name:'weather',
-    },
-    {
-      name:    'quickest',
-    },
-    {
-      name:    'milky',
-    },
-    {
-      name:    'appreciate',
-    },
-    {
-      name:    'well-to-do',
-    },
-    {
-      name:    'health',
-    },
-    {
-      name:    'license',
-    },
-    {
-      name:    'tax',
-    },
-    {
-      name:    'curve',
-    },
-    {
-      name:    'highfalutin',
-    },
-    {
-      name:    'imagine',
-    },
-    {
-      name:    'vulgar'
-    },
-    
-  ]
+  let hasChanged = false
+
+  page.subscribe(async ({url, data}) => {
+    if (url.search && !hasChanged) {
+      const locale = data?.internationalization?.lang || ""
+      hasChanged = true 
+      goto(`/${locale}/posts${url.search}`)
+    }
+  })
 
   onMount(async () => {
     await import('$lib/prism')
@@ -142,11 +112,8 @@
           <span>{post.readingTime}</span>
         </div>
       </header>
-      <div class="flex items-center justify-end pt-5 flex-wrap">
-        <!-- {#each post.tags as tag}
-          <PostTag {tag} />
-        {/each} -->
-        {#each tags as tag}
+      <div class="flex items-center pt-5 flex-wrap">
+        {#each post.tags as tag}
           <PostTag {tag} />
         {/each}
       </div>

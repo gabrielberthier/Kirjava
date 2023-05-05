@@ -2,10 +2,22 @@
   import type { Tag } from '$domain/models/tag'
 
   export let tag: Tag
+
+  import {goto} from '$app/navigation'
+
+  const setQueryParam = () => {
+    goto(`?tag=${tag.slug}`);
+  }
+
 </script>
 
-<div
-  class="ml-4 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 mt-1 rounded-full bg-white text-gray-700 border"
+<button
+  class="mr-1 inline-flex items-center leading-sm uppercase
+        px-3 py-1 my-1 rounded-full bg-white dark:bg-gray-900 dark:text-white cursor-pointer
+        hover:text-sky-500 text-gray-700 border
+        hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+
+        on:click={() => setQueryParam()}
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -15,7 +27,7 @@
     stroke="currentColor"
     class="feather feather-hard-drive mr-2"
     width="16"
-    height="16"  
+    height="16"
   >
     <path
       stroke-linecap="round"
@@ -24,5 +36,11 @@
     />
   </svg>
 
-  {tag.name}
-</div>
+  <span class="tag-badge"> {tag.name} </span>
+</button>
+
+<style lang="scss">
+  .tag-badge {
+    font-size: 0.75rem;
+  }
+</style>
