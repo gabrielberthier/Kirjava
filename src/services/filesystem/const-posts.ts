@@ -47,7 +47,8 @@ export const posts: IPostResponse[] = Object.entries(
       },
       headings: [],
       // get estimated reading time for the post
-      readingTime: readingTime(html.structuredText).text
+      readingTime: readingTime(html.structuredText).text,
+      tags: []
     }
   })
   // sort by date
