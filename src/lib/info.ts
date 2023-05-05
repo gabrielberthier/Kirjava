@@ -13,10 +13,7 @@ export const whereIam = 'São Luís, BR'
 // Used for the landing page & footer of posts
 export const avatar = '/imgs/gabs-avatar.jpg'
 export const bio = `\
-I’m ${firstName}, a software engineer based in Canada. Lorem ipsum dolor sit amet, consectetur
-adipiscing elit. Phasellus accumsan quam at eros malesuada, id luctus lectus efficitur. Nulla
-sit amet arcu mi. Duis quis mauris malesuada, posuere orci et, pulvinar nisl. Nam malesuada
-vehicula sapien vitae sagittis.
+I’m ${firstName}, a software engineer based in Brazil.
 `
 
 // Your social usernames, empty strings won't be used.

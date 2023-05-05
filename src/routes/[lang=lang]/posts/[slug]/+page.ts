@@ -7,8 +7,6 @@ import { loadFromFile } from '$services/filesystem/file-importer'
 export const load: Load = async function ({ data, url }) {
   // load the markdown file based on slug
   const post: IPostResponse = data?.post
-  console.log(url);
-  
 
   if (post) {
     const { slug } = post

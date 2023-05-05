@@ -5,8 +5,6 @@ import type { PageServerLoad } from './$types'
 export const load: PageServerLoad = async function load({ params, url }) {
   const { slug } = params
 
-  console.log(url.searchParams.get('tag'))
-
   const postsDataProvider = PostLoaderFactory.get()
 
   const resultPosts = await postsDataProvider.getOneBySlug(slug!)
