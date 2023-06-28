@@ -6,7 +6,7 @@
   export let repositories: IGitHubRepo[]
 </script>
 
-<div class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+<div class="rounded-2xl lg:border border-zinc-100 lg:p-6 dark:border-zinc-700/40">
   <h2 class="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -3,6 +3,7 @@
   import ArrowRightIcon from '$components/Icons/ArrowRightIcon.svelte'
   import type { IPostResponse } from '$domain/models/post'
   import { locale } from '$lib/translations/common'
+  import PostDate from './PostDate.svelte'
 
   let loc: string
 
@@ -14,7 +15,9 @@
 </script>
 
 <Card href={`/${loc}/posts/${post.slug}`}>
-  <slot slot="eyebrow" name="eyebrow" />
+  <slot slot="eyebrow" name="eyebrow">
+    <PostDate class="flex-col md:flex" {post} collapsed decorate="true" />
+  </slot>
   <slot slot="title">{post.title}</slot>
   <div slot="description" class="prose dark:prose-invert">
     {@html excerpt}

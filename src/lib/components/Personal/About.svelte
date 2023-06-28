@@ -6,8 +6,8 @@
 </script>
 
 <div class=" md:px-4 sm:px-0 lg:px-12">
-  <section class="flex flex-col gap-16 pt-8 pb-16">
-    <div class="w-full gap-6 rounded-lg items-center">
+  <section class="flex flex pt-8 pb-16">
+    <div class="rounded-lg items-center">
       <Banner />
       <div class="">
         <img
@@ -18,22 +18,25 @@
         dark:shadow-gray-800 z-10 relative"
         />
       </div>
-      <div class="my-6 max-w-xl lg:max-w-1/4">
-        <div class="max-md:text-center" style="text-align: justify; text-justify: inter-word;">
+      <div class="my-6">
+        <div class="" style="text-align: justify; text-justify: inter-word;">
           <h1
-            class="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl"
+            class="text-4xl max-md:text-center font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl pt-4"
           >
             Gabriel Berthier
           </h1>
-          <p
-            class="text-base
+          <div class="lg:max-w-md">
+            <p
+              class="
             text-zinc-600 dark:text-zinc-400
-            max-md:text-justify text-base text-zinc-600
+            max-sm:px-4 text-zinc-600
+            max-w-prose max-sm:text-center
             dark:text-zinc-400 relative
-            sm:py-6 max-md:my-4"
-          >
-            {@html $t('bio.whoammi')}
-          </p>
+            sm:my-6 max-md:my-8"
+            >
+              {@html $t('bio.whoammi')}
+            </p>
+          </div>
           <div class="flex gap-6 mt-2 max-md:py-4 max-md:flex-center max-md:justify-center">
             <a href="/about" class="group flex justify-center" aria-label="Follow on Twitter">
               <svg

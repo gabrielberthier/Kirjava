@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { IPostResponse } from '$domain/models/post'
+  import type { IPostResponse } from '$domain/models/post'
   import { format, parseISO } from 'date-fns'
 
   export let decorate = 'sm'
@@ -9,7 +9,7 @@
   let _class: string
   export { _class as class }
 
-  $: createdAt = post.createdAt ? format(new Date(parseISO(post.createdAt)), 'MMMM d, yyyy') : ""
+  $: createdAt = post.createdAt ? format(new Date(parseISO(post.createdAt)), 'MMMM d, yyyy') : ''
 </script>
 
 <div
@@ -24,7 +24,7 @@
       <span class="h-full w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
     </span>
   {/if}
-  <div class="flex justify-between" >
+  <div class="flex">
     <time datetime={post.createdAt}>
       {createdAt}
     </time>

@@ -1,5 +1,5 @@
-<div class="absolute banner-gabri-2 xl:h-96 lg:h-96 h-1/6 -top-72">
-  <div class="bg-red-400 w-full h-full area">
+<div class="absolute banner-gabri-2 -top-72">
+  <div class="w-full h-full area">
     <ul class="circles">
       <li />
       <li />
@@ -15,6 +15,7 @@
     left: -1rem;
     width: calc(100% + 2rem);
     z-index: 1;
+    height: 25rem;
   }
 
   @media (min-width: 1376px) {
@@ -25,8 +26,19 @@
   }
 
   .area {
-    background: #4e54c8;
-    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+    background: #9cecfb; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #0052d4,
+      #65c7f7,
+      #9cecfb
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #0052d4,
+      #65c7f7,
+      #9cecfb
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
 
   .circles {
