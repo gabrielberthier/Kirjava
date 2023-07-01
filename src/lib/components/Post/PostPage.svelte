@@ -17,10 +17,10 @@
 
   let hasChanged = false
 
-  page.subscribe(async ({url, data}) => {
+  page.subscribe(async ({ url, data }) => {
     if (url.search && !hasChanged) {
-      const locale = data?.internationalization?.lang || ""
-      hasChanged = true 
+      const locale = data?.internationalization?.lang || ''
+      hasChanged = true
       goto(`/${locale}/posts${url.search}`)
     }
   })
@@ -169,7 +169,7 @@
 
   <!-- table of contents -->
   <div class="hidden xl:block pt-10">
-    <aside class="sticky hidden w-48 ml-8 xl:block top-16" aria-label="Table of Contents">
+    <aside class="sticky hidden w-48 ml-8 xl:block top-16 pl-5" aria-label="Table of Contents">
       <ToC {post} />
     </aside>
   </div>
@@ -192,7 +192,7 @@
   @media screen(lg) {
     .root {
       /* 42rem matches max-w-2xl */
-      grid-template-columns: 1fr 42rem 1fr;
+      grid-template-columns: 1fr 45rem 1fr;
     }
   }
 </style>
