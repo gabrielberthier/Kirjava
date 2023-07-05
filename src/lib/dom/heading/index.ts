@@ -20,8 +20,10 @@ const slugify = (text: string) =>
 export function headfy(node: HTMLElement): NodeHeading[] {
   const headings: NodeHeading[] = []
   for (const el of node.querySelectorAll('h1, h2, h3, h4, h5, h6')) {
-    const id = slugify(el.innerHTML).replaceAll('-', '')
+    const id = slugify(el.innerHTML)
+
     el.setAttribute('id', id)
+
     headings.push({
       depth: parseInt(el.tagName.split('')[1] || '0'),
       value: el.innerHTML,

@@ -13,7 +13,6 @@ export const postConverter = (post: Post): IPostResponse => {
 
   const tags = rawtags ?? []
 
-
   const htmlPostElement = parse(html || '')
 
   const newDate =
