@@ -9,7 +9,7 @@ import type { Meta } from '$domain/models/meta'
 import type { Post, Entry } from 'src/schemas'
 
 export const postConverter = (post: Post): IPostResponse => {
-  const { html, excerpt, createdAt, tags: rawtags, featureImage, featureImageCaption } = post
+  const { html, excerpt, createdAt, tags: rawtags, feature_image, feature_image_caption } = post
 
   const tags = rawtags ?? []
 
@@ -35,8 +35,8 @@ export const postConverter = (post: Post): IPostResponse => {
     previous: undefined,
     readingTime: readingTime(post.html || '').text,
     headings: headfy(htmlPostElement),
-    featureImage,
-    featureImageCaption,
+    featureImage: feature_image,
+    featureImageCaption: feature_image_caption,
     tags
   }
 }

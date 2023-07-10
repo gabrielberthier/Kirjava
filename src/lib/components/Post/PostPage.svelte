@@ -120,7 +120,7 @@
 
       <!-- render fig caption if exists -->
       {#if post.featureImage}
-        <figure class="max-w-lg">
+        <figure class="">
           <img class="h-auto max-w-full rounded-lg" src={post.featureImage} />
           {#if post.featureImage}
             <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">
