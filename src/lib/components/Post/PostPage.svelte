@@ -117,6 +117,18 @@
           <PostTag {tag} />
         {/each}
       </div>
+
+      <!-- render fig caption if exists -->
+      {#if post.featureImage}
+        <figure class="max-w-lg">
+          <img class="h-auto max-w-full rounded-lg" src={post.featureImage} />
+          {#if post.featureImage}
+            <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">
+              {post.featureImageCaption}
+            </figcaption>
+          {/if}
+        </figure>
+      {/if}
       <!-- render the post -->
       {#if component}
         <div class="prose dark:prose-invert">

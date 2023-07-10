@@ -22,6 +22,8 @@ export interface IPostResponse {
   commentId?: string
   isIndexFile: boolean
   createdAt?: string
+  featureImage?: string | null
+  featureImageCaption?: string | null
   preview: {
     html?: string
     text?: string
