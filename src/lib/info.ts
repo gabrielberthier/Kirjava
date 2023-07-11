@@ -11,7 +11,7 @@ export const name = `${firstName} ${lastName}`
 export const whereIam = 'São Luís, BR'
 
 // Used for the landing page & footer of posts
-export const avatar = '/imgs/gabs-avatar.jpg'
+export const avatar = '/imgs/20230708_093801.jpg'
 export const bio = `\
 I’m ${firstName}, a software engineer based in Brazil.
 `
