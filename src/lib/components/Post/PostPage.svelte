@@ -28,13 +28,12 @@
   onMount(async () => {
     await import('$lib/prism')
     if (post.codeinjectionHead) {
-      // const parser = new DOMParser()
-      // const el = parser.parseFromString(post.codeinjectionHead, 'text/html')
-      // const childrenToAdd = [...el.head.children, ...el.body.children]
-      // childrenToAdd.forEach((el) => {
-      //   document.head.insertAdjacentElement('beforeend', el)
-      // })
-      document.head.innerHTML += post.codeinjectionHead
+      const parser = new DOMParser()
+      const el = parser.parseFromString(post.codeinjectionHead, 'text/html')
+      const childrenToAdd = [...el.head.children, ...el.body.children]
+      childrenToAdd.forEach((el) => {
+        document.head.insertAdjacentElement('beforeend', el)
+      })
     }
   })
 
@@ -207,10 +206,6 @@
     <Disqus identifier={post.slug || ''} />
   </div>
 </div>
-
-{#if post.codeinjectionFooter}
-  {@html post.codeinjectionHead}
-{/if}
 
 <style lang="postcss">
   .root {
