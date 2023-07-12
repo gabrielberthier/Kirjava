@@ -1,38 +1,33 @@
 <script lang="ts">
-  import { browser } from '$app/environment'
   import { onMount } from 'svelte'
   import Card from '$components/Cards/Card.svelte'
-  import type { IPostResponse } from '$domain/models/post'
+  import type { Heading } from '$domain/models/post'
+  import { browser } from '$app/environment'
 
-  export let post: IPostResponse
-
-  let elements: HTMLElement[] = []
-  let headings = post.headings
+  export let headings: Heading[] = []
+  $: elements = headings
+    .map((heading) => {
+      if (browser) {
+        return document.getElementById(heading.id)
+      }
+      return null
+    })
+    .filter((el) => el !== null)
 
   onMount(() => {
-    updateHeadings()
     setActiveHeading()
   })
 
   let activeHeading = headings[0]
   let scrollY: number
 
-  function updateHeadings() {
-    headings = post.headings
-
-    if (browser) {
-      headings
-        .map((heading) => {
-          return document.getElementById(heading.id)
-        })
-        .forEach((el) => el && elements.push(el))
-    }
-  }
   function setActiveHeading() {
     scrollY = window.scrollY
 
     const visibleIndex =
-      elements.findIndex((element) => element.offsetTop + element.clientHeight > scrollY) - 1
+      elements
+        .filter((el) => el !== null)
+        .findIndex((element) => element!.offsetTop + element!.clientHeight > scrollY) - 1
 
     activeHeading = headings[visibleIndex]
 

@@ -1,7 +1,7 @@
 import type { Meta } from './meta'
 import type { Tag } from './tag'
 
-interface Heading {
+export interface Heading {
   value: string
   depth: number
   id: string
