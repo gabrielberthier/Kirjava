@@ -11,7 +11,6 @@
   import SocialLinks from '$components/Social/SocialLinks.svelte'
   import Disqus from '$components/Disqus/index.svelte'
   import PostTag from '../Tags/PostTag.svelte'
-  import { parse } from 'node-html-parser/dist/nodes/html'
 
   export let post: IPostResponse
   export let component: any
@@ -29,12 +28,13 @@
   onMount(async () => {
     await import('$lib/prism')
     if (post.codeinjectionHead) {
-      const parser = new DOMParser()
-      const el = parser.parseFromString(post.codeinjectionHead, 'text/html')
-      const childrenToAdd = [...el.head.children, ...el.body.children]
-      childrenToAdd.forEach((el) => {
-        document.head.insertAdjacentElement('beforeend', el)
-      })
+      // const parser = new DOMParser()
+      // const el = parser.parseFromString(post.codeinjectionHead, 'text/html')
+      // const childrenToAdd = [...el.head.children, ...el.body.children]
+      // childrenToAdd.forEach((el) => {
+      //   document.head.insertAdjacentElement('beforeend', el)
+      // })
+      document.head.innerHTML += post.codeinjectionHead
     }
   })
 
