@@ -31,4 +31,6 @@ export interface IPostResponse {
   readingTime: string
   headings: Heading[]
   tags: Tag[]
+  codeinjectionHead?: string | null
+  codeinjectionFooter?: string | null
 }

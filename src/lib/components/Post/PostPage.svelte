@@ -74,6 +74,9 @@
   <meta name="twitter:title" content={post.title} />
   <meta name="twitter:description" content={post.preview.text} />
   <meta name="twitter:image" content={ogImage} />
+  {#if post.codeinjectionHead}
+    {@html post.codeinjectionHead}
+  {/if}
 </svelte:head>
 
 <div class="root">
@@ -121,7 +124,11 @@
       <!-- render fig caption if exists -->
       {#if post.featureImage}
         <figure class="">
-          <img class="h-auto max-w-full rounded-lg" src={post.featureImage} />
+          <img
+            class="h-auto max-w-full rounded-lg"
+            src={post.featureImage}
+            alt={post.featureImageCaption || 'Feature Image Caption'}
+          />
           {#if post.featureImage}
             <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">
               {post.featureImageCaption}
@@ -194,6 +201,10 @@
     <Disqus identifier={post.slug || ''} />
   </div>
 </div>
+
+{#if post.codeinjectionFooter}
+  {@html post.codeinjectionHead}
+{/if}
 
 <style lang="postcss">
   .root {
