@@ -3,12 +3,15 @@ import type { ServerLoadEvent } from '@sveltejs/kit'
 import type { IPostResponse } from '$domain/models/post'
 import type { Meta } from '$domain/models/meta'
 import { PostLoaderFactory } from '$services/posts/post-fetcher-factory'
+import { multiTagsApi } from '$services/api/tags-api'
+import type { Tag } from 'src/schemas'
 
 export interface LoadedPostResponse {
   posts: IPostResponse[]
   page: number
   limit: number
   meta?: Meta
+  tags: Tag[]
 }
 
 export async function load(event: ServerLoadEvent): Promise<LoadedPostResponse> {
@@ -17,6 +20,8 @@ export async function load(event: ServerLoadEvent): Promise<LoadedPostResponse> 
   let limit = 10
 
   const postsDataProvider = PostLoaderFactory.get()
+
+  const tags = await multiTagsApi.get('')
 
   if (params.page) {
     try {
@@ -47,6 +52,7 @@ export async function load(event: ServerLoadEvent): Promise<LoadedPostResponse> 
     posts,
     page,
     limit,
-    meta
+    meta,
+    tags: tags.data?.tags!
   }
 }

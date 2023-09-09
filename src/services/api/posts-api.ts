@@ -29,7 +29,12 @@ export class ApiPostsLoader implements PostFetcher {
     page?: number | undefined,
     limit?: number | undefined
   ): Promise<Result<IAllPostResponse, DomainHttpException>> {
-    const entry = await AllPostsApi.get('', { page, limit, filter: 'tag:article' })
+    const entry = await AllPostsApi.get('', {
+      page,
+      limit,
+      filter: 'tag:article',
+      include: 'tags,authors'
+    })
 
     if (entry.success) {
       return ok(allPostsConverter(entry.data))

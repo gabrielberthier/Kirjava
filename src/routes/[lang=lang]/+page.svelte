@@ -20,20 +20,22 @@
   <meta name="description" content={bio} />
 </svelte:head>
 <div class="mx-auto max-w-7xl lg:px-8 relative">
-  <div class="gap-8 pb-16 relative px-4 sm:px-8 lg:px-12">
+  <div class="gap-8 pb-16 relative">
     <!--  -->
     <!-- bio -->
-    <div class="grid max-w-xl grid-cols-1 lg:grid-cols-2 lg:max-w-none">
+    <div class="grid max-w-xl grid-cols-1 sm:px-8 lg:px-12 lg:grid-cols-2 lg:max-w-none">
       <About />
-      <div class="justify-center items-center flex px-8 max-md:hidden">
+      <div class="justify-center items-center flex">
         <div class="lg:w-3/4">
           <NewsLetter />
         </div>
       </div>
     </div>
 
-    <section class="mx-auto max-w-2xl lg:max-w-5xl mt-4">
-      <div class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
+    <section class="mx-auto max-w-2xl lg:max-w-5xl mt-4 md:max-w-none mt-8">
+      <div
+        class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 md:max-w-3xl lg:max-w-none lg:grid-cols-2"
+      >
         {#if data.posts.length}
           <div>
             <div class="flex justify-between mb-5">
@@ -47,9 +49,6 @@
             <div class="flex items-center gap-4 mb-4">
               <PostsList posts={data.posts} />
             </div>
-            <div class="mt-16 lg:hidden">
-              <SmallNewsLetter />
-            </div>
           </div>
         {:else if data.postError}
           <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
@@ -58,7 +57,10 @@
           </div>
         {/if}
         <div
-          class="space-y-10 lg:pl-16 xl:pl-24 md:flex items-center justify-items-stretch max-w-3xl flex-col"
+          class="space-y-10 lg:pl-16 xl:pl-24 md:flex items-center
+          justify-items-stretch max-w-3xl
+          md:pl-0 md:gap-6
+          flex-col md:flex-row lg:flex-col md:justify-between"
         >
           <GitProjects repositories={data.repositories} />
           <WorkedOnCard />

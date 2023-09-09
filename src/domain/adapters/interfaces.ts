@@ -17,10 +17,8 @@ export abstract class AbstractConverter<T> implements Converter<T> {
       if (forceCammelCase) {
         obj = objectToCamelCase(obj)
       }
-      
-      Schema.parse(obj)
 
-      return obj
+      return Schema.parse(obj)
     } catch (error) {
       console.error(error)
       throw new Error('Sorry, wrong Schema passed')

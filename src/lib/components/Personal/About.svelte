@@ -5,8 +5,8 @@
   import Banner from './Banner.svelte'
 </script>
 
-<div class=" md:px-4 sm:px-0 lg:px-12">
-  <section class="flex flex pt-8 pb-16">
+<div class="md:px-4 lg:px-12">
+  <section class="flex flex pt-8">
     <div class="rounded-lg items-center">
       <Banner />
       <div class="">
@@ -14,31 +14,33 @@
           src={avatar}
           alt={name}
           class="rounded-full w-36 h-36 ring-2 ring-zinc-200 dark:ring-zinc-700
-        max-md:mx-auto border-solid border-2 border-sky-700 shadow-2xl
+         border-solid border-2 border-sky-700 shadow-2xl
         dark:shadow-gray-800 z-10 relative"
         />
       </div>
       <div class="my-6">
-        <div class="" style="text-align: justify; text-justify: inter-word;">
+        <div class="">
           <h1
-            class="text-4xl max-md:text-center font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl pt-4"
+            class="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl"
           >
             Gabriel Berthier
           </h1>
           <div class="lg:max-w-md">
             <p
               class="
-            text-zinc-600 dark:text-zinc-400
-            max-sm:px-4 text-zinc-600
-            max-w-prose max-sm:text-center
+            text-zinc-500 dark:text-zinc-400
+            text-zinc-500 pr-4 md:pr-0
+            max-w-prose leading-7
             dark:text-zinc-400 relative
-            sm:my-6 max-md:my-8"
+            sm:my-6 max-md:my-4"
             >
               {@html $t('bio.whoammi')}
             </p>
           </div>
-          <div class="flex gap-6 mt-2 max-md:py-4 max-md:flex-center max-md:justify-center">
-            <a href="/about" class="group flex justify-center" aria-label="Follow on Twitter">
+          <div
+            class="flex gap-6 mt-2 max-md:py-4 max-md:flex-center justify-between md:flex-col-reverse md:justify-start"
+          >
+            <a href="/about" class="group flex" aria-label="Follow on Twitter">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -60,9 +62,9 @@
               </svg>
               <span>{whereIam}</span>
             </a>
-          </div>
-          <div class="flex gap-4 mt-4 max-md:py-3 max-md:flex-center max-md:justify-center">
-            <SocialLinks />
+            <div class="flex gap-2 max-md:flex-center pr-4">
+              <SocialLinks />
+            </div>
           </div>
         </div>
       </div>

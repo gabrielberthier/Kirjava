@@ -14,9 +14,7 @@ export class SingleItemConverter<T> extends AbstractConverter<T> {
 
     if (isObject(json)) {
       try {
-        this.validateFormData(this.schema, json, true)
-
-        return json as T
+        return this.validateFormData(this.schema, json, true) as T
       } catch (error) {
         console.error(error)
         throw new Error('Sorry, wrong Schema passed')

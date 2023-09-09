@@ -11,7 +11,7 @@
   const setQueryParam = () => {
     if (!isCurrentTag) {
       goto(`?tag=${tag.slug}`)
-    }else{
+    } else {
       goto('?')
     }
   }
@@ -23,8 +23,7 @@
         hover:text-sky-500 text-gray-700 border
         hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-indigo-500"
   on:click={() => setQueryParam()}
-
-  class:selected="{isCurrentTag}"
+  class:selected={isCurrentTag}
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -51,8 +50,8 @@
     font-size: 0.75rem;
   }
 
-  .selected{
+  .selected {
     font-weight: 700;
-    color: #6875F5;
+    color: #6875f5;
   }
 </style>

@@ -6,9 +6,11 @@ import bio from './bio.json'
 import books from './books.json'
 import posts from './posts.json'
 import projects from './projects.json'
+import articlespage from './articlespage.json'
 
 export default {
   about,
+  articlespage,
   error,
   home,
   menu,

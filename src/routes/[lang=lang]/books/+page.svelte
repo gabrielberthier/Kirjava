@@ -11,7 +11,7 @@
   </div>
 
   <div class="mx-auto max-w-2xl lg:max-w-5xl my-12">
-    <div class="mt-16 sm:mt-20">
+    <a class="mt-16 sm:mt-20" href="https://operaeditorial.com.br/produto/as-dores-cronicas/">
       <ul class="grid gap-x-12 gap-y-16 grid-cols-1">
         <li class="group relative flex items-start flex-col md:flex-row">
           <div class="min-w-full md:min-w-[20%] h-full">
@@ -22,7 +22,7 @@
             >
               <img
                 alt=""
-                src="/imgs/dores-cover.jpg"
+                src="/imgs/Mockup_as-dores-cronicas.png"
                 decoding="async"
                 data-nimg="1"
                 class="w-fit"
@@ -44,8 +44,10 @@
             <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
               {$t('books.dores_cronicas')}
             </p>
-            <p
-              class="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-sky-500 dark:text-zinc-200"
+            <a
+              class="relative z-10 mt-6 flex text-sm font-medium text-zinc-400
+              transition group-hover:text-sky-500 dark:text-zinc-200"
+              href="https://operaeditorial.com.br/produto/as-dores-cronicas/"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -58,15 +60,15 @@
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15M9 12l3 3m0 0l3-3m-3 3V2.25"
+                  d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"
                 />
               </svg>
 
-              <span class="ml-2">Download</span>
-            </p>
+              <span class="ml-2" />
+            </a>
           </div>
         </li>
       </ul>
-    </div>
+    </a>
   </div>
 </div>

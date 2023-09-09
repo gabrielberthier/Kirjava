@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { metaSchema } from './pagination'
 
 export const tagSchema = z.object({
   id: z.string().optional(),
@@ -11,3 +12,11 @@ export const tagSchema = z.object({
   metaTitle: z.string().optional().nullable(),
   metaDescription: z.string().optional().nullable()
 })
+
+export const entryTagsSchema = z.object({
+  tags: z.array(tagSchema),
+  meta: metaSchema
+})
+
+export type Tag = z.infer<typeof tagSchema>
+export type TagsEntry = z.infer<typeof entryTagsSchema>
