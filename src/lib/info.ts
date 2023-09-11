@@ -21,7 +21,7 @@ I'm ${firstName}, a software engineer based in Brazil.
 // but you can replace with just your username.
 export const github = 'gabrielberthier'
 export const twitter = 'GabriBerthier'
-export const linkedin = 'gabriel-nogueira-berthier-1b280214a'
+export const linkedin = 'gabriel-berthier'
 export const instagram = 'gabrielberthier'
 
 type PlacesIveWorked = {
