@@ -25,7 +25,7 @@
   {#if isOpen}
     <div
       class="absolute right-0 z-20 w-48 py-2 mt-2 origin-top-right bg-white rounded-md shadow-xl dark:bg-gray-800"
-      transition:fade
+      transition:fade|global
     >
       <a
         href="#"

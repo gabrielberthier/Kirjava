@@ -7,7 +7,7 @@
   import { afterNavigate } from '$app/navigation'
   import LanguageSelect from '../Select/LanguageSelect.svelte'
   import type { MenuItem } from './protocols'
-  import { locale, t } from '$lib/translations/common'
+  import { locale } from '$lib/translations/common'
   import { onUpdateItems, updateHeaderAfterNavigate } from "./header-behaviour";
 
   let menuItems: MenuItem[] = []

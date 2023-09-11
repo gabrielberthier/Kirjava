@@ -1,9 +1,9 @@
 import { browser } from '$app/environment'
 import { t } from '$lib/translations/common'
-import type { Navigation } from '@sveltejs/kit'
+import type { AfterNavigate } from '@sveltejs/kit'
 import type { MenuItem } from './protocols'
 
-export const updateHeaderAfterNavigate = (el: Navigation) => {
+export const updateHeaderAfterNavigate = (el: AfterNavigate) => {
   const header = document.querySelector('header')
   const token = 'scroll-down'
   if (browser && header && header.classList.contains(token)) {

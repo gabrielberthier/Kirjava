@@ -1,7 +1,6 @@
 <script lang="ts">
-  import MoonIcon from 'heroicons-svelte/solid/MoonIcon.svelte'
-  import SunIcon from 'heroicons-svelte/solid/SunIcon.svelte'
   import { browser } from '$app/environment'
+  import { Moon, Sun } from "svelte-heros-v2";
 
   let isDarkMode = browser ? Boolean(document.documentElement.classList.contains('dark')) : true
 
@@ -32,6 +31,6 @@
     }
   }}
 >
-  <MoonIcon class="hidden text-blue-500 dark:block w-4 h-4" />
-  <SunIcon class="block text-amber-300 dark:hidden w-4 h-4" />
+  <Moon class="hidden text-blue-500 dark:block w-4 h-4" />
+  <Sun class="block text-amber-300 dark:hidden w-4 h-4" />
 </button>

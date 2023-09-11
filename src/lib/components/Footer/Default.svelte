@@ -1,6 +1,12 @@
 <script lang="ts">
   import { page } from '$app/stores'
-  import { menuItems } from '$lib/stores/menu-store'
+  import { locale } from '$lib/translations/common'
+  import { onUpdateItems } from '../Header/header-behaviour'
+  import type { MenuItem } from '../Header/protocols'
+
+  let menuItems: MenuItem[] = []
+
+  locale.subscribe(async (loc) => menuItems = onUpdateItems(loc))
 
   $: error404 = $page.status == 404
 </script>
@@ -17,7 +23,7 @@
                   ? 'text-white'
                   : 'text-zinc-800 dark:text-zinc-200'}"
               >
-                {#each $menuItems as link}
+                {#each menuItems as link}
                   <a
                     class="transition hover:text-sky-500 dark:hover:text-teal-400"
                     href="{link.to}"
