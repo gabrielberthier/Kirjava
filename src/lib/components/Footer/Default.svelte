@@ -6,9 +6,7 @@
 
   let menuItems: MenuItem[] = []
 
-  locale.subscribe(async (loc) => menuItems = onUpdateItems(loc))
-
-  $: error404 = $page.status == 404
+  locale.subscribe(async (loc) => (menuItems = onUpdateItems(loc)))
 </script>
 
 <footer>
@@ -19,15 +17,12 @@
           <div class="mx-auto max-w-2xl lg:max-w-5xl">
             <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
               <div
-                class="flex gap-6 text-sm font-medium {error404
+                class="flex gap-6 text-sm font-medium {$page.status == 404
                   ? 'text-white'
                   : 'text-zinc-800 dark:text-zinc-200'}"
               >
                 {#each menuItems as link}
-                  <a
-                    class="transition hover:text-sky-500 dark:hover:text-teal-400"
-                    href="{link.to}"
-                  >
+                  <a class="transition hover:text-sky-500 dark:hover:text-teal-400" href={link.to}>
                     {link.text}
                   </a>
                 {/each}
