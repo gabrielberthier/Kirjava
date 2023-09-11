@@ -17,6 +17,7 @@ export abstract class BaseApiService<T> {
 
     if (response.error) {
       console.error('An error occured')
+      console.error(response.error.cause)
       console.error('\x1b[31m%s\x1b[0m', response.error)
       console.error('\x1b[31m%s\x1b[0m', response.error.stack)
     }

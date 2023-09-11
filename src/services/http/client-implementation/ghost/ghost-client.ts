@@ -13,9 +13,12 @@ import {
 export class GhostClient implements JsonClientReader {
   private ghostApi: GhostAPI
 
-  constructor(readonly ghostUrl: string, readonly singleItem: boolean) {
+  constructor(readonly singleItem: boolean) {
+    console.log(env.BACKEND_URL)
+    console.log(env.KEY)
+
     this.ghostApi = new GhostContentAPI({
-      url: ghostUrl,
+      url: env.BACKEND_URL,
       key: env.KEY ?? '',
       version: 'v5.0'
     })
@@ -62,6 +65,7 @@ export class GhostClient implements JsonClientReader {
 
           console.error('\x1b[31m%s\x1b[0m', 'Found error')
           console.error('\x1b[31m%s\x1b[0m', error)
+          console.error('\x1b[31m%s\x1b[0m', error.errors.map((el) => el.errorType).join('\n'))
 
           return {
             error: finalMistake,

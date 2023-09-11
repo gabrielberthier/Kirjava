@@ -4,7 +4,7 @@ import type { IPostResponse } from '$domain/models/post'
 import type { Meta } from '$domain/models/meta'
 import { PostLoaderFactory } from '$services/posts/post-fetcher-factory'
 import { multiTagsApi } from '$services/api/tags-api'
-import type { Tag } from 'src/schemas'
+import type { Tag } from '../../../../schemas'
 
 export interface LoadedPostResponse {
   posts: IPostResponse[]

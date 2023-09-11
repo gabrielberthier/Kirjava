@@ -1,5 +1,4 @@
 import { readerServiceFactory } from '../http/factory/make-service'
-import { env } from '$env/dynamic/private'
 import { GhostClient } from '$services/http/client-implementation/ghost/ghost-client'
 import type { IAllPostResponse } from '$domain/models/post'
 import type { IPostResponse } from '$domain/models/post'
@@ -13,14 +12,14 @@ import type { PostFetcher } from '$lib/data/posts/protocols'
 export const AllPostsApi = readerServiceFactory<Entry>({
   resource: 'posts',
   apiPath: 'api/content',
-  client: new GhostClient(env.BACKEND_URL || '', false),
+  client: new GhostClient(false),
   schema: entrySchema
 })
 
 export const singlePostApi = readerServiceFactory<Post>({
   resource: 'posts',
   apiPath: 'api/content',
-  client: new GhostClient(env.BACKEND_URL || '', true),
+  client: new GhostClient(true),
   schema: postSchema
 })
 

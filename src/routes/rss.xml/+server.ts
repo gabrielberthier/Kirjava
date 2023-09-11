@@ -20,7 +20,8 @@ export const GET: RequestHandler = async ({ setHeaders }) => {
     'Content-Type': 'application/xml'
   })
   const postsDataProvider = PostLoaderFactory.get()
-  const { posts } = (await postsDataProvider.getArticles()).unwrapOr({
+  const wrappedPosts = await postsDataProvider.getArticles(1, 10)
+  const { posts } = wrappedPosts.unwrapOr({
     posts: [],
     meta: undefined
   })

@@ -20,17 +20,15 @@ export const load: PageServerLoad = async function load() {
   ])
 
   let posts: IPostResponse[] = []
-  let postError: PojoHttpException|null = null
+  let postError: PojoHttpException | null = null
 
-  if(allPosts.isErr()){
+  if (allPosts.isErr()) {
     postError = allPosts.error.toPojo()
-    console.error(postError);
-    
-  }
-  else{
+    console.error(postError)
+  } else {
     posts = allPosts.value.posts
   }
-  
+
   return {
     posts,
     postError,
