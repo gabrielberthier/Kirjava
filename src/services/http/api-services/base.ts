@@ -16,7 +16,9 @@ export abstract class BaseApiService<T> {
     const response = await this.client.dispatch(path, params)
 
     if (response.error) {
-      console.error("\x1b[31m%s\x1b[0m", response.error)
+      console.error('An error occured')
+      console.error('\x1b[31m%s\x1b[0m', response.error)
+      console.error('\x1b[31m%s\x1b[0m', response.error.stack)
     }
 
     return this.responseHandler.handle(response)

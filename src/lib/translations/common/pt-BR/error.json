@@ -3,5 +3,5 @@
   "404": "Page not found.",
   "500": "Server internal error.",
   "default": "Some error occurred.",
-  "github": "Parece que ocorreu um erro ao buscar meus repositórios no GitHub ou eles finalmente desativaram minha conexão para a API (bastardos). Mas você ainda pode conferir meus repositórios no <a href='https://github.com/gabrielberthier?tab=repositories' class='link text-sky-500'>GitHub</a> ;)"
+  "github": "Parece que ocorreu um erro ao buscar meus repositórios no GitHub ou eles finalmente desativaram minha conexão para a API - :(((. Mas você ainda pode conferir meus repositórios no <a href='https://github.com/gabrielberthier?tab=repositories' class='link text-sky-500'>GitHub</a> ;)"
 }

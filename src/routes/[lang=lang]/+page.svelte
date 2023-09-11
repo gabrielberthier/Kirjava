@@ -60,7 +60,7 @@
           class="space-y-10 lg:pl-16 xl:pl-24 md:flex items-center
           justify-items-stretch max-w-3xl
           md:pl-0 md:gap-6
-          flex-col md:flex-row lg:flex-col md:justify-between"
+          flex-col md:flex-row lg:flex-col md:justify-between lg:justify-normal"
         >
           <GitProjects repositories={data.repositories} />
           <WorkedOnCard />

@@ -35,7 +35,7 @@
       {/each}
     </ol>
   {:else}
-    <div class="p-3">
+    <div class="p-3 max-w-md">
       <h3 class="py-2">
         grr
         <img src="/imgs/grr.png" alt="grr icon" class="inline w-6" />

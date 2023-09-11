@@ -3,5 +3,5 @@
   "404": "Page not found.",
   "500": "Server internal error.",
   "default": "Some error occurred.",
-  "github": "It seems like an error occorured while fetching my repos at GitHub or they finally took my connection down for their API (grr bastads). But you can still check my repos out at <a href='https://github.com/gabrielberthier?tab=repositories' class='link text-sky-500'>GitHub</a> ;)"
+  "github": "It seems like an error occorured while fetching my repos at GitHub or they finally took my connection down for their API - :(((. But you can still check my repos out at <a href='https://github.com/gabrielberthier?tab=repositories' class='link text-sky-500'>GitHub</a> ;)"
 }
