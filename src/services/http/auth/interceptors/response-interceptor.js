@@ -1,5 +1,5 @@
-import { api } from "src/boot/axios";
-import { Store } from "vuex";
+import { api } from 'src/boot/axios'
+import { Store } from 'vuex'
 
 export function responseInterceptorFactory() {
   /**
@@ -8,19 +8,19 @@ export function responseInterceptorFactory() {
    * @returns {import("axios").AxiosRequestConfig}
    */
   return (config) => {
-    return config;
-  };
+    return config
+  }
 }
 
-let isAlreadyFetchingAccessToken = false;
-let subscribers = [];
+let isAlreadyFetchingAccessToken = false
+let subscribers = []
 
 function onAccessTokenFetched(access_token) {
-  subscribers = subscribers.filter((callback) => callback(access_token));
+  subscribers = subscribers.filter((callback) => callback(access_token))
 }
 
 function addSubscriber(callback) {
-  subscribers.push(callback);
+  subscribers.push(callback)
 }
 
 /**
@@ -37,36 +37,35 @@ export function onErrorInterceptor(store) {
   return async (error) => {
     const {
       config,
-      response: { status },
-    } = error;
-    const originalRequest = config;
-    console.log(isAlreadyFetchingAccessToken);
+      response: { status }
+    } = error
+    const originalRequest = config
 
     if (status === 401 && !isAlreadyFetchingAccessToken) {
-      isAlreadyFetchingAccessToken = true;
+      isAlreadyFetchingAccessToken = true
 
-      const response = await api.get("/auth/refresh-token/", {
-        withCredentials: true,
-      });
+      const response = await api.get('/auth/refresh-token/', {
+        withCredentials: true
+      })
 
-      const authToken = response.headers["x-renew-token"];
+      const authToken = response.headers['x-renew-token']
 
       if (authToken) {
-        isAlreadyFetchingAccessToken = false;
-        store.dispatch("auth/login", authToken);
-        onAccessTokenFetched(authToken);
+        isAlreadyFetchingAccessToken = false
+        store.dispatch('auth/login', authToken)
+        onAccessTokenFetched(authToken)
       } else {
-        store.dispatch("auth/logout");
+        store.dispatch('auth/logout')
       }
 
       const retryOriginalRequest = new Promise((resolve) => {
         addSubscriber((access_token) => {
-          originalRequest.headers.Authorization = "Bearer " + access_token;
-          resolve(api(originalRequest));
-        });
-      });
-      return retryOriginalRequest;
+          originalRequest.headers.Authorization = 'Bearer ' + access_token
+          resolve(api(originalRequest))
+        })
+      })
+      return retryOriginalRequest
     }
-    return Promise.reject(error);
-  };
+    return Promise.reject(error)
+  }
 }

@@ -2,7 +2,6 @@
   import ArrowRightIcon from '$components/Icons/ArrowRightIcon.svelte'
   import PostsList from '$components/Post/PostsList.svelte'
   import NewsLetter from '$lib/components/Forms/NewsLetter.svelte'
-  import SmallNewsLetter from '$lib/components/Forms/SmallNewsLetter.svelte'
   import About from '$lib/components/Personal/About.svelte'
   import GitProjects from '$lib/components/Personal/GitProjects.svelte'
   import WorkedOnCard from '$lib/components/Personal/WorkedOnCard.svelte'
@@ -57,7 +56,7 @@
           </div>
         {/if}
         <div
-          class="space-y-10 lg:pl-16 xl:pl-24 md:flex items-center
+          class="max-md:space-y-10 lg:pl-16 xl:pl-24 md:flex
           justify-items-stretch max-w-3xl
           md:pl-0 md:gap-6
           flex-col md:flex-row lg:flex-col md:justify-between lg:justify-normal"

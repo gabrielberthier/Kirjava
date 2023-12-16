@@ -1,16 +1,27 @@
 <script lang="ts">
+  import { page } from '$app/stores'
   import { locale } from '$lib/translations/common'
+
   let href: string = ''
 
-  locale.subscribe((l) => (href = `/${l}`))
+  let isHome = false
+
+  locale.subscribe((l) => {
+    href = `/${l}`
+
+    page.subscribe((a) => {
+      isHome = a.url.pathname === href
+    })
+  })
 </script>
 
 <div
-  class="h-10 w-10 rounded-full 
-bg-white/90 p-0.5 shadow-lg 
-shadow-zinc-800/5 ring-1 
-ring-zinc-900/5 backdrop-blur 
+  class="h-10 w-10 rounded-full
+bg-white/90 p-0.5 shadow-lg
+shadow-zinc-800/5 ring-1
+ring-zinc-900/5 backdrop-blur
 dark:bg-zinc-800/90 dark:ring-white/10"
+class:hidden={isHome}
 >
   <a aria-label="Home" {href} class="pointer-events-auto">
     <svg
