@@ -35,13 +35,13 @@ type PlacesIveWorked = {
 export const placesIveWorkd: PlacesIveWorked[] = [
   {
     name: 'DM',
-    position: 'Dev Backend PL (Python)',
+    position: 'Dev Backend (Python)',
     image: 'dm',
     from: '10/2022'
   },
   {
     name: 'IBM',
-    position: 'Dev Backend JR (Python)',
+    position: 'Backend Software Engineer (Python)',
     image: 'ibm',
     from: '01/2022',
     to: '09/2022'
