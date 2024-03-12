@@ -6,7 +6,7 @@ export function headerToggle(node: HTMLElement) {
   let lastScroll = 0
 
   const handleToggle = () => {
-    const currentScroll = window.pageYOffset
+    const currentScroll = window.scrollY
     if (currentScroll <= 0) {
       node.classList.remove(scrollUp)
       return

@@ -14,14 +14,13 @@ Henceforth, the project should correctly autoload either method to retrieve post
 
 This is an early development version. I am currently considering:
 
-- [ ] Support for JSON safety using Zod instead of class-transformer
+- [X] Support for JSON safety using Zod instead of class-transformer
 - [x] Adjust bookmarks
-- [X] ~~Dark theme support (+ auto detecting system's dark/light mode).~~ Support for detecting theme's colors was added.
+- [X] Support for detecting theme's colors.
 - [ ] Zoom button controls (`+` / `-` / `reset`).
 - [ ] Add Spotify API because why not?
-- [ ] Ignoring files or directories.
-- [ ] Improve landing page splitting work from bio.
-- [ ] Create Curriculum Page.
+- [X] Ignoring files or directories.
+- [X] Improve landing page splitting work from bio.
 - [x] Optional autostart.
 
 

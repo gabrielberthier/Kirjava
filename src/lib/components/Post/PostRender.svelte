@@ -14,7 +14,7 @@
 
   onMount(async () => {
     if (browser) {
-      const elements = prose.getElementsByTagName('code')
+      const elements = prose?.getElementsByTagName('code') || []
 
       for (const el of elements) {
         const language = el.className.split('-').pop() || ''
