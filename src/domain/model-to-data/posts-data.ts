@@ -6,7 +6,7 @@ import { format } from 'date-fns'
 import readingTime from 'reading-time'
 import { parse } from 'node-html-parser'
 import type { Meta } from '$domain/models/meta'
-import type { Post, Entry } from 'src/schemas'
+import type { Entry, Post } from '../../schemas'
 
 export const postConverter = (post: Post): IPostResponse => {
   const {

@@ -5,6 +5,7 @@ import { addTimezoneOffset } from '$services/utils/time'
 import { siblingfy } from '$services/utils/data-sets-utilities'
 import type { SvelteComponent } from 'svelte'
 import type { IPostResponse } from '$domain/models/post'
+import { headfy } from '$lib/dom/heading'
 
 interface postFile {
   default: SvelteComponent
@@ -45,7 +46,7 @@ export const posts: IPostResponse[] = Object.entries(
         // text-only preview (i.e no html elements), used for SEO
         text: preview?.structuredText ?? preview?.toString()
       },
-      headings: [],
+      headings: headfy(html),
       // get estimated reading time for the post
       readingTime: readingTime(html.structuredText).text,
       tags: []

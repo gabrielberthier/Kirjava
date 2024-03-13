@@ -58,7 +58,7 @@
             Math.max(0, heading.depth - 1)
           }`}
         >
-          <a href={`#${heading.id}`}>{heading.value}</a>
+          <a href={`#${heading.id}`}>{@html heading.value}</a>
         </li>
       {/each}
     </ul>

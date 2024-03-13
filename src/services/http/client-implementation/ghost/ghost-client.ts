@@ -17,7 +17,7 @@ export class GhostClient implements JsonClientReader {
   constructor(readonly singleItem: boolean) {
     this.ghostApi = new GhostContentAPI({
       url: env.BACKEND_URL ?? "https://site.com",
-      key: env.KEY ?? '',
+      key: env.KEY ?? (Math.random() + 1).toString(36).substring(26),
       version: 'v5.0'
     })
   }
