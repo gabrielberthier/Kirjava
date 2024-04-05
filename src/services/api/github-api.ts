@@ -1,13 +1,13 @@
 import { GitHubRepository, githubRepositorySchema } from '$domain/models/github/user-repositories'
 import type { IGitHubRepo } from '$domain/models/github/user-repositories'
 import type { ReaderApiService } from '$services/http'
-import { multiReaderServiceFactory } from '$services/http/factory/make-service'
+import { readerServiceFactory } from '$services/http/factory/make-service'
 
 export class GitHubApi {
   private githubReaderService: ReaderApiService<GitHubRepository[]>
 
   constructor(private apiToken: string, private url: string, private githubProfile: string) {
-    this.githubReaderService = multiReaderServiceFactory<GitHubRepository[]>({
+    this.githubReaderService = readerServiceFactory<GitHubRepository[]>({
       baseUrl: `${this.url}/${this.githubProfile}`,
       resource: 'repos',
       schema: githubRepositorySchema,

@@ -4,7 +4,6 @@ import type { IAllPostResponse } from '$domain/models/post'
 import type { IPostResponse } from '$domain/models/post'
 import { allPostsConverter, postConverter } from '$domain/model-to-data/posts-data'
 import { err, ok, Result } from 'neverthrow'
-import type { DomainHttpException } from '$services/http/exceptions/http-exceptions'
 import { entrySchema, postSchema } from '../../schemas'
 import type { Post, Entry } from '../../schemas'
 import type { PostFetcher } from '$lib/data/posts/protocols'
@@ -27,7 +26,7 @@ export class ApiPostsLoader implements PostFetcher {
   async getArticles(
     page?: number | undefined,
     limit?: number | undefined
-  ): Promise<Result<IAllPostResponse, DomainHttpException>> {
+  ): Promise<Result<IAllPostResponse, Error>> {
     const entry = await AllPostsApi.get('', {
       page,
       limit,
@@ -46,7 +45,7 @@ export class ApiPostsLoader implements PostFetcher {
     page?: number,
     limit?: number,
     params?: any
-  ): Promise<Result<IAllPostResponse, DomainHttpException>> {
+  ): Promise<Result<IAllPostResponse, Error>> {
     params ||= {}
     const entry = await AllPostsApi.get('', { page, limit, ...params })
 
@@ -60,7 +59,7 @@ export class ApiPostsLoader implements PostFetcher {
   async getOneWithSlug(
     slug: string,
     params?: any
-  ): Promise<Result<IPostResponse, DomainHttpException>> {
+  ): Promise<Result<IPostResponse, Error>> {
     const response = await singlePostApi.get('', { slug, ...params })
 
     if (response.success) {

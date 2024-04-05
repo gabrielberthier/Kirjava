@@ -6,9 +6,11 @@ import { axiosImplementation } from '../client-implementation/factories'
 import { makeDefaultResponseHandler } from '../response/factories'
 import { env } from '$env/dynamic/private'
 import type { AnyZodObject } from 'zod'
-import { MultiItemConverter, SingleItemConverter } from '$domain/adapters'
+import { ConverterImplementation } from '$domain/adapters'
 
-export interface ApiReaderServiceOptions<T extends object> {
+type ArrayOrObject = { [key: string]: any }[] | { [key: string]: any };
+
+export interface ApiReaderServiceOptions<T extends ArrayOrObject> {
   resource: string
   schema: AnyZodObject
   responseHandler?: ResponseHandler<T>
@@ -18,7 +20,7 @@ export interface ApiReaderServiceOptions<T extends object> {
   headers?: any
 }
 
-export const readerServiceFactory = <T extends object>(
+export const readerServiceFactory = <T extends ArrayOrObject>(
   options: ApiReaderServiceOptions<T>
 ): ReaderApiService<T> => {
   let {
@@ -36,30 +38,8 @@ export const readerServiceFactory = <T extends object>(
   )
 
   client ??= axiosImplementation(url, path, headers)
-  responseHandler ??= makeDefaultResponseHandler<T>(new SingleItemConverter(schema))
+  responseHandler ??= makeDefaultResponseHandler<T>(new ConverterImplementation(schema))
 
   return new ReaderApiService(res, client, responseHandler)
 }
 
-export const multiReaderServiceFactory = <T extends Array<{}>>(
-  options: ApiReaderServiceOptions<T>
-): ReaderApiService<T> => {
-  let {
-    resource,
-    schema,
-    baseUrl = env.BACKEND_URL || '',
-    apiPath = '',
-    client,
-    responseHandler,
-    headers
-  } = options
-
-  const [res = '', url = '', path = ''] = [resource, baseUrl, apiPath].map((el) =>
-    removeTrailingSlash(el)
-  )
-
-  client ??= axiosImplementation(url, path, headers)
-  responseHandler ??= makeDefaultResponseHandler<T>(new MultiItemConverter(schema))
-
-  return new ReaderApiService(res, client, responseHandler)
-}
