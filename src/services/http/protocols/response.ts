@@ -13,7 +13,7 @@ export interface SuccessResponse<T> {
 export interface ErrorResponse {
   success: false
   data: undefined
-  error: Error
+  error: DomainHttpException
   status: number
   headers: any
 }

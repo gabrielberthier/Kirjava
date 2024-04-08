@@ -1,4 +1,5 @@
-import { GitHubRepository, githubRepositorySchema } from '$domain/models/github/user-repositories'
+import type { GitHubRepository } from '$domain/models/github/user-repositories'
+import { githubRepositorySchema } from '../../schemas/githubRepositorySchema'
 import type { IGitHubRepo } from '$domain/models/github/user-repositories'
 import type { ReaderApiService } from '$services/http'
 import { readerServiceFactory } from '$services/http/factory/make-service'

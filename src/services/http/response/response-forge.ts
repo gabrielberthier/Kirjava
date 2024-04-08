@@ -1,19 +1,21 @@
-import type { ApiResponse, ErrorResponse } from "../protocols/response"
+import { DomainHttpException } from '../exceptions/http-exceptions'
+import type { ApiResponse, ErrorResponse } from '../protocols/response'
+
+const convertToHttpDomainError = (err: Error, status: number = 500): DomainHttpException => {
+  const { message, name, stack } = err
+  
+  return new DomainHttpException(message, name, status, stack, err)
+}
 
 /**
  *
  * @param {Error} error
  * @returns {Response}
  */
-export const errorFor = (
-  error: Error,
-  statusCode: number,
-  headers: any,
-): ErrorResponse => {
-  
+export const errorFor = (error: Error, statusCode: number, headers: any): ErrorResponse => {
   return {
     data: undefined,
-    error,
+    error: convertToHttpDomainError(error),
     status: statusCode,
     success: false,
     headers
@@ -51,16 +53,11 @@ export const ok = <T>(data: T, headers: any): ApiResponse<T> => {
 
 /**
  *
- * @param {object} data
  * @returns {Response}
  */
 export const unprocessableEntity = (error: Error, headers: any): ErrorResponse => {
-  const statusText =
-    'Não é possível processar a requisição. ' +
-    'Um ou mais campos podem estar inválidos ' +
-    'ou a requisição pode estar em formato errado'
   return {
-    error,
+    error: convertToHttpDomainError(error, 422),
     status: 422,
     success: false,
     data: undefined,
@@ -70,14 +67,13 @@ export const unprocessableEntity = (error: Error, headers: any): ErrorResponse =
 
 /**
  *
- * @param {object} data
  * @returns {Response}
  */
 export const badRequest = (error: Error, headers: any): ErrorResponse => {
   return {
     data: undefined,
     status: 400,
-    error,
+    error: convertToHttpDomainError(error, 400),
     success: false,
     headers
   }

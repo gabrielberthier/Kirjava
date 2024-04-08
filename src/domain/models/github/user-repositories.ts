@@ -1,11 +1,4 @@
-import { z } from 'zod'
 import type { RepositoryOwner } from './github-user'
-
-export class AllGitHubRepositories {
-  repositories?: RepoCollection
-}
-
-export class RepoCollection extends Array<GitHubRepository> {}
 
 export interface IGitHubRepo {
   language: string
@@ -14,14 +7,6 @@ export interface IGitHubRepo {
   updatedAt?: string
   url: string
 }
-
-export const githubRepositorySchema = z.object({
-  language: z.string().optional().nullable(),
-  name: z.string(),
-  createdAt: z.string(),
-  updatedAt: z.string().optional().nullable(),
-  url: z.string().optional()
-})
 
 export class GitHubRepository {
   id?: number

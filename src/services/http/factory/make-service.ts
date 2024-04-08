@@ -38,8 +38,8 @@ export const readerServiceFactory = <T extends ArrayOrObject>(
   )
 
   client ??= axiosImplementation(url, path, headers)
-  responseHandler ??= makeDefaultResponseHandler<T>(new ConverterImplementation(schema))
+  responseHandler ??= makeDefaultResponseHandler<T>(new ConverterImplementation<T, typeof schema>(schema))
 
-  return new ReaderApiService(res, client, responseHandler)
+  return new ReaderApiService<T>(res, client, responseHandler)
 }
 
