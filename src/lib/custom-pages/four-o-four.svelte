@@ -14,7 +14,7 @@
 </div>
 
 <main>
-  <div class="container max-sm:px-4 ">
+  <div class="container max-sm:px-4 mx-auto">
     <div class="flex flex-col justify-center align-middle ">
       <div class="align-middle justify-self-center" />
       <div class="flex flex-col" style="display: flex; flex-direction: column;">
