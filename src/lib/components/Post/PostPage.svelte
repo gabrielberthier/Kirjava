@@ -110,7 +110,10 @@
   @media screen(lg) {
     .root {
       /* 42rem matches max-w-2xl */
-      grid-template-columns: 1fr 45rem 1fr;
+      grid-template-columns:
+        1fr
+        min(65ch, 100%)
+        1fr;
     }
   }
 </style>

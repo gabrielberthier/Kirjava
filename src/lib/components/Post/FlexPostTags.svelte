@@ -5,8 +5,12 @@
   export let tags: Tag[] = []
 </script>
 
-<div class="flex items-center pt-5 flex-wrap">
+<div>
+  <p class="text-center"><small >[Tags]</small></p>
+<div class="flex items-center justify-center mb-16">
+  
   {#each tags as tag}
     <PostTag {tag} />
   {/each}
+</div>
 </div>

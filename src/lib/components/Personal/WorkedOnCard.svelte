@@ -1,5 +1,6 @@
 <script lang="ts">
   import { placesIveWorkd } from '$lib/info'
+  /** TODO: aqui */
   import { t } from '$lib/translations/common'
 </script>
 

@@ -31,7 +31,7 @@
       </div>
     </div>
 
-    <section class="mx-auto max-w-2xl lg:max-w-5xl mt-4 md:max-w-none mt-8 sm:px-8 lg:px-12">
+    <section class="mx-auto max-w-2xl lg:max-w-5xl mt-4 md:max-w-none mt-8 px-8 md:px-0">
       <div
         class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 md:max-w-3xl lg:max-w-none lg:grid-cols-2"
       >
