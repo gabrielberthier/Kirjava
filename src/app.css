@@ -473,6 +473,7 @@ figure.kg-bookmark-card {
 
 .is-post-page pre code {
   border: none;
+  color: aliceblue;
 }
 
 .is-post-page pre {
