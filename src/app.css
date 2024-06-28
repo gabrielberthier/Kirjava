@@ -8,6 +8,7 @@
 @layer base {
   body {
     @apply text-zinc-600 dark:text-zinc-400;
+    font-family: "Inter", "Poppins", "Helvetica", "Arial", sans-serif;
   }
 
   h1,
@@ -133,6 +134,11 @@ figure.kg-bookmark-card {
 /*PROSE STYLING*/
 .prose * {
   font-family: "Inter", "Poppins", "Helvetica", "Arial", sans-serif;
+  color: hsl(222deg, 22%, 5%);
+}
+
+.dark .prose *{
+  color: white;
 }
 
 .prose :where(h1):not(:where([class~="not-prose"] *)) {
@@ -163,6 +169,11 @@ figure.kg-bookmark-card {
 
 .prose code {
   font-family: monospace;
+}
+
+.prose p{
+  font-size: calc(1.15rem);
+  line-height: calc(1em + 0.725rem)
 }
 
 /* Post Styling */

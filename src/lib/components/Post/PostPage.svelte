@@ -19,22 +19,24 @@
 
   let hasChanged = false
 
-  page.subscribe(({ url, data }) => {
-    if (url.search && !hasChanged) {
-      const locale = data?.internationalization?.lang || ''
-      hasChanged = true
-      goto(`/${locale}/posts${url.search}`)
-    }
-  })
-
   onMount(() => {
-    if (post.codeinjectionHead && browser) {
-      const parser = new DOMParser()
-      const el = parser.parseFromString(post.codeinjectionHead, 'text/html')
-      const childrenToAdd: HTMLCollection[] = [...el.head.children, ...el.body.children]
+    if (browser) {
+      if (post.codeinjectionHead) {
+        const parser = new DOMParser()
+        const el = parser.parseFromString(post.codeinjectionHead, 'text/html')
+        const childrenToAdd: Element[] = [...el.head.children, ...el.body.children]
 
-      childrenToAdd.forEach((el) => {
-        document.head.insertAdjacentElement('beforeend', el)
+        childrenToAdd.forEach((el) => {
+          document.head.insertAdjacentElement('beforeend', el)
+        })
+      }
+      
+      page.subscribe(({ url, data }) => {
+        if (url.search && !hasChanged) {
+          const locale = data?.internationalization?.lang || ''
+          hasChanged = true
+          goto(`/${locale}/posts${url.search}`)
+        }
       })
     }
   })

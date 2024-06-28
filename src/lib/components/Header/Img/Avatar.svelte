@@ -1,17 +1,23 @@
 <script lang="ts">
+  import { browser } from '$app/environment'
   import { page } from '$app/stores'
   import { locale } from '$lib/translations/common'
+  import { onMount } from 'svelte'
 
   let href: string = ''
 
   let isHome = false
 
-  locale.subscribe((l) => {
-    href = `/${l}`
+  onMount(() => {
+    if (browser) {
+      locale.subscribe((l) => {
+        href = `/${l}`
 
-    page.subscribe((a) => {
-      isHome = a.url.pathname === href
-    })
+        page.subscribe((a) => {
+          isHome = a.url.pathname === href
+        })
+      })
+    }
   })
 </script>
 
@@ -21,7 +27,7 @@ bg-white/90 p-0.5 shadow-lg
 shadow-zinc-800/5 ring-1
 ring-zinc-900/5 backdrop-blur
 dark:bg-zinc-800/90 dark:ring-white/10"
-class:hidden={isHome}
+  class:hidden={isHome}
 >
   <a aria-label="Home" {href} class="pointer-events-auto">
     <svg
