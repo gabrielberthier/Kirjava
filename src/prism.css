@@ -51,7 +51,6 @@ pre[class*="language-"] {
 code[class*="language-"]::-moz-selection,
 code[class*="language-"] *::-moz-selection,
 pre[class*="language-"] *::-moz-selection {
-  /* background: hsl(220, 13%, 28%); */
   color: inherit;
   text-shadow: none;
 }
@@ -131,6 +130,10 @@ pre[class*="language-"] {
 .token.attr-value,
 .token.attr-value>.token.punctuation {
   color: hsl(95, 38%, 62%);
+}
+
+.token.interpolation{
+  color: beige;
 }
 
 .token.variable,
