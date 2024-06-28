@@ -18,8 +18,8 @@
         />
         <a {href} data-sveltekit-preload-data>
           <span
-            class="absolute z-20 -inset-y-6 -inset-x-4 sm:-inset-x-6 sm:rounded-2xl border
-              border-gray-100 rounded-lg shadow dark:border-gray-100"
+            class="absolute z-20 -inset-y-6 -inset-x-4 sm:-inset-x-6 sm:rounded-2xl md:border
+              md:border-gray-100 rounded-lg md:shadow dark:border-gray-100"
           />
           <span class="relative z-10">
             <slot name="title" />

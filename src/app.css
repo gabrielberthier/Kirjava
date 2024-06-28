@@ -132,11 +132,6 @@ figure.kg-bookmark-card {
 }
 
 /*PROSE STYLING*/
-.prose * {
-  font-family: "Inter", "Poppins", "Helvetica", "Arial", sans-serif;
-  color: hsl(222deg, 22%, 5%);
-}
-
 .dark .prose *{
   color: white;
 }
@@ -172,8 +167,10 @@ figure.kg-bookmark-card {
 }
 
 .prose p{
-  font-size: calc(1.15rem);
-  line-height: calc(1em + 0.725rem)
+  font-family: "Inter", "Poppins", "Helvetica", "Arial", sans-serif;
+  font-size: calc(1rem);
+  line-height: calc(1em + 0.725rem);
+  color: hsl(222deg, 22%, 5%);
 }
 
 /* Post Styling */
