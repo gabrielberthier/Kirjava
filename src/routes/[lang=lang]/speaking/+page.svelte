@@ -1,6 +1,6 @@
-<div class="mx-auto max-w-7xl lg:px-12">
+<div class="mx-auto lg:px-12">
   <div class="text-center">
-    <div class="max-w-5xl my-12 mx-auto rounded-2xl p-6 dark:border-zinc-700/40">
+    <div class="lg:max-w-5xl w-full my-12 mx-auto rounded-2xl lg:p-6 dark:border-zinc-700/40">
       <h5
         class="text-left block my-4 text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900"
       >
