@@ -4,8 +4,7 @@ import type {
   Nullable,
   PostOrPage,
   PostsOrPages,
-  Tag,
-  Tags
+  Tag
 } from '@tryghost/content-api'
 
 export type EntitiesTypes = 'posts' | 'authors' | 'tags' | 'pages'

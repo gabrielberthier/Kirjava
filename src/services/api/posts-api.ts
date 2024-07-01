@@ -1,7 +1,6 @@
 import { readerServiceFactory } from '../http/factory/make-service'
 import { GhostClient } from '$services/http/client-implementation/ghost/ghost-client'
-import type { IAllPostResponse } from '$domain/models/post'
-import type { IPostResponse } from '$domain/models/post'
+import type { IAllPostResponse, IPostResponse } from '$domain/models/post'
 import { allPostsConverter, postConverter } from '$domain/model-to-data/posts-data'
 import { err, ok, Result } from 'neverthrow'
 import { entrySchema, postSchema } from '../../schemas'
