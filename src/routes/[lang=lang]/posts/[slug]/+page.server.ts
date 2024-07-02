@@ -7,7 +7,7 @@ export const load: PageServerLoad = async function load({ params, url }) {
 
   const postsDataProvider = PostLoaderFactory.get()
 
-  const resultPosts = await postsDataProvider.getOneBySlug(slug!)
+  const resultPosts = await postsDataProvider.getOneBySlug(slug)
 
   const post = resultPosts.unwrapOr(null)
 

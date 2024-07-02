@@ -4,14 +4,12 @@ import { ReaderApiService } from '../api-services/reader'
 import { removeTrailingSlash } from '$services/utils/string-belt'
 import { axiosImplementation } from '../client-implementation/factories'
 import { makeDefaultResponseHandler } from '../response/factories'
-import { env } from '$env/dynamic/private'
 import type { AnyZodObject } from 'zod'
 import { ConverterImplementation } from '$domain/adapters'
 
-type ArrayOrObject = { [key: string]: any }[] | { [key: string]: any };
+type ArrayOrObject = { [key: string]: any }[] | { [key: string]: any }
 
 export interface ApiReaderServiceOptions<T extends ArrayOrObject> {
-  resource: string
   schema: AnyZodObject
   responseHandler?: ResponseHandler<T>
   baseUrl?: string
@@ -24,22 +22,20 @@ export const readerServiceFactory = <T extends ArrayOrObject>(
   options: ApiReaderServiceOptions<T>
 ): ReaderApiService<T> => {
   let {
-    resource,
     schema,
-    baseUrl = env.BACKEND_URL || '',
+    baseUrl = '',
     apiPath = '',
     client,
     responseHandler,
     headers
   } = options
 
-  const [res = '', url = '', path = ''] = [resource, baseUrl, apiPath].map((el) =>
-    removeTrailingSlash(el)
-  )
+  const [url = '', path = ''] = [baseUrl, apiPath].map((el) => removeTrailingSlash(el))
 
   client ??= axiosImplementation(url, path, headers)
-  responseHandler ??= makeDefaultResponseHandler<T>(new ConverterImplementation<T, typeof schema>(schema))
+  responseHandler ??= makeDefaultResponseHandler<T>(
+    new ConverterImplementation<T, typeof schema>(schema)
+  )
 
-  return new ReaderApiService<T>(res, client, responseHandler)
+  return new ReaderApiService<T>(client, responseHandler)
 }
-

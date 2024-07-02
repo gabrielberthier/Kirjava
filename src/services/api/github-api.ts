@@ -1,29 +1,23 @@
 import type { GitHubRepository, IGitHubRepo } from '$domain/models/github/user-repositories'
 import { githubRepositorySchema } from '../../schemas/githubRepositorySchema'
-import type { ReaderApiService } from '$services/http'
 import { readerServiceFactory } from '$services/http/factory/make-service'
+import { FetchDecorator } from '$services/http/client-implementation/fetch/fetch-decorator'
 
 export class GitHubApi {
-  private githubReaderService: ReaderApiService<GitHubRepository[]>
-
-  constructor(private apiToken: string, private url: string, private githubProfile: string) {
-    this.githubReaderService = readerServiceFactory<GitHubRepository[]>({
-      baseUrl: `${this.url}/${this.githubProfile}`,
-      resource: 'repos',
-      schema: githubRepositorySchema,
-      headers: {
-        Authorization: `Token ${this.apiToken}`
-      }
-    })
-  }
-
   async getRepositories(): Promise<IGitHubRepo[]> {
-    const repositories = await this.githubReaderService.get('', { sort: 'updated', per_page: 5 })
+    const githubReaderService = readerServiceFactory<GitHubRepository[]>({
+      schema: githubRepositorySchema,
+      client: new FetchDecorator()
+    })
+    const repositories = await githubReaderService.get('/api/github/', {
+      sort: 'updated',
+      per_page: 5
+    })
 
     if (repositories.success) {
       return repositories.data.map((el) => {
         return {
-          url: el.htmlUrl ?? `${this.url}/${this.githubProfile}`,
+          url: el.htmlUrl ?? el.url ?? '',
           language: el.language ?? 'Language unavailable',
           name: el.name,
           createdAt: el.createdAt,

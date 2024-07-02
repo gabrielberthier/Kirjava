@@ -21,7 +21,7 @@ export async function load(event: ServerLoadEvent): Promise<LoadedPostResponse> 
 
   const postsDataProvider = PostLoaderFactory.get()
 
-  const tags = await multiTagsApi.get('')
+  const tags = await multiTagsApi.get('tags')
 
   if (params.page) {
     try {

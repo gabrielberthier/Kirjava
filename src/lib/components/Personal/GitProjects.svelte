@@ -1,9 +1,22 @@
 <script lang="ts">
-  import type { IGitHubRepo } from '$domain/models/github/user-repositories'
   import RepositoryListItem from './RepositoryListItem.svelte'
   import { t } from '$lib/translations/common'
+  import { GitHubApi } from '$services/api/github-api'
+  import { onMount } from 'svelte'
+  interface IGitHubRepo {
+    language: string
+    name: string
+    createdAt: string
+    updatedAt?: string
+    url: string
+  }
 
-  export let repositories: IGitHubRepo[]
+  let repositories: IGitHubRepo[] = []
+  const githubApi = new GitHubApi()
+
+  onMount(async () => {
+    githubApi.getRepositories().then((el) => (repositories = el))
+  })
 </script>
 
 <div class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">

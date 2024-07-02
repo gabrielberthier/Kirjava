@@ -61,7 +61,7 @@
           md:pl-0 md:gap-6
           flex-col md:flex-row lg:flex-col md:justify-between lg:justify-normal"
         >
-          <GitProjects repositories={data.repositories} />
+          <GitProjects />
           <WorkedOnCard />
         </div>
       </div>
