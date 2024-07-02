@@ -7,17 +7,20 @@ export const handle: Handle = async ({ event, resolve }) => {
   const { url, request } = event
   const { pathname } = url
 
+  if (pathname.replace('/', '').split('/').shift() === 'api') {
+    return resolve(event)
+  }
+
   if (routeRegex.test(pathname)) {
     const supportedLocales = locales.get()
 
     let locale = supportedLocales.find(
-      (l) => `${l}`.toLowerCase() === `${pathname.match(/[^/]+?(?=\/|$)/)}`.toLowerCase()
+      (l) => `${l}`.toLowerCase() === `${RegExp(/[^/]+?(?=\/|$)/).exec(pathname)}`.toLowerCase()
     )
 
     if (!locale) {
-      const [acceptedLang] = `${request.headers.get('accept-language')}`.match(
-        /^[a-z]{2,4}(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?$/
-      ) ?? ['pt-BR']
+      const regexLang = /^[a-z]{2,4}(-[A-Z][a-z]{3})?(-([A-Z]{2}|\d{3}))?$/
+      const [acceptedLang = ''] = regexLang.exec(`${request.headers.get('accept-language')}`) ?? []
 
       locale = acceptedLang
 
