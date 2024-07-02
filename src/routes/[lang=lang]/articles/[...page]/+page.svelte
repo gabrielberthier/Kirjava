@@ -19,7 +19,7 @@
   <title>{name} | Articles</title>
 </svelte:head>
 <div class="mx-auto max-w-7xl lg:px-8">
-  <div class="grid grid-cols-1 lg:max-w-5xl mx-auto text-center">
+  <div class="grid grid-cols-1 lg:max-w-5xl mx-auto">
     <div class="relative px-4 sm:px-8 lg:px-12">
       <div class="flex flex-col flex-grow mx-auto">
         <header class="pt-4 flex">
@@ -40,7 +40,7 @@
             </svg>
           </span>
           <div>
-            <h1 class="font-bold tracking-tight sm:text-5xl lg:max-w-3xl text-justify">
+            <h1 class="font-bold tracking-tight sm:text-5xl lg:max-w-3xl text-left">
               {$t('articlespage.title')}
             </h1>
             <p class="mt-6 text-left">{$t('articlespage.text')}</p>
@@ -48,7 +48,7 @@
         </header>
 
         {#if posts.length}
-          <div class="mt-4 max-w-2xl">
+          <div class="mt-4 max-w-2xl mx-auto">
             <PostsList {posts} />
           </div>
         {:else}

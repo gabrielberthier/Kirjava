@@ -6,7 +6,6 @@ export class FetchDecorator implements JsonClientReader {
   public async get(path: string, params: any) {
     try {
       const response = await fetch(path, params)
-      console.log(response);
       
       if (response.ok) {
         return {

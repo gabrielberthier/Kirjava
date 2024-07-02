@@ -21,20 +21,18 @@ export const GET: RequestHandler = async ({ setHeaders, fetch }) => {
     return json(fiexedRepos)
   }
 
-  const response = await fetch(`${ghUrl}/${profile}/repos`, {
+  const response = await fetch(`${ghUrl}/${profile}/repos?sort=updated&per_page=5`, {
     headers: {
       Authorization: `Token ${key}`
     }
   })
-
-  console.log(response)
 
   if (response.status >= 200 && response.status < 300) {
     setHeaders({
       'cache-control': `max-age=${wholeDay}`
     })
 
-    return json(String(await response.json()))
+    return json(await response.json())
   }
 
   return json({ status: response.status, data: String(response.body) })

@@ -9,10 +9,7 @@ export class GitHubApi {
       schema: githubRepositorySchema,
       client: new FetchDecorator()
     })
-    const repositories = await githubReaderService.get('/api/github/', {
-      sort: 'updated',
-      per_page: 5
-    })
+    const repositories = await githubReaderService.get('/api/github/')
 
     if (repositories.success) {
       return repositories.data.map((el) => {

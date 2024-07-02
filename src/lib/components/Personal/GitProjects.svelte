@@ -15,7 +15,9 @@
   const githubApi = new GitHubApi()
 
   onMount(async () => {
-    githubApi.getRepositories().then((el) => (repositories = el))
+    const el = await githubApi.getRepositories()
+
+    repositories = el
   })
 </script>
 
