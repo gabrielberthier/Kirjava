@@ -32,7 +32,7 @@
       {#if collapsed}
         <span class="mx-1">•</span>
       {/if}
-      <span class="text-end self-end">{post.readingTime}</span>
+      <span class="text-end">{post.readingTime}</span>
     </div>
     <span
       class="h-8 w-8 arrow-right-card
