@@ -7,7 +7,7 @@
 
 <div>
   <p class="text-center"><small >[Tags]</small></p>
-<div class="flex items-center justify-center mb-16">
+<div class="flex items-center justify-center mb-16  flex-wrap">
   
   {#each tags as tag}
     <PostTag {tag} />

@@ -21,9 +21,9 @@
       <div class="my-6">
         <div class="">
           <h1
-            class="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl"
+            class="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-4xl"
           >
-            Gabriel Berthier
+            {$t('bio.presentation')}
           </h1>
           <div class="lg:max-w-md">
             <p
@@ -40,7 +40,7 @@
           <div
             class="flex gap-6 mt-2 max-md:py-4 max-md:flex-center justify-between md:flex-col-reverse md:justify-start"
           >
-            <a href="/about" class="group flex" aria-label="Follow on Twitter">
+            <!-- <a href="/about" class="group flex" aria-label="Follow on Twitter">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -61,7 +61,7 @@
                 />
               </svg>
               <span>{whereIam}</span>
-            </a>
+            </a> -->
             <div class="flex gap-2 max-md:flex-center pr-4">
               <SocialLinks />
             </div>

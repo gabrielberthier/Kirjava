@@ -6,11 +6,11 @@
   export { _class as class }
 </script>
 
-<svelte:element this={as} class={['relative flex flex-col items-start group', _class].join(' ')}>
+<svelte:element this={as} class={['relative flex flex-col items-start group hover-arrow', _class].join(' ')}>
   <slot name="eyebrow" />
 
   {#if $$slots.title}
-    <div class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100 ">
+    <div class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100 w-full">
       {#if href}
         <div
           class="absolute z-0 transition scale-95 opacity-0 -inset-y-6 -inset-x-4 
@@ -21,9 +21,9 @@
             class="absolute z-20 -inset-y-6 -inset-x-4 sm:-inset-x-6 sm:rounded-2xl md:border
               md:border-gray-100 rounded-lg md:shadow dark:border-gray-100"
           />
-          <span class="relative z-10">
+          <h4 class="relative z-10">
             <slot name="title" />
-          </span>
+          </h4>
         </a>
       {:else}
         <slot name="title" />
@@ -46,3 +46,12 @@
     </div>
   {/if}
 </svelte:element>
+
+<style>
+  .hover-arrow :global(.arrow-right-card){
+    transition: 0.1s ease-in;
+  }
+    .hover-arrow:hover :global(.arrow-right-card){
+    margin-right: 7px;
+  }
+</style>
