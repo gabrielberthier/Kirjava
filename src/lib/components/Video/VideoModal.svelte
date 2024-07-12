@@ -37,9 +37,10 @@
 
 {#if isOpen}
   <div id="modal" class="fixed inset-0 z-[99999] flex p-6" role="dialog" aria-modal="true">
-    <div class="mx-auto w-full max-w-5xl h-full flex items-center" use:clickOutside on:clickoutside={clickedOutSide}>
+    <div class="mx-auto w-full max-w-5xl h-full flex items-center" >
       <div
         class="w-full max-h-full rounded-3xl shadow-2xl aspect-video bg-black overflow-hidden video-wrapper"
+        use:clickOutside on:clickoutside={clickedOutSide}
       >
         <!-- <video width="1920" height="1080" loop controls bind:paused>
           <source

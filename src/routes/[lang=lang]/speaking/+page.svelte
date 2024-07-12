@@ -13,18 +13,6 @@
         </h1>
       </header>
       <div class="embed-responsive video-wrapper mx-auto text-center">
-        <!-- <iframe
-          width="560"
-          height="315"
-          class="rouded"
-          style="border-radius: 10px; overflow: hidden;"
-          src="https://www.youtube.com/embed/4WffLhdSBeI?si=p530PeQ67Ik2EiRt"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        /> -->
         <h3 class="text-center text-bold">DevDynamics</h3>
         <small class="text-center"><time date="06/06/2024"> 06/06/2024 </time></small>
         <ModalVideo />

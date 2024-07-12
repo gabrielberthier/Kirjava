@@ -18,7 +18,8 @@ Testes são um dos meus assuntos favoritos no desenvolvimento e por vários moti
 # Um pouco de história
 
 Quando comecei a desenvolver software profissionalmente, me frustrava sempre a possibilidade de ver o que eu criei quebrando em qualquer estágio de desenvolvimento e muitas vezes me via como um malabarista de circo tentando segurar e mover as várias partes de execução dos casos de uso que eu escrevia. Comumente, recebia vários erros e percebia que havia algo de errado - se não com a minha escolha de profissão, com minha falta de maturidade.
-![](__GHOST_URL__/content/images/2023/05/image.png)Você tentando amarrar todas as pontas soltas do negócio
+![Tentando segurar baloes](__GHOST_URL__/content/images/2023/05/image.png)
+Você tentando amarrar todas as pontas soltas do negócio
 Tudo isso durou até uns cinco anos atrás quando me deparei com algo que mudou minha maneira de escrever código: testes. 
 
 > Ah, Gabriel, mas teste é um assunto batido, né?

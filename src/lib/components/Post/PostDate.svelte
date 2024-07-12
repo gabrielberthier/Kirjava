@@ -21,7 +21,7 @@
 >
   {#if decorate}
     <span class="absolute inset-y-0 left-0 flex items-center py-1" aria-hidden="true">
-      <span class="h-full w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
+      <span class="h-full w-0.5 rounded-full bg-blue-200 dark:bg-zinc-500" />
     </span>
   {/if}
   <div class="flex justify-between">
@@ -36,7 +36,7 @@
     </div>
     <span
       class="h-8 w-8 arrow-right-card
-    text-blue-700 border hover:bg-blue-700
+    text-blue-400 border hover:bg-blue-700
     hover:text-white focus:ring-4 focus:outline-none
     focus:ring-blue-300 p-1 font-medium rounded-full
     text-sm text-center inline-flex dark:border-blue-500
