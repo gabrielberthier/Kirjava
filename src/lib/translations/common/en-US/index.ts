@@ -7,6 +7,7 @@ import books from './books.json'
 import posts from './posts.json'
 import projects from './projects.json'
 import articlespage from './articlespage.json'
+import speakingspage from './speakingspage.json'
 
 export default {
   about,
@@ -17,5 +18,6 @@ export default {
   bio,
   books,
   posts,
-  projects
+  projects,
+  speakingspage
 }

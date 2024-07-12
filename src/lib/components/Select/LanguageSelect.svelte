@@ -4,6 +4,16 @@
   import { goto } from '$app/navigation'
   import { getFlagEmoji } from '$services/utils/string-belt'
   import { page } from '$app/stores'
+    import { onMount } from 'svelte'
+    import { browser } from '$app/environment'
+  
+    let currentPage = ''
+
+  onMount(() => {
+    if(browser){
+      currentPage = $page.url.pathname
+    }
+  })
 
   function onChange(event: Event) {
     const target = event.target as HTMLSelectElement
@@ -14,7 +24,7 @@
   }
 
   function fullUrl(locale: string) {
-    return $page.url.pathname.replace(/([a-z]{2}-[A-Z]{2})/, locale)    
+    return currentPage.replace(/([a-z]{2}-[A-Z]{2})/, locale)    
   }
 </script>
 

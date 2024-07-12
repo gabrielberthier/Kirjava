@@ -22,7 +22,7 @@
   <div class="gap-8 pb-16 relative">
     <!--  -->
     <!-- bio -->
-    <div class="grid max-w-xl grid-cols-1 sm:px-8 lg:px-12 lg:grid-cols-2 lg:max-w-none">
+    <div class="grid max-w-2xl grid-cols-1 sm:px-8 lg:px-12 lg:grid-cols-2 lg:max-w-none">
       <About />
       <div class="justify-center items-center flex">
         <div class="lg:w-3/4 max-sm:w-11/12">

@@ -2,11 +2,11 @@
   import { t } from '$lib/translations/common'
 </script>
 
-<div class="mx-auto max-w-7xl lg:px-12">
-  <div class="text-center">
-    <h1 class="text-2xl py-3">{$t('projects.title')}</h1>
+<div class="mx-auto max-w-7xl lg:px-12 sm:px-8 mt-16 sm:mt-32">
+  <div class="text-center mx-auto">
+    <h1 class="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">{$t('projects.title')}</h1>
 
-    <p class="max-w-md max-w-prose mx-auto">
+    <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400 max-w-prose mx-auto">
       {$t('projects.text')}
     </p>
     <br />

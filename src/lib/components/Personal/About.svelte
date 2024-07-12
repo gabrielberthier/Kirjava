@@ -5,8 +5,8 @@
   import Banner from './Banner.svelte'
 </script>
 
-<div class="md:px-4 lg:px-12">
-  <section class="flex flex pt-8">
+<div class="md:px-4 lg:px-12 ">
+  <section class="flex pt-8">
     <div class="rounded-lg items-center">
       <Banner />
       <div class="">
@@ -14,8 +14,8 @@
           src={avatar}
           alt={name}
           class="rounded-full w-36 h-36 ring-2 ring-zinc-200 dark:ring-zinc-700
-         border-solid border-2 border-sky-700 shadow-2xl
-        dark:shadow-gray-800 z-10 relative"
+         border-solid border-2 border-sky-700 shadow-2xl max-md:mx-auto
+        dark:shadow-gray-800 z-10 relative shadow-3xl transition-shadow duration-300 ease-in-out h-auto max-w-full" 
         />
       </div>
       <div class="my-6">

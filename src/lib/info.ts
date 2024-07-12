@@ -12,9 +12,7 @@ export const whereIam = 'São Luís, BR'
 
 // Used for the landing page & footer of posts
 export const avatar = '/imgs/1689091413006.jpg'
-export const bio = `\
-I'm ${firstName}, a software engineer based in Brazil.
-`
+export const bio = `I'm ${firstName}, a software engineer based in Brazil.`
 
 // Your social usernames, empty strings won't be used.
 // For sake of the live demo, I'm using `username/repo` for github,
@@ -51,7 +49,7 @@ export const placesIveWorkd: PlacesIveWorked[] = [
     position: 'Dev Backend JR (Python)',
     image: 'zappts',
     from: '06/2021',
-    to: '01/2021'
+    to: '01/2022'
   },
   {
     name: 'DPE',
