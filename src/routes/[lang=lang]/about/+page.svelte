@@ -12,7 +12,7 @@
             <img
               alt=""
               sizes="(min-width: 1024px) 32rem, 20rem"
-              src="/imgs/about-picture.jpg"
+              src="/imgs/20240721_164045.jpg"
               width="800"
               height="800"
               decoding="async"
