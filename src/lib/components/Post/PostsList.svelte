@@ -13,7 +13,7 @@
   class="mt-4 flex flex-col gap-8 mx-auto"
 >
   {#each posts as post}
-    <article class="group relative flex flex-col rounded my-2 max-w-prose mx-auto">
+    <article class="group relative flex flex-col rounded my-2 max-w-prose mx-auto w-full">
       <div class="col-span-4 md:col-span-3 pt-3">
         <PostPreview {post} />
       </div>
