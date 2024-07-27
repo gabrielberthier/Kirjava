@@ -2,10 +2,10 @@
   import { t } from '$lib/translations/common'
 </script>
 
-<div class="mx-auto max-w-7xl lg:px-12" style="min-height: 600px;">
+<div class="mx-auto max-w-7xl lg:px-12" style="min-height: 80vh;">
   <div class="text-center">
-    <header class="pt-4">
-      <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">{$t('books.title')}</h1>
+    <header class="py-12">
+      <h1 class="text-4xl font-bold tracking-tight sm:text-5xl pb-6">{$t('books.title')}</h1>
       <p class="mt-6">{$t('books.text')}</p>
     </header>
   </div>

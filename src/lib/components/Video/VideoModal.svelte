@@ -31,8 +31,6 @@
 
   export let isOpen = false
   let paused = true
-
-  $: isOpen ? console.log('Open') : console.log('Closed')
 </script>
 
 {#if isOpen}
@@ -71,8 +69,5 @@
   .video-gabo {
     aspect-ratio: 16 / 9;
     width: 100%;
-  }
-  .video-wrapper iframe {
-
   }
 </style>
