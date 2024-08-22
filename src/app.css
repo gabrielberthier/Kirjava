@@ -518,3 +518,18 @@ header .container-header {
     order: 2
   }
 }
+
+/* POST HEADER */
+.kg-header-card{
+  text-align: center;
+  background-color: #0301;
+  padding: 1rem;
+  border-radius: 0.7rem;
+}
+
+.kg-header-card > .kg-header-card-header{
+  font-size: 3rem;
+}
+.kg-header-card > .kg-header-card-subheader{
+  font-size: 1.3rem;
+}
