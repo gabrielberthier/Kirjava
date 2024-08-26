@@ -262,6 +262,7 @@ header .container-header {
 .is-post-page blockquote {
   border-left: 4px solid #888;
   padding-left: 1em;
+  margin-top: 2rem;
 }
 .is-post-page cite {
   font-style: italic;
@@ -439,4 +440,8 @@ header .container-header {
   background-color: #0301;
   padding: 1rem;
   border-radius: 0.7rem;
+}
+
+.kg-header-card > .kg-header-card-header {
+  margin-top: 1rem;
 }
