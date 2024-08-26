@@ -45,9 +45,14 @@ header .container-header {
   color: white;
 }
 
+.prose {
+  font-family: 'Inter', 'Poppins', 'Helvetica', 'Arial', sans-serif;
+}
+
 .prose :where(h1):not(:where([class~='not-prose'] *)) {
-  font-size: 2.5rem;
-  line-height: 2rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.75;
   margin-top: 3rem;
   margin-bottom: 2rem;
 }
@@ -55,20 +60,31 @@ header .container-header {
 .prose :where(h2):not(:where([class~='not-prose'] *)) {
   font-size: 1.5rem;
   line-height: 1.75rem;
-  margin-top: 3rem;
-  margin-bottom: 2rem;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
 }
 
 .prose :where(h3):not(:where([class~='not-prose'] *)) {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
 }
 
 .prose :where(h4):not(:where([class~='not-prose'] *)) {
-  font-size: 1rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
 }
 
-.prose :where(h2, h3, h4):not(:where([class~='not-prose'] *)):hover {
-  text-decoration: underline !important;
+.prose :where(p):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.prose :where(:is(h2, h3) + *):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+  margin-top: 0;
 }
 
 .prose code {
@@ -76,10 +92,9 @@ header .container-header {
 }
 
 .prose p {
-  font-family: 'Inter', 'Poppins', 'Helvetica', 'Arial', sans-serif;
   font-size: calc(1rem);
-  line-height: calc(1em + 0.725rem);
-  color: hsl(222deg, 22%, 5%);
+  line-height: 1.9em;
+  color: rgba(0, 1, 0, 0.9);
 }
 
 /* Post Styling */
@@ -241,10 +256,6 @@ header .container-header {
 
 .is-post-page .serif {
   font-family: serif;
-}
-
-.is-post-page .sans-serif {
-  font-family: 'Roboto', sans-serif;
 }
 
 .is-post-page .monospace {
@@ -433,7 +444,7 @@ header .container-header {
   flex-direction: column;
   flex-grow: 1;
   align-items: flex-start;
-  justify-content: start;
+  justify-content: flex-start;
   padding: 1.5em;
   color: #aaa;
 }
@@ -492,12 +503,12 @@ header .container-header {
 }
 
 .kg-bookmark-author:after {
-  content: "•";
+  content: '•';
   margin: 0 0.33333em;
 }
 
 .kg-bookmark-publisher {
-    color: blue;
+  color: blue;
 }
 
 @media (max-width: 768px) {
@@ -516,21 +527,14 @@ header .container-header {
   }
 
   .kg-bookmark-content {
-    order: 2
+    order: 2;
   }
 }
 
 /* POST HEADER */
-.kg-header-card{
+.kg-header-card {
   text-align: center;
   background-color: #0301;
   padding: 1rem;
   border-radius: 0.7rem;
-}
-
-.kg-header-card > .kg-header-card-header{
-  font-size: 3rem;
-}
-.kg-header-card > .kg-header-card-subheader{
-  font-size: 1.3rem;
 }

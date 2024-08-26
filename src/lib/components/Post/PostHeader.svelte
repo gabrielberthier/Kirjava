@@ -8,7 +8,10 @@
 </script>
 
 <header class="flex flex-col">
-  <h1 class="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl text-center" style="margin: 5rem auto 1rem;">
+  <h1
+    class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 text-center"
+    style="margin: 5rem auto 1rem;"
+  >
     {post.title}
   </h1>
   <div class="flex items-center order-first text-base text-zinc-400 dark:text-zinc-500 pt-5">
