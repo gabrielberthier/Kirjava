@@ -1,5 +1,5 @@
 import type { IPostResponse } from '$domain/models/post'
-import { env } from '$env/dynamic/public'
+import { PUBLIC_USE_LOCAL } from '$env/static/public'
 import { error } from '@sveltejs/kit'
 import type { Load } from '@sveltejs/kit'
 import { loadFromFile } from '$services/filesystem/file-importer'
@@ -11,7 +11,7 @@ export const load: Load = async function ({ data }) {
   if (post) {
     const { slug } = post
     let component
-    if (slug && env.PUBLIC_USE_LOCAL) {
+    if (slug && PUBLIC_USE_LOCAL) {
       const loaded = await loadFromFile(slug, post.isIndexFile)
       component = loaded?.default
     }
