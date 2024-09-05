@@ -4,22 +4,26 @@
 
   export let post: IPostResponse
 
-  $: createdAt = post.createdAt ? format(new Date(parseISO(post.createdAt)), 'MMMM d, yyyy') : ''
+  const formatter = new Intl.DateTimeFormat(undefined, {
+    dateStyle: 'medium',
+  })
+
+  $: createdAt = post.createdAt ? formatter.format(new Date(parseISO(post.createdAt))) : ''
 </script>
 
 <header class="flex flex-col">
   <h1
-    class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 text-center"
-    style="margin: 5rem auto 1rem;"
+    class="text-4xl md:text-5xl lg:text-6xl font-bold 
+    mt-6 mb-4 
+    tracking-tight text-zinc-800 dark:text-zinc-100 text-center"
   >
     {post.title}
   </h1>
-  <div class="flex items-center order-first text-base text-zinc-400 dark:text-zinc-500 pt-5">
-    <span class="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
+  <div class="flex items-center justify-center text-base text-zinc-400 dark:text-zinc-500 my-5 text-sm">
     <time dateTime={post.createdAt}>
-      <span class="ml-3">{createdAt}</span>
+      <span>{createdAt}</span>
     </time>
-    <span class="mx-2">•</span>
+    <span class="mx-2">-</span>
     <span>{post.readingTime}</span>
   </div>
 </header>

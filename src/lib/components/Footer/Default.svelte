@@ -10,7 +10,7 @@
 </script>
 
 <footer>
-  <div class="max-w-7xl mx-auto overflow-hidden px-6 pt-16 lg:px-16 relative">
+  <div class="max-w-7xl mx-auto overflow-hidden px-6 lg:px-16 relative">
     <div class="border-t border-zinc-100 dark:border-zinc-700/40">
       <div class="mx-auto overflow-hidden px-6 py-24 md:px-12 lg:px-16">
         <div class="flex flex-col flex-wrap items-center justify-center lg:justify-between gap-12 sm:flex-row">

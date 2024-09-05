@@ -3,7 +3,7 @@
   import { t } from '$lib/translations/common'
 </script>
 
-<div class="mx-auto lg:px-12">
+<div class="mx-auto lg:px-12" style="min-height: 100vh;">
   
   <div class="">
     <div class="lg:max-w-5xl w-full my-12 mx-auto rounded-2xl lg:p-6 dark:border-zinc-700/40">

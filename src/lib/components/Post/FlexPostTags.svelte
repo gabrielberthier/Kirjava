@@ -6,7 +6,7 @@
 </script>
 
 <div>
-  <div class="flex items-center justify-center mb-16 flex-wrap">
+  <div class="flex items-center justify-center mb-6 flex-wrap">
     {#each tags as tag}
       <PostTag {tag} />
     {/each}

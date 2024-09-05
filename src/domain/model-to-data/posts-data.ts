@@ -22,7 +22,7 @@ export const postConverter = (post: Post): IPostResponse => {
 
   const tags = rawtags ?? []
 
-  const htmlPostElement = parse(html || '')
+  const htmlPostElement = parse(html ?? '')
 
   const newDate =
     createdAt &&
@@ -42,7 +42,7 @@ export const postConverter = (post: Post): IPostResponse => {
     },
     next: undefined,
     previous: undefined,
-    readingTime: readingTime(post.html || '').text,
+    readingTime: readingTime(post.html ?? '').text,
     headings: headfy(htmlPostElement),
     featureImage: feature_image,
     featureImageCaption: feature_image_caption,

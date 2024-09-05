@@ -9,7 +9,7 @@ interface Internationalization {
 export const load: LayoutServerLoad = async ({ url }) => {
   const { pathname } = url
 
-  const lang = `${pathname.match(/[^/]+?(?=\/|$)/) || ''}`
+  const lang = `${RegExp(/[^/]+?(?=\/|$)/).exec(pathname) || ''}`
 
   const route = pathname.replace(new RegExp(`^/${lang}`), '') ?? ''
 
