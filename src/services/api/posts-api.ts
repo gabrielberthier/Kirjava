@@ -8,11 +8,11 @@ import type { PostFetcher } from '$lib/data/posts/protocols'
 import type { DomainHttpException } from '$services/http/exceptions/http-exceptions'
 import { GhostSingleItemClient } from '$services/http/client-implementation/ghost/single-items-client'
 import { GhostMultiItemsClient } from '$services/http/client-implementation/ghost/multi-items-client'
-import { env } from '$env/dynamic/private'
+import { BACKEND_URL, KEY } from '$env/static/private'
 
 const ghostImplementation = (singleItem: boolean) => {
-  const backendUrl = env.BACKEND_URL ?? 'https://site.com'
-  const key = env.KEY ?? (Math.random() + 1).toString(36).substring(26)
+  const backendUrl = BACKEND_URL ?? 'https://site.com'
+  const key = KEY ?? (Math.random() + 1).toString(36).substring(26)
   if (singleItem) {
     return new GhostSingleItemClient(backendUrl, key)
   }
