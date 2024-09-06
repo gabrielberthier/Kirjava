@@ -2,6 +2,25 @@
   import { placesIveWorkd } from '$lib/info'
   /** TODO: aqui */
   import { t } from '$lib/translations/common'
+  const recordModules = Object.fromEntries(
+    Object.entries(
+      import.meta.glob('./worked-imgs/*.{avif,gif,heif,jpeg,jpg,png,tiff,webp,svg}', {
+        eager: true,
+        query: {
+          enhanced: true
+        }
+      })
+    ).map(([key, value]) => (key.indexOf('/') ? [key.split('/').pop() ?? '', value] : [key, value]))
+  )
+  const isValidModule = (el: Record<string, unknown>): el is Record<string, { default: any }> => {
+    return Object.entries(el).every(
+      ([key, val]) =>
+        typeof key === 'string' && val !== null && typeof val === 'object' && 'default' in val
+    )
+  }
+  const imageModules: Record<string, { default: any }> = isValidModule(recordModules)
+    ? recordModules
+    : {}
 </script>
 
 <div class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
@@ -22,7 +41,7 @@
       />
     </svg>
 
-    <span class="ml-3">Worked @</span>
+    <span class="ml-3">{$t('workedAt.title')}</span>
   </h2>
   <ol class="mt-6 space-y-4">
     {#each placesIveWorkd as placeIWorkd}
@@ -30,17 +49,17 @@
         <div
           class="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
         >
-          <img
-            alt=""
-            src="/imgs/worked/{placeIWorkd.image}.png"
-            width="32"
-            height="32"
-            decoding="async"
-            data-nimg="1"
-            class="h-7 w-7"
-            loading="lazy"
-            style="color: transparent;"
-          />
+          {#if imageModules[`${placeIWorkd.image}.png`]}
+            <enhanced:img
+              alt={placeIWorkd.image}
+              src={imageModules[`${placeIWorkd.image}.png`]?.default}
+              decoding="async"
+              data-nimg="1"
+              class="h-7 w-7"
+              loading="lazy"
+              style="color: transparent;"
+            />
+          {/if}
         </div>
         <dl class="flex flex-auto flex-wrap gap-x-2">
           <dt class="sr-only">Name</dt>
@@ -67,7 +86,9 @@
     class="inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none bg-zinc-50 font-medium text-zinc-900 hover:bg-zinc-100 active:bg-zinc-100 active:text-zinc-900/60 dark:bg-zinc-800/50 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:active:bg-zinc-800/50 dark:active:text-zinc-50/70 group mt-6 w-full"
     href="/docs/Curriculum - Gabriel Berthier - EN 2022.pdf"
     download
-    >Download CV<svg
+  >
+    {$t('workedAt.download_curriculo')}
+    <svg
       viewBox="0 0 16 16"
       fill="none"
       aria-hidden="true"

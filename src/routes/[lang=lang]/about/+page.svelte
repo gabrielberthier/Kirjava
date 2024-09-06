@@ -9,10 +9,10 @@
       <div class="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
         <div class="lg:pl-20">
           <div class="max-w-xs px-2.5 lg:max-w-none">
-            <img
+            <enhanced:img
               alt=""
               sizes="(min-width: 1024px) 32rem, 20rem"
-              src="/imgs/20240721_164045.jpg"
+              src="/imgs/20240721_164045.webp"
               width="800"
               height="800"
               decoding="async"
@@ -20,7 +20,8 @@
               class="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800 max-lg:mt-3"
               loading="lazy"
               style="color: transparent;"
-            />
+            >
+            </enhanced:img>
           </div>
         </div>
         <div class="lg:order-first lg:row-span-2">
@@ -111,7 +112,7 @@
                 class="group flex text-sm font-medium text-zinc-800 transition hover:text-sky-500 dark:text-zinc-200 dark:hover:text-sky-700"
                 href="mailto:mail@gabrieu.dev"
                 ><svg
-                  viewBox="0 0 24 24" 
+                  viewBox="0 0 24 24"
                   aria-hidden="true"
                   class="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-sky-500"
                   ><path
