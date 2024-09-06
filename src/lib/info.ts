@@ -11,7 +11,7 @@ export const name = `${firstName} ${lastName}`
 export const whereIam = 'São Luís, BR'
 
 // Used for the landing page & footer of posts
-export const avatar = '/imgs/20240721_164045.webp'
+export const avatar = '/imgs/me-bio.webp'
 export const bio = `I'm ${firstName}, a software engineer based in Brazil.`
 
 // Your social usernames, empty strings won't be used.
